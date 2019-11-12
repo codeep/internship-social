@@ -6,25 +6,31 @@ import {MatButtonModule} from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProfilePageComponent } from './profile-page/profile-page.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import { ProfilePageComponent } from './views/profile-page/profile-page.component';
 
 
 
-import { AddPostComponent } from './add-post/add-post.component';
-import { AddedPostComponent } from './added-post/added-post.component';
+
+import { AddPostComponent } from './components/add-post/add-post.component';
+import { AddedPostComponent } from './components/added-post/added-post.component';
 import {HttpClientModule} from '@angular/common/http';
-import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 
-import { FeedComponent } from './feed/feed.component';
+import { FeedComponent } from './views/feed/feed.component';
 import {MatInputModule} from '@angular/material/input';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
+import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
+import { ConfirmComponent } from './views/confirm/confirm.component';
+import { RecoverComponent } from './views/recover/recover.component';
+import { WisardComponent } from './views/wisard/wisard.component';
+import { LikeComponent } from './components/like/like.component';
+import { UserComponent } from './components/user/user.component';
+import { DetailsComponent } from './components/details/details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,13 +38,21 @@ import {MatNativeDateModule} from '@angular/material/core';
     AddPostComponent,
     AddedPostComponent,
     FeedComponent,
-    SearchComponent
+    SearchComponent,
+    LoginComponent,
+    RegisterComponent,
+    ConfirmComponent,
+    RecoverComponent,
+    WisardComponent,
+    LikeComponent,
+    UserComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
     MatFormFieldModule,
     MatIconModule,
     MatButtonModule,
