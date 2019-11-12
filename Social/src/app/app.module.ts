@@ -6,11 +6,16 @@ import {MatButtonModule} from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AddPostComponent } from './add-post/add-post.component';
 import { AddedPostComponent } from './added-post/added-post.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
+
+import { FeedComponent } from './feed/feed.component';
+import {MatInputModule} from '@angular/material/input';
+import { SearchComponent } from './search/search.component';
 
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -19,7 +24,9 @@ import {MatNativeDateModule} from '@angular/material/core';
   declarations: [
     AppComponent,
     AddPostComponent,
-    AddedPostComponent
+    AddedPostComponent,
+    FeedComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     FormsModule, ReactiveFormsModule,
     MatNativeDateModule,
     MatInputModule,
-    MatDividerModule
+    MatDividerModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
