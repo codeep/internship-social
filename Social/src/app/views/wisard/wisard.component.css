@@ -1,0 +1,10 @@
+.wisard{
+    margin-top: 5%;
+    padding: 10px;
+    width: 30%;
+    text-align: center;
+}
+.wisard>p{
+    width: 100%;
+    margin:3% 0;
+}
