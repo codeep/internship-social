@@ -1,22 +1,33 @@
-.login{
-    margin:70px auto;
-}
-.login>div{
-    text-align: center;
-    width: 50%;
-    height: 800px;
-}
-.login form{
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    margin:50px 0;
+.login {
+  margin: 70px auto;
 }
 
-.login img{
-    width: 100%;
-    height: 100%;
+.login>div {
+  text-align: center;
+  width: 50%;
+  height: 800px;
 }
-.login>div>p{
-    margin-top: 100px;
+
+.login form {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0;
+}
+
+.login img {
+  width: 100%;
+  height: 100%;
+}
+
+.login>div>p {
+  margin-top: 100px;
+}
+
+/* mat-form-field.mat-form-field {
+    font-size: 25px;
+    color:#35bb7d;
+  } */
+  .mat-form-field-ripple {
+    background-color: #027D7C !important;
 }
