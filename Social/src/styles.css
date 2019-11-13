@@ -50,5 +50,24 @@ body{
     color: white;
     border-radius: 5px;
     font-size: 13px;
-    padding: 2px;
+    padding: 5px;
+}
+.users{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-direction: row;
+    
+}
+.user{
+    width: 30%;
+    margin:10px 0;
+    box-shadow: 1px 1px 7px 1px gray;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+.user img{
+    width: 30px;
+    height: 30px;
 }

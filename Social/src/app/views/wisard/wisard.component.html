@@ -14,6 +14,8 @@
     </form>
 </div>
 <div class=" container-flex boxShadow wisard">
-    <app-user></app-user>
+    <div class="users" >
+        <app-user class="user" *ngFor="let i of arr"></app-user>
+    </div>
     <button mat-raised-button class="standartButton">Next</button>
 </div>
