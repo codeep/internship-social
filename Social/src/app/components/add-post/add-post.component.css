@@ -1,9 +1,19 @@
 form{
   align-items: center;
   flex-direction: column;
+  margin-top: 100px;
+  margin-left: 450px;
+  margin-right: 450px;
   width: 95%;
   padding: 20px 10px;
   background-color: #fff;
+
+}
+.title {
+  color: rgb(105, 106, 107);
+  font-size: 20px;
+  font-weight: 500;
+  border-bottom: 1px solid  rgb(189, 186, 186);
 }
 
 
