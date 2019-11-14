@@ -73,3 +73,10 @@ body{
     width: 30px;
     height: 30px;
 }
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #35bb7d !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #35bb7d !important;
+}
