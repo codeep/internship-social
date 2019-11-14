@@ -1,4 +1,4 @@
-<form class="container-flex boxShadow ">
+<form class="container-flex boxShadow" onSubmit="onSubmit()">
   <div class="title">Create Post</div>
       <mat-form-field class="width-95">
         <mat-label>Title</mat-label>
@@ -6,12 +6,13 @@
         </mat-form-field>
 
        <mat-form-field class="example-full-width width-95">
-        <textarea matInput placeholder="What's on your mind?"></textarea>
+        <textarea matInput placeholder="What's on your mind?" [(ngModel)]="textArea" [ngModelOptions]="{standalone: true}"></textarea>
          </mat-form-field>
    <div class="uploads ">
    <button  mat-stroked-button class="standartButton"  color="basic"> <i class="material-icons">add_a_photo</i></button> 
    <button mat-stroked-button class="standartButton" color="basic"> <i class="material-icons trans">attachment</i></button>
-  <button  mat-stroked-button class="standartButton" color="basic">Post</button>
+  <button type="submit" mat-stroked-button class="standartButton" (click)="linkify(textArea)"  color="basic">Post</button>
 </div>
   </form>
 
+  <!-- <div [innerHTML]="linkText"></div> -->
