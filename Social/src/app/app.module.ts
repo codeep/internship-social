@@ -31,6 +31,7 @@ import { WisardComponent } from './views/wisard/wisard.component';
 import { LikeComponent } from './components/like/like.component';
 import { UserComponent } from './components/user/user.component';
 import { DetailsComponent } from './components/details/details.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { DetailsComponent } from './components/details/details.component';
     WisardComponent,
     LikeComponent,
     UserComponent,
-    DetailsComponent,
+    DetailsComponent
+    
   ],
   imports: [
     BrowserModule,
