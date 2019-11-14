@@ -1,34 +1,18 @@
-<form >
+<form class="container-flex boxShadow" onSubmit="onSubmit()">
   <div class="title">Create Post</div>
-  <br>
-
-
-  <div class='btns'>
-          <label>Category:</label>
-          <button mat-button color="accent">Art</button>
-          <button mat-button color="accent">Sport</button>
-          <button mat-button color="accent">Sience</button>
-          <button mat-button color="accent">Others</button>
-
-  </div>
-  <p>
-      <mat-form-field appearance="outline">
+      <mat-form-field class="width-95">
         <mat-label>Title</mat-label>
         <input matInput placeholder="Enter title">
-      </mat-form-field>
-    </p>
+        </mat-form-field>
 
-      <p>
-          <mat-form-field appearance="outline">
-            <mat-label>Content</mat-label>
-            <input matInput placeholder="What about you want to post?">
-          </mat-form-field>
-        </p>
-
-  <br>
-
-
-  <button  mat-stroked-button color="basic">Post</button>
-
+       <mat-form-field class="example-full-width width-95">
+        <textarea matInput placeholder="What's on your mind?" [(ngModel)]="textArea" [ngModelOptions]="{standalone: true}"></textarea>
+         </mat-form-field>
+   <div class="uploads ">
+   <button  mat-stroked-button class="standartButton"  color="basic"> <i class="material-icons">add_a_photo</i></button> 
+   <button mat-stroked-button class="standartButton" color="basic"> <i class="material-icons trans">attachment</i></button>
+  <button type="submit" mat-stroked-button class="standartButton" (click)="linkify(textArea)"  color="basic">Post</button>
+</div>
   </form>
 
+  <!-- <div [innerHTML]="linkText"></div> -->

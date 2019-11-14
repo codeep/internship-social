@@ -1,12 +1,17 @@
 form{
-  border: 1px solid rgb(189, 186, 186);
-  display: flex;
   align-items: center;
   flex-direction: column;
+<<<<<<< HEAD
   margin-top: 100px;
   margin-left: 450px;
   margin-right: 450px;
   
+=======
+  width: 30%;
+  padding: 10px;
+  background-color: #fff;
+  margin-top: 5%;
+>>>>>>> e9e2feb208f2ba5e4c74d998c02e785ec04b9784
 }
 .title {
   color: rgb(105, 106, 107);
@@ -15,15 +20,18 @@ form{
   border-bottom: 1px solid  rgb(189, 186, 186);
 }
 
-.btns{
-  color: rgb(105, 106, 107);
-  font-size: 16px;
-  font-weight: 400;
+
+.uploads{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
-
-.mat-stroked-button {
-    border: 1px solid rgb(189, 186, 186);
-    padding: 0 165px;
-    line-height: 34px;
+.standartButton{
+  
+  margin: 10px;
+  
+}
+.trans{
+  transform: rotate(-90deg);
 }
