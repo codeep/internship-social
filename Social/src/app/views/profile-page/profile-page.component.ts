@@ -14,6 +14,9 @@ export class ProfilePageComponent implements OnInit {
   showUploadCoverButton=false;
   showUploadProfileButton=false;
   hideProfileImage=false;
+  openDetails=false;
+  openConnections=false;
+  
 
   constructor() { }
 
@@ -26,7 +29,6 @@ export class ProfilePageComponent implements OnInit {
     this.showUploadCoverButton=true;
     this.hideCoverImage=true;
 
-    console.log('cover');
 
     if (event.target.files && event.target.files[0]) {
 
@@ -46,15 +48,22 @@ export class ProfilePageComponent implements OnInit {
     this.hideProfileImage=true;
 
     if (event.target.files && event.target.files[0]) {
-
       var reader = new FileReader();
-
       reader.readAsDataURL(event.target.files[0]);
-
       reader.onload = (event) => { 
         this.urlProfile = event.target.result;
       }
     }
+  }
+
+  openDetailsButton(){
+    this.openConnections=false;
+    this.openDetails=true;
+
+  }
+  openConnectionsButton(){
+    this.openConnections=true;
+    this.openDetails=false;
   }
 
 }

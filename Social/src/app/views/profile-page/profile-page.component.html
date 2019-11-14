@@ -1,4 +1,4 @@
-<div class="entireProfilePage container-flex width-95 boxShadow">
+<div class="entireProfilePage container-flex  boxShadow">
 
     <div class="coverPhoto">
         <div class="imgIconAndText">
@@ -23,8 +23,10 @@
                 <input type='file' id="profile" class="hidden" (change)="onSelectProfileFile($event)">
 
                 <div class="uploadProfileIconAndText" *ngIf="hideUploadProfileButton">
-                    <mat-icon>photo_camera</mat-icon>
-                    <label for="profile">Upload Profile Photo</label>
+                    <div class="textInProfilePic">
+                        <mat-icon>photo_camera</mat-icon>
+                        <label for="profile">Upload Profile Photo</label>
+                    </div>
                 </div>
                 <div class="updateProfilePhoto" *ngIf="showUploadProfileButton">
                     <mat-icon>photo_camera</mat-icon>
@@ -39,38 +41,25 @@
 
 
     <div class="sides">
-        <div class="leftSide boxShadow">
-            <div class="feed">
-                <button mat-flat-button class="standartButton">Feed</button>
-                <!-- <a href="#">Feed</a> -->
-            </div>
-            <div class="connections">
-                <button mat-flat-button class="standartButton">Connections</button>
-
-            </div>
-            <div class="details">
-                <button mat-flat-button class="standartButton">Details</button>
-
-            </div>
+        <div class="leftSide ">
+            <p class="menuItem">Feed</p>
+            <p class="menuItem"><span>My</span> Posts</p>
+            <p class="menuItem" (click)="openConnectionsButton()">Connections</p>
+            <p class="menuItem" (click)="openDetailsButton()">Details</p>
         </div>
-
-        <div class="rightSide boxShadow">
-
+        <div class="mainContent boxShadow">
+            <div class="connections" *ngIf="openConnections">
+                <p>Following</p>
+                <p>Followers</p>
+            </div>
+            <!-- <app-user></app-user> -->
+            <div class="details" *ngIf="openDetails">
+                <p>Firstname Lastname</p>
+                <p>Email</p>
+                <p>Birthdate</p>
+                <p>Occupation</p>
+                <p>Location</p>
+            </div>
         </div>
     </div>
-
-
-
-
 </div>
-
-<!-- 
-<div class="follow">
-        <div class="followers">
-            <a href="#">Followers</a>
-        </div>
-
-        <div class="following">
-            <a href="#">Following</a>
-        </div>
-    </div> -->
