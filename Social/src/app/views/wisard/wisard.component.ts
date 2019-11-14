@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wisard.component.css']
 })
 export class WisardComponent implements OnInit {
-
+ arr=[1,2,3, 1,2,3];
   constructor() { }
 
   ngOnInit() {
