@@ -37,7 +37,7 @@ export class ProfilePageComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
 
       reader.onload = (event) => { 
-        this.urlCover = event.target.result;
+        // this.urlCover = event.target.result;
       }
     }
   }
@@ -51,7 +51,7 @@ export class ProfilePageComponent implements OnInit {
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event) => { 
-        this.urlProfile = event.target.result;
+        // this.urlProfile = event.target.result;
       }
     }
   }
