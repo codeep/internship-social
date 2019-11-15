@@ -32,6 +32,9 @@ body{
     margin-top: 20px;
     /* background-image: linear-gradient(to right, #5185d5, #006f98, #005054, #132f23, #0c0f06); */ 
 }
+.standartButton:hover{
+    background-color: #27704e;
+}
 .boxShadow{
     box-shadow: 1px 1px 8px -1px #156b4e;
 }

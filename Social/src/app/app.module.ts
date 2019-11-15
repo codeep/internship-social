@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilePageComponent } from './views/profile-page/profile-page.component';
-
+import { RequestService } from "./services/request-service.service";
 
 
 
@@ -25,12 +25,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-import { ConfirmComponent } from './views/confirm/confirm.component';
-import { RecoverComponent } from './views/recover/recover.component';
 import { WisardComponent } from './views/wisard/wisard.component';
 import { LikeComponent } from './components/like/like.component';
 import { UserComponent } from './components/user/user.component';
 import { DetailsComponent } from './components/details/details.component';
+import { SessionService } from './services/session.service';
 
 @NgModule({
   declarations: [
@@ -42,8 +41,6 @@ import { DetailsComponent } from './components/details/details.component';
     SearchComponent,
     LoginComponent,
     RegisterComponent,
-    ConfirmComponent,
-    RecoverComponent,
     WisardComponent,
     LikeComponent,
     UserComponent,
@@ -65,7 +62,7 @@ import { DetailsComponent } from './components/details/details.component';
     MatDividerModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [RequestService, SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
