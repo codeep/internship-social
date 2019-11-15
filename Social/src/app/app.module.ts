@@ -25,12 +25,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-import { ConfirmComponent } from './views/confirm/confirm.component';
-import { RecoverComponent } from './views/recover/recover.component';
 import { WisardComponent } from './views/wisard/wisard.component';
 import { LikeComponent } from './components/like/like.component';
 import { UserComponent } from './components/user/user.component';
 import { DetailsComponent } from './components/details/details.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -42,9 +41,7 @@ import { DetailsComponent } from './components/details/details.component';
     SearchComponent,
     LoginComponent,
     RegisterComponent,
-    ConfirmComponent,
-    RecoverComponent,
-    WisardComponent,
+     WisardComponent,
     LikeComponent,
     UserComponent,
     DetailsComponent
@@ -63,7 +60,8 @@ import { DetailsComponent } from './components/details/details.component';
     MatNativeDateModule,
     MatInputModule,
     MatDividerModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

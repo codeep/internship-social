@@ -1,7 +1,18 @@
 export default {
-    FETCH_POSTS: '/p/employee/list/',
-    FETCH_LIKE: '/p/employee/trips/',
-    UPDATE_LIKE: '/p/employee/trip/state/update/',
-    GENERATE_POST: '/p/employee/trips/report/',
-    NOTIFY_EMPLOYEES: '/p/employee/trips/status/notification/'
-   };
+  LOGIN:'/auth/login/',
+  REGISTER:'/auth/register/',
+  RECOVER:'/auth/recover/',
+  CONFIRM:'/auth/confirm/',
+
+  NEARBY:'/users/nearby/',
+  USERS:'/users/',
+  USERS_ID:'/users/{id}/',
+  DETAILS:'/users/details/',
+  FOLLOW:'/users/follow/{id}/',
+  
+  POSTS: '/posts/',
+  FEED: '/posts/feed/',
+  WALL: '/posts/wall/{id}/',
+  POSTS_ID: '/posts/{id}/',
+  LIKE: '/posts/{id}/like/',
+};
