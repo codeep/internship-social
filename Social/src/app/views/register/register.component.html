@@ -1,24 +1,25 @@
 <div class="container-flex   boxShadow register">
     <p class="title">Register</p>
-    <form action="">
+    <form action="" [formGroup]='register' (ngSubmit)='onSubmit()'>
         <mat-form-field class="width-95">
-          <input matInput placeholder=" Name">
+          <input matInput placeholder="First Name" formControlName='firstname'>
         </mat-form-field>
         <mat-form-field class="width-95">
-          <input matInput placeholder=" LastName">
+          <input matInput placeholder="Last Name" formControlName='lastname'>
         </mat-form-field>
         <mat-form-field class="width-95">
-          <input matInput placeholder=" Email">
+          <input matInput placeholder="Email" formControlName='email'>
         </mat-form-field>
         <mat-form-field class="width-95">
-          <input matInput placeholder=" Birthdate">
+          <input matInput placeholder="Birthdate" formControlName='birthdate'>
         </mat-form-field>
         <mat-form-field class="width-95">
-          <input matInput placeholder=" Password">
+          <input matInput placeholder="Password" formControlName='password'>
         </mat-form-field>
         <mat-form-field class="width-95">
-          <input matInput placeholder="Confirm Password">
+          <input matInput placeholder="Confirm Password" formControlName='confirmPassword'>
         </mat-form-field>
-        <button mat-raised-button class="standartButton">LogIn</button>
+        <button mat-raised-button class="standartButton">Register</button>
     </form>
+    <p class="textColor"  [routerLink]="['/login']">LogIn</p>
 </div>

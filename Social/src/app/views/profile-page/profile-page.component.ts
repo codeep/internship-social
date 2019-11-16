@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestService } from 'src/app/services/request-service.service';
 
 @Component({
   selector: 'profile-page',
@@ -16,9 +17,15 @@ export class ProfilePageComponent implements OnInit {
   hideProfileImage=false;
   openDetails=false;
   openConnections=false;
+  openCreatePost=true;
   
+  myPosts=true;
+  connect=false;
+  details=false;
 
-  constructor() { }
+  constructor(private service:RequestService) {
+
+  }
 
   ngOnInit() {
   }
@@ -37,7 +44,7 @@ export class ProfilePageComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
 
       reader.onload = (event) => { 
-        this.urlCover = event.target.result;
+        // this.urlCover = event.target.result;
       }
     }
   }
@@ -51,7 +58,7 @@ export class ProfilePageComponent implements OnInit {
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event) => { 
-        this.urlProfile = event.target.result;
+        // this.urlProfile = event.target.result;
       }
     }
   }
@@ -59,11 +66,27 @@ export class ProfilePageComponent implements OnInit {
   openDetailsButton(){
     this.openConnections=false;
     this.openDetails=true;
+    this.myPosts=false;
+    this.openCreatePost=false;
+    this.details=true;
+    this.connect=false;
 
   }
   openConnectionsButton(){
+    this.connect=true;
+    this.myPosts=false;
+    this.openCreatePost=false;
     this.openConnections=true;
     this.openDetails=false;
+    this.details=false;
   }
 
+  openMyPostsButton(){
+    this.myPosts=true;
+    this.connect=false;
+    this.openCreatePost=true;
+    this.openConnections=false;
+    this.details=false;
+    this.openDetails=false;
+  }
 }

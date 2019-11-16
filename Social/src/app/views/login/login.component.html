@@ -4,16 +4,18 @@
   </div>
   <div class="loginForm">
     <p>ACCOUNT LOGIN</p>
-    <form class="container-flex">
+    <form class="container-flex" (ngSubmit)="onSubmit()" [formGroup]='login'>
       <mat-form-field class="width-60">
-        <input matInput placeholder=" Email" class="">
+        <input matInput placeholder=" Email" class="" formControlName='email'>  
       </mat-form-field>
+      <p class="errors" *ngIf='errorEmail'>{{errorsValidation('email')}}</p>
       <mat-form-field class="width-60">
-        <input matInput placeholder=" Password">
+        <input matInput type="password" placeholder=" Password" formControlName='password'>
       </mat-form-field>
-      <button mat-raised-button class="standartButton">LogIn</button>
+      <p class="errors" *ngIf='errorPass'>{{errorsValidation('password')}}</p>
+      <button type="submit" mat-raised-button class="standartButton">LogIn</button>
+      <p class="errors" *ngIf='errorText'>User not found.</p>
     </form>
-    <p>forgot <span class="textColor">User name / password</span></p>
-    <p class="textColor">Sign Up</p>
+    <p class="textColor"  [routerLink]="['/register']">Register</p>
   </div>
 </div>

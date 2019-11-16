@@ -7,9 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilePageComponent } from './views/profile-page/profile-page.component';
-
-
-
+import {RequestService} from './services/request-service.service'
 
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { AddedPostComponent } from './components/added-post/added-post.component';
@@ -20,17 +18,17 @@ import { FeedComponent } from './views/feed/feed.component';
 import {MatInputModule} from '@angular/material/input';
 import { SearchComponent } from './components/search/search.component';
 
-
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-import { ConfirmComponent } from './views/confirm/confirm.component';
-import { RecoverComponent } from './views/recover/recover.component';
 import { WisardComponent } from './views/wisard/wisard.component';
 import { LikeComponent } from './components/like/like.component';
 import { UserComponent } from './components/user/user.component';
 import { DetailsComponent } from './components/details/details.component';
+import {MatCardModule} from '@angular/material/card';
+import { SessionService } from './services/session.service';
+import { SuggestedUsersComponent } from './suggested-users/suggested-users.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +40,11 @@ import { DetailsComponent } from './components/details/details.component';
     SearchComponent,
     LoginComponent,
     RegisterComponent,
-    ConfirmComponent,
-    RecoverComponent,
     WisardComponent,
     LikeComponent,
     UserComponent,
-    DetailsComponent
+    DetailsComponent,
+    SuggestedUsersComponent
     
   ],
   imports: [
@@ -63,9 +60,10 @@ import { DetailsComponent } from './components/details/details.component';
     MatNativeDateModule,
     MatInputModule,
     MatDividerModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
-  providers: [],
+  providers: [RequestService, SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
