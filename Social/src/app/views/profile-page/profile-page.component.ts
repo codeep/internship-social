@@ -97,14 +97,6 @@ export class ProfilePageComponent implements OnInit {
     this.details = false;
   }
 
-  openMyPostsButton() {
-    this.myPosts = true;
-    this.connect = false;
-    this.openCreatePost = true;
-    this.openConnections = false;
-    this.details = false;
-    this.openDetails = false;
-  }
   openFollowersButton() {
     this.openFollowers = true;
   }

@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
         }else{
           this.errorText = true;
         } 
+      }
       });
     } else {
       if(this.login.controls.password.errors){
@@ -53,7 +54,7 @@ export class LoginComponent implements OnInit {
       this.validateAllFormFields(this.login);
     }
   }
-  
+
   validateAllFormFields(formGroup: FormGroup) {         
     Object.keys(formGroup.controls).forEach(field => {  
       const control = formGroup.get(field);             
