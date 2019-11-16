@@ -32,14 +32,13 @@
                     <mat-icon>photo_camera</mat-icon>
                     <label for="profile">Update Profile Photo</label>
                 </div>
+               
             </div>
         </div>
     </div>
 
-    <div class="nameSurname">
-        <p>{{ name }} {{ surname }}</p>
-        <!-- <p>Name</p> -->
-    </div>
+
+
 
     <div class="sides">
         <div class="leftSide ">
@@ -51,22 +50,17 @@
         <div class="mainContent boxShadow">
             <app-add-post *ngIf="openCreatePost"></app-add-post>
             <div class="connections" *ngIf="openConnections">
-                <p (click)="openFollowersButton()">Following</p>
+                <p>Following</p>
                 <p>Followers</p>
             </div>
-            <div *ngIf="openFollowers" class="users">
-                <app-user class="user"></app-user>
-                <app-user class="user"></app-user>
-                <app-user class="user"></app-user>
-                <app-user class="user"></app-user>
-                <app-user class="user"></app-user>
-                <app-user class="user"></app-user>
-                <app-user class="user"></app-user>
-                <app-user class="user"></app-user>
-
+            <!-- <app-user></app-user> -->
+            <div class="details" *ngIf="openDetails">
+                <p>Firstname Lastname</p>
+                <p>Email</p>
+                <p>Birthdate</p>
+                <p>Occupation</p>
+                <p>Location</p>
             </div>
-            
-            <app-details *ngIf="openDetails"></app-details>            
         </div>
     </div>
 </div>
