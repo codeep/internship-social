@@ -1,21 +1,21 @@
-<div class="container-flex boxShadow wisard">
+<div class="container-flex boxShadow wisard" *ngIf='!openusers'>
     <p class="title">Details</p>
-    <form action="">
+    <form action="" (ngSubmit)="onSubmit()" [formGroup]='ditails'>
         <mat-form-field class="width-95">
-            <input matInput placeholder="Occupotion" >
+            <input matInput placeholder="Occupotion" formControlName='occupotion'>
         </mat-form-field>
         <mat-form-field class="width-95">
-            <input matInput placeholder="Location" >
+            <input matInput placeholder="Location" formControlName='location'>
         </mat-form-field>    
         <mat-form-field class="example-full-width width-95">
-            <textarea matInput placeholder="Bio"></textarea>
+            <textarea matInput placeholder="Bio" formControlName='bio'></textarea>
         </mat-form-field>
         <button mat-raised-button class="standartButton">Next</button>
     </form>
 </div>
-<div class=" container-flex boxShadow wisard">
+<div class=" container-flex boxShadow wisard" *ngIf='openusers'>
     <div class="users" >
         <app-user class="user" *ngFor="let i of arr"></app-user>
     </div>
-    <button mat-raised-button class="standartButton">Next</button>
+    <button mat-raised-button class="standartButton" type="button" (click)='goToFeed()'>Next</button>
 </div>
