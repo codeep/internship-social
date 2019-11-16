@@ -1,7 +1,7 @@
 export default {
     LOGIN:'/auth/login',
     REGISTER:'/auth/register',
-    NEARBY:'/users/nearby/',
+    NEARBY:'/users/nearby',
     USERS:'/users/',
     USERS_ID:'/users/{id}/',
     DETAILS:'/users/details/',

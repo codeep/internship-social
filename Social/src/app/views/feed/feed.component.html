@@ -2,25 +2,20 @@
   <div class="left-bar">
     <div class="section-right">
       <div class="section img">
-        <img class="profile-pic" [routerLink]="['/profile/me']"
-          src="../../../assets/userdefult.png"
-          alt="Img">
+        <img class="profile-pic" [routerLink]="['/profile/me']" src="../../../assets/userdefult.png" alt="Img">
         <p [routerLink]="['/profile/me']">Name</p>
       </div>
-      <button matbutton type="button" class="standartButton" (click)='logout()' [routerLink]="['/login']" >LogOut</button>
+      <button mat-raised-button type="button" class="standartButton" (click)='logout()'
+        [routerLink]="['/login']">LogOut</button>
     </div>
   </div>
   <div class="center-posts">
     <app-add-post></app-add-post>
   </div>
   <div class="right-bar">
-    <div class="suggestions">      
-      <div class="section">
+    <div class="suggestions">
+      <div class="section users">
         <app-suggested-users class="user"></app-suggested-users>
-        <img class="profile-pic"
-          src="src\assets\userdefult.png"
-          alt="Img">
-        <p>Name</p>
       </div>
     </div>
     <div class="search">

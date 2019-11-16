@@ -57,6 +57,9 @@ body{
     font-size: 13px;
     padding: 5px;
 }
+.followButton:hover{
+  background-color: #27704e;
+}
 .users{
     display: flex;
     justify-content: space-evenly;
