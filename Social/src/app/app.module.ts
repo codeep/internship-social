@@ -7,9 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilePageComponent } from './views/profile-page/profile-page.component';
-
-
-
+import {RequestService} from './services/request-service.service'
 
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { AddedPostComponent } from './components/added-post/added-post.component';
@@ -20,7 +18,6 @@ import { FeedComponent } from './views/feed/feed.component';
 import {MatInputModule} from '@angular/material/input';
 import { SearchComponent } from './components/search/search.component';
 
-
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import { LoginComponent } from './views/login/login.component';
@@ -30,6 +27,9 @@ import { LikeComponent } from './components/like/like.component';
 import { UserComponent } from './components/user/user.component';
 import { DetailsComponent } from './components/details/details.component';
 import {MatCardModule} from '@angular/material/card';
+import { RequestService } from './services/request-service.service';
+import { SessionService } from './services/session.service';
+import { SuggestedUsersComponent } from './suggested-users/suggested-users.component';
 
 @NgModule({
   declarations: [
@@ -41,10 +41,11 @@ import {MatCardModule} from '@angular/material/card';
     SearchComponent,
     LoginComponent,
     RegisterComponent,
-     WisardComponent,
+    WisardComponent,
     LikeComponent,
     UserComponent,
-    DetailsComponent
+    DetailsComponent,
+    SuggestedUsersComponent
     
   ],
   imports: [
@@ -63,7 +64,7 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [RequestService, SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

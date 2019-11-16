@@ -1,0 +1,10 @@
+.register{
+    margin-top: 5%;
+    padding: 10px;
+    width: 30%;
+    text-align: center;
+}
+.register>p{
+    width: 100%;
+    margin:3% 0;
+}

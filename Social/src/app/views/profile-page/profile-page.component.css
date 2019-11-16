@@ -1,33 +1,76 @@
 .entireProfilePage{
-    width: 80%;
-    margin: 0 auto;
+    flex-direction: column;
+    width: 90%;
 }
 
 .coverPhoto{
-    height: 300px;
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    height: 350px;
+    background-color: white;
+    display: flex;
+    position: relative;
+}
 
+.imgIconAndText{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.uploadCover{
+    width: 100%;
+    height: 100%;
+}
+
+.profilePic{
+    height: 220px;
+    width: 200px;
+    position: absolute;
+    bottom: -77px;
+    left: 90px;
+    box-shadow: 0px 0px 8px -3px #156b4e;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.pic{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+.uploadProfile{
+    width: 100%;
+    height: 100%;
 }
 
 .hidden{
     display: none;
 }
 
-.uploadIconAndText{
-    color: salmon;
+.uploadCoverIconAndText{
+    color: #35bb7d;
     display: flex;
     cursor: pointer;
-    
-    
+    justify-content: center;   
 }
-.uploadIconAndText label{
+.uploadProfileIconAndText{
+    color: #35bb7d;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    margin: 0 7px;
+}
+.uploadProfileIconAndText label{
+    cursor: pointer;
+    font-size: 16px;
+}
+.uploadProfileIconAndText .mat-icon{
+    font-size: 21px;
+}
+.uploadCoverIconAndText label{
     font-size: 19px;
-    padding: 4px 6px;
     cursor: pointer;
 }
 
@@ -36,67 +79,120 @@
     font-size: 31px;
   
 }
-
-.profilePic{
-    border: 1px solid black;
-    
-    height: 200px;
-   
-
-    
+.textInProfilePic{
+    display: flex;
+}
+.updateCoverPhoto{
+    display: none; 
+    color: white;
+    cursor: pointer;
     position: absolute;
-    
-    /* top: 165px;
-    left: 175px; */
-    top: 29%;
-    left: 14%;
+    top: 301px;
+    left: 940px;    
+}
+.updateProfilePhoto{
+    display: none; 
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 186px;
+    margin: 0 7px;
 
 }
+.profilePic:hover .updateProfilePhoto{
+    display: block;
+    cursor: pointer;
+}
 
-img{
+.imgIconAndText:hover .updateCoverPhoto{
+    display: block;
+    cursor: pointer;
+    
+}
+.updateCoverPhoto label{
+    font-size: 17px;
+    padding: 4px 6px;
+    cursor: pointer;
+}
+.updateProfilePhoto label{
+    font-size: 16px;
+    cursor: pointer;
+}
+.updateProfilePhoto .mat-icon{
+    font-size: 17px;
+
+}
+.uploadImage .mat-icon{
+    font-size: 26px;
+  
+}
+.profImg{
     width: 100%;
     height: 200px;
 
 }
-
-
 .sides{
+    margin: 60px 0;
     display: flex;
-    justify-content: space-between;
+    height: 100%;
+    justify-content: space-evenly;
 }
 .leftSide{
-    width: 25%;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
+    width: 30%;
+    padding: 50px 10px;
+    height: 100%;
+}
+.menuItem{
+    font-size: 20px;
+    margin:10px;
+    box-shadow: 0px 0px 8px -3px #156b4e;
+    padding: 10px;
+}
+.menuItem:hover{
+    transform: translateX(10px);
+    color: rgb(33, 95, 38);
+    cursor: pointer;
+}
+.activeMenuItem {
+    transform: translateX(10px);
+    color:rgb(33, 95, 38);
+}
+
+.mainContent{
+    width: 50%;
+    /* height: 100%; */
+}
+.details{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+    flex-direction: column; 
+    margin: 17px;
+}
+.details p{
+    margin: 13px;
+    font-size: 17px;
+    border-bottom:0.5px solid silver ;
+    /* box-shadow: 0px 0px 8px -3px #156b4e; */
+    /* width: 20%; */
+    padding: 7px 0;
+    /* text-align: center; */
 }
 
-.follow{
-    margin: 23px 0;
-    
-    padding: 21px;
+.connections{
     display: flex;
-    flex-direction: column;
+    /* justify-content: space-around; */
+    /* margin: 11px 0;    */
+    box-shadow: 0px 0px 8px -3px #156b4e;
+    padding: 10px;
 }
-.followers,.following{
-    padding: 11px 7px;
-    
-    
+.connections>p{
+    padding: 11px; 
+    font-size: 17px;
 }
-
-.followers a,.following a,.details a {
-    text-decoration: none;
-    color: black;
-    font-size: 21px;
+.connections>p:hover{
+    transform: translateY(-6px);
+    color: rgb(33, 95, 38);
+    cursor: pointer;
 }
-
-.rightSide{
-    width: 25%;
-    height: 400px;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
+app-add-post{
+    width: 50% !important;
 }
