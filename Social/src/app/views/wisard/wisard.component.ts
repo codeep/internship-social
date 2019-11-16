@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
+import { Response } from '../../../interfaces/response.interface';
 
 @Component({
   selector: 'app-wisard',
@@ -14,7 +15,7 @@ export class WisardComponent implements OnInit {
   arr=[1,2,3, 1,2,3];
   wisard:any;
   ditails = this.fb.group({
-    occupotion: ['', Validators.required],
+    occupation: ['', Validators.required],
     location: ['', Validators.required],
     bio: ['', Validators.required]
   });
@@ -30,10 +31,13 @@ export class WisardComponent implements OnInit {
   onSubmit(){
     if(this.ditails.valid){
       this.wisard = this.ditails.value;
-      this.wisard.firstname = this.sessionService.user.firstname;
-      this.wisard.lastname = this.sessionService.user.lastname; 
-      this.myServer.post('DETAILS',this.wisard, null, null, false);
-      this.openusers = true;
+      this.wisard.firstname = this.sessionService.getUser().firstname;
+      this.wisard.lastname = this.sessionService.getUser().lastname; 
+      this.myServer.post('DETAILS',this.wisard).subscribe((response: Response) => {
+        if (response.status >= 200 && response.status < 300) {
+          this.openusers = true;
+        } 
+      })
     }
   }
   goToFeed(){
