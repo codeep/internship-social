@@ -17,6 +17,7 @@ export class ProfilePageComponent implements OnInit {
   openDetails=false;
   openConnections=false;
   
+  dada=false;
 
   constructor() { }
 
@@ -62,6 +63,7 @@ export class ProfilePageComponent implements OnInit {
 
   }
   openConnectionsButton(){
+    this.dada=true;
     this.openConnections=true;
     this.openDetails=false;
   }

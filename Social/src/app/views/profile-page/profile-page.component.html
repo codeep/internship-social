@@ -42,12 +42,13 @@
 
     <div class="sides">
         <div class="leftSide ">
-            <p class="menuItem">Feed</p>
+            <p class="menuItem" >Feed</p>
             <p class="menuItem"><span>My</span> Posts</p>
-            <p class="menuItem" (click)="openConnectionsButton()">Connections</p>
+            <p class="menuItem" (click)="openConnectionsButton()" [ngClass]="{'activeMenuItem': dada}">Connections</p>
             <p class="menuItem" (click)="openDetailsButton()">Details</p>
         </div>
         <div class="mainContent boxShadow">
+            <app-add-post></app-add-post>
             <div class="connections" *ngIf="openConnections">
                 <p>Following</p>
                 <p>Followers</p>
