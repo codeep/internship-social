@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
 })
 export class FeedComponent implements OnInit {
 
-  constructor(private router:Router) { 
+  constructor(
+    private router:Router,
+    
+    ) { 
     // server.get(POST_NEARBY )
   }
 

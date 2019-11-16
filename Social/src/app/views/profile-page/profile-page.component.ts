@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
 
+import { Response } from '../../../interfaces/response.interface';
+import { SessionService } from 'src/app/services/session.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'profile-page',
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
+  name;
+
   hideCoverImage=false;
   urlCover;
   urlProfile;
@@ -18,13 +24,17 @@ export class ProfilePageComponent implements OnInit {
   openDetails=false;
   openConnections=false;
   openCreatePost=true;
+  openFollowers=false;
   
   myPosts=true;
   connect=false;
   details=false;
 
-  constructor(private service:RequestService) {
-
+  constructor(private server: RequestService) {
+    this.server.get('USERS_ID',null,null,true)
+    .subscribe((getName:Response)=>{
+        this.name=getName.data.firstname;
+    })
   }
 
   ngOnInit() {
@@ -89,4 +99,8 @@ export class ProfilePageComponent implements OnInit {
     this.details=false;
     this.openDetails=false;
   }
+  openFollowersButton(){
+    this.openFollowers=true;
+  }
+
 }

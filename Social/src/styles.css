@@ -175,3 +175,9 @@ body {
 .mat-form-field.mat-focused .mat-form-field-label {
   color: #35bb7d !important;
 }
+
+
+.errors{
+  font-size: 13px;
+  color: red;
+}
