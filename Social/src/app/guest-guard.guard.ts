@@ -11,10 +11,9 @@ export class GuestGuardGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(localStorage.getItem('token')){
+      if (localStorage.getItem('token')) {
         return this.router.navigateByUrl('/feed');
-      }
-      else{
+      } else {
         return true;
       }
   }
