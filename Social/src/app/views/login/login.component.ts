@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
 import {FormBuilder, FormControl, FormGroup, Validators, EmailValidator} from '@angular/forms';
+import { Response } from '../../../interfaces/response.interface';
+import { SessionService } from 'src/app/services/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +16,11 @@ export class LoginComponent implements OnInit {
     password: ['']
   });
 
-  constructor(private fb: FormBuilder, private myServer: RequestService) { 
-   
+  constructor(
+    private fb: FormBuilder, 
+    private myServer: RequestService,
+    private sessionService: SessionService,
+    private router: Router) { 
   }
 
   ngOnInit() {
@@ -22,7 +28,13 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     // console.log(this.login.value);
 
-    // this.myServer.post('LOGIN', this.login.value, null, null, false).subscribe(x=>console.log(x));
+    this.myServer.post('LOGIN', this.login.value, null, null, false)
+      .subscribe((response: Response) => {
+        if (response.status >= 200 && response.status < 300 && response.data && response.data.token) {
+          this.sessionService.setToken(response.data.token);
+        }
+        this.router.navigate(['/feed']);
+      });
   
   }
 }

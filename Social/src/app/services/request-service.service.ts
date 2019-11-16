@@ -29,10 +29,8 @@ export class RequestService {
     let url = endPoints[urlAlias];
     let headers: HttpHeaders =  new HttpHeaders();
     if (isAuthorized) {
-      headers = new HttpHeaders().set('Authorization', `Bearer ${this.sessionService.token}`);
+      headers = new HttpHeaders().set('Authorization', `Bearer ${this.sessionService.getToken()}`);
     }
-    //add the csrf token
-    headers = headers.set('X-CSRFToken', csrftoken);
 ​
     if (urlParams) {
       url = url.replace(`{${urlParams.key}}`, urlParams.value);
@@ -59,7 +57,7 @@ export class RequestService {
     let headers: HttpHeaders;
 ​
     if (isAuthorized) {
-      headers = new HttpHeaders().set('Authorization', `Bearer ${this.sessionService.token}`);
+      headers = new HttpHeaders().set('Authorization', `Bearer ${this.sessionService.getToken()}`);
     }
 ​
     if (urlParams) {

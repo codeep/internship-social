@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit(){
-    //  console.log(this.myServer.post('REGISTER', this.register.value));
+    this.myServer.post('REGISTER', this.register.value, null, null, false).subscribe(x=>console.log(x));
   }
 
 }
