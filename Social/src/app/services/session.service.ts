@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 @Injectable()
 export class SessionService {
-   get token() {
-       return this.token;
+    private token;
+   getToken() {
+       return localStorage.getItem('token');
    }
-   set token(token) {
-       this.token = token;
+   setToken(token) {
+       localStorage.setItem('token', token);
    }
+
    logout() {
    }
 }
