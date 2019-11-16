@@ -39,9 +39,6 @@ export class LoginComponent implements OnInit {
           this.sessionService.setUser(response.data.user);
           if(response.data.user.fulfilled){
             this.router.navigate(['/feed']);
-          }else{
-            this.router.navigate(['/wisard']);
-          }
         }else{
           this.errorText = true;
         } 
