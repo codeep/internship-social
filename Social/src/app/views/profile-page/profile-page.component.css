@@ -28,7 +28,7 @@
     position: absolute;
     bottom: -77px;
     left: 90px;
-    border: 1px solid aquamarine;
+    box-shadow: 0px 0px 8px -3px #156b4e;
     background-color: white;
     display: flex;
     justify-content: center;
@@ -153,13 +153,13 @@
     color: rgb(33, 95, 38);
     cursor: pointer;
 }
-.activeMenuItem .menuItem{
-    color:yellow;
+.activeMenuItem {
     transform: translateX(10px);
+    color:rgb(33, 95, 38);
 }
 
 .mainContent{
-    width: 60%;
+    width: 50%;
     /* height: 100%; */
 }
 .details{
@@ -192,4 +192,7 @@
     transform: translateY(-6px);
     color: rgb(33, 95, 38);
     cursor: pointer;
+}
+app-add-post{
+    width: 50% !important;
 }

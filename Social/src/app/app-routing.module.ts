@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'feed',component:FeedComponent,canActivate:[CheckTokenGuard]},
   {path:'profile/:id',component:ProfilePageComponent,canActivate:[CheckTokenGuard]},
   {path:'profile/me',component:ProfilePageComponent,canActivate:[CheckTokenGuard]},
-  {path:'',component:LoginComponent,canActivate:[GuestGuardGuard]},
+  {path:'',component:LoginComponent,canActivate:[GuestGuardGuard]}
 ];
 
 @NgModule({

@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilePageComponent } from './views/profile-page/profile-page.component';
 import {RequestService} from './services/request-service.service'
 
-
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { AddedPostComponent } from './components/added-post/added-post.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -19,7 +18,6 @@ import { FeedComponent } from './views/feed/feed.component';
 import {MatInputModule} from '@angular/material/input';
 import { SearchComponent } from './components/search/search.component';
 
-
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import { LoginComponent } from './views/login/login.component';
@@ -28,6 +26,7 @@ import { WisardComponent } from './views/wisard/wisard.component';
 import { LikeComponent } from './components/like/like.component';
 import { UserComponent } from './components/user/user.component';
 import { DetailsComponent } from './components/details/details.component';
+import { RequestService } from './services/request-service.service';
 import { SessionService } from './services/session.service';
 import { SuggestedUsersComponent } from './suggested-users/suggested-users.component';
 

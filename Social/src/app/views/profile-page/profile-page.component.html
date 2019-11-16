@@ -42,13 +42,13 @@
 
     <div class="sides">
         <div class="leftSide ">
-            <p class="menuItem" >Feed</p>
-            <p class="menuItem"><span>My</span> Posts</p>
-            <p class="menuItem" (click)="openConnectionsButton()" [ngClass]="{'activeMenuItem': dada}">Connections</p>
-            <p class="menuItem" (click)="openDetailsButton()">Details</p>
+            <p class="menuItem" routerLink="/feed">Feed</p>
+            <p class="menuItem" (click)="openMyPostsButton()" [ngClass]="{'activeMenuItem': myPosts}"><span>My</span> Posts</p>
+            <p class="menuItem" (click)="openConnectionsButton()" [ngClass]="{'activeMenuItem': connect}">Connections</p>
+            <p class="menuItem" (click)="openDetailsButton()" [ngClass]="{'activeMenuItem': details}">Details</p>
         </div>
         <div class="mainContent boxShadow">
-            <app-add-post></app-add-post>
+            <app-add-post *ngIf="openCreatePost"></app-add-post>
             <div class="connections" *ngIf="openConnections">
                 <p>Following</p>
                 <p>Followers</p>
