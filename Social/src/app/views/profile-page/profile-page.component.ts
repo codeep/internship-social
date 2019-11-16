@@ -5,6 +5,7 @@ import { Response } from '../../../interfaces/response.interface';
 import { SessionService } from 'src/app/services/session.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'profile-page',
   templateUrl: './profile-page.component.html',
@@ -108,4 +109,12 @@ export class ProfilePageComponent implements OnInit {
     this.openFollowers = true;
   }
 
+  openMyPostsButton(){
+    this.myPosts=true;
+    this.connect=false;
+    this.openCreatePost=true;
+    this.openConnections=false;
+    this.details=false;
+    this.openDetails=false;
+  }
 }
