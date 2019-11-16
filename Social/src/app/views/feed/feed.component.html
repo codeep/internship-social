@@ -3,7 +3,7 @@
     <div class="section-right">
       <div class="section img">
         <img class="profile-pic" [routerLink]="['/profile/me']" src="../../../assets/userdefult.png" alt="Img">
-        <p [routerLink]="['/profile/me']">Name</p>
+        <p [routerLink]="['/profile/me']">{{name}}</p>
       </div>
       <button mat-raised-button type="button" class="standartButton" (click)='logout()'
         [routerLink]="['/login']">LogOut</button>

@@ -34,3 +34,9 @@ a {
   box-shadow: none;
   width: 70%;
 }
+.img > img:hover{
+  cursor: pointer;
+}
+.img > p:hover{
+  cursor: pointer;
+}

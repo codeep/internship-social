@@ -1,5 +1,5 @@
 <div class="sug-user boxShadow" *ngFor="let item of users">
-    <img src="../../assets/userdefult.png" alt="">
-    <p>{{item.firstname}} {{item.lastname}}</p>
-    <button  class="followButton">Follow</button>
+    <img [routerLink]="['/profile/:id']" src="../../assets/userdefult.png" alt="Img">
+    <p [routerLink]="['/profile/:id']">{{item.firstname}} {{item.lastname}}</p>
+    <button class="followButton">Follow</button>
 </div>
