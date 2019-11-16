@@ -1,40 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
-
-import { Response } from '../../../interfaces/response.interface';
 import { SessionService } from 'src/app/services/session.service';
-import { Router } from '@angular/router';
-
-
+import { Response } from '../../../interfaces/response.interface'
 @Component({
   selector: 'profile-page',
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
-  name;
-  surname;
-
-  hideCoverImage = false;
+  hideCoverImage=false;
   urlCover;
   urlProfile;
-  hideUploadCoverButton = true;
-  hideUploadProfileButton = true;
-  showUploadCoverButton = false;
-  showUploadProfileButton = false;
-  hideProfileImage = false;
-  openDetails = false;
-  openConnections = false;
-  openCreatePost = true;
-  openFollowers = false;
+  hideUploadCoverButton=true;
+  hideUploadProfileButton=true;
+  showUploadCoverButton=false;
+  showUploadProfileButton=false;
+  hideProfileImage=false;
+  openDetails=false;
+  openConnections=false;
+  openCreatePost=true;
+  openFollowers=false;
+  myPosts=true;
+  connect=false;
+  details=false;
 
-  myPosts = true;
-  connect = false;
-  details = false;
+  name;
+  surname;
 
   constructor(
     private server: RequestService,
     private session: SessionService) { }
+  
 
   ngOnInit() {
     this.server.get('USERS_ID', { key: 'id', value: this.session.getUser()['_id'] })
@@ -45,12 +41,12 @@ export class ProfilePageComponent implements OnInit {
         }
       });
   }
-
-
+  
+  
   onSelectCoverFile(event) {
-    this.hideUploadCoverButton = false;
-    this.showUploadCoverButton = true;
-    this.hideCoverImage = true;
+    this.hideUploadCoverButton=false;
+    this.showUploadCoverButton=true;
+    this.hideCoverImage=true;
 
 
     if (event.target.files && event.target.files[0]) {
@@ -59,46 +55,44 @@ export class ProfilePageComponent implements OnInit {
 
       reader.readAsDataURL(event.target.files[0]);
 
-      reader.onload = (event) => {
+      reader.onload = (event) => { 
         // this.urlCover = event.target.result;
       }
     }
   }
 
   onSelectProfileFile(event) {
-    this.showUploadProfileButton = true;
-    this.hideUploadProfileButton = false;
-    this.hideProfileImage = true;
+    this.showUploadProfileButton=true;
+    this.hideUploadProfileButton=false;
+    this.hideProfileImage=true;
 
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (event) => {
+      reader.onload = (event) => { 
         // this.urlProfile = event.target.result;
       }
     }
   }
 
-  openDetailsButton() {
-    this.openConnections = false;
-    this.openDetails = true;
-    this.myPosts = false;
-    this.openCreatePost = false;
-    this.details = true;
-    this.connect = false;
-
+  openDetailsButton(){
+    this.openConnections=false;
+    this.openDetails=true;
+    this.myPosts=false;
+    this.openCreatePost=false;
+    this.details=true;
+    this.connect=false;
   }
-  openConnectionsButton() {
-    this.connect = true;
-    this.myPosts = false;
-    this.openCreatePost = false;
-    this.openConnections = true;
-    this.openDetails = false;
-    this.details = false;
-  }
-
   openFollowersButton() {
     this.openFollowers = true;
+  }
+  openConnectionsButton(){
+    this.connect=true;
+    this.myPosts=false;
+    this.openCreatePost=false;
+    this.openConnections=true;
+    this.openDetails=false;
+    this.details=false;
   }
 
   openMyPostsButton(){
