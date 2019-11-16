@@ -7,8 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilePageComponent } from './views/profile-page/profile-page.component';
-import { RequestService } from "./services/request-service.service";
-
+import {RequestService} from './services/request-service.service'
 
 
 import { AddPostComponent } from './components/add-post/add-post.component';
@@ -30,6 +29,7 @@ import { LikeComponent } from './components/like/like.component';
 import { UserComponent } from './components/user/user.component';
 import { DetailsComponent } from './components/details/details.component';
 import { SessionService } from './services/session.service';
+import { SuggestedUsersComponent } from './suggested-users/suggested-users.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,8 @@ import { SessionService } from './services/session.service';
     WisardComponent,
     LikeComponent,
     UserComponent,
-    DetailsComponent
+    DetailsComponent,
+    SuggestedUsersComponent
     
   ],
   imports: [

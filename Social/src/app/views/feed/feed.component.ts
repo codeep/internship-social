@@ -15,4 +15,8 @@ export class FeedComponent implements OnInit {
   ngOnInit() {
   }
 
+  logout(){
+    localStorage.removeItem("token");
+    
+  }
 }
