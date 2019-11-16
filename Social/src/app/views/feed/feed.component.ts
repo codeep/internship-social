@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-@Component({
-  selector: 'app-feed',
-  templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.css']
-})
-export class FeedComponent implements OnInit {
+import { RequestService } from 'src/app/services/request-service.service';
+import  '../../endpoints'
+// @Component({
+//   selector: 'app-feed',
+//   templateUrl: './feed.component.html',
+//   styleUrls: ['./feed.component.css']
+// })
+// export class FeedComponent implements OnInit {
 
-  constructor(private router: Router) { }
+//   constructor(private router: Router) { }
+//     // server.get(POST_NEARBY )
+//   }
 
-  ngOnInit() {
-  }
+//   ngOnInit() {
+//   }
 
-  logout(){
-    localStorage.removeItem("token");
-    this.router.navigateByUrl('/login');
-  }
-}
+  
+// }

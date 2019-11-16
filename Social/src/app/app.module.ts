@@ -10,7 +10,6 @@ import { ProfilePageComponent } from './views/profile-page/profile-page.componen
 import {RequestService} from './services/request-service.service'
 
 
-
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { AddedPostComponent } from './components/added-post/added-post.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -64,7 +63,7 @@ import { SuggestedUsersComponent } from './suggested-users/suggested-users.compo
     MatDividerModule,
     MatInputModule
   ],
-  providers: [RequestService,SessionService],
+  providers: [RequestService, SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
