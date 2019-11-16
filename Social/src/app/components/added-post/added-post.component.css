@@ -1,11 +1,14 @@
 form{
-    align-items: center;
-    flex-direction: column;
-    width: 30%;
-    padding: 10px;
-    background-color: #fff;
-    margin-top: 5%;
-  }
-  .info{
-      
-  }
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  padding: 20px 10px;
+  background-color: #fff;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}

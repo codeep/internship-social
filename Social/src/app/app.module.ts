@@ -26,6 +26,7 @@ import { WisardComponent } from './views/wisard/wisard.component';
 import { LikeComponent } from './components/like/like.component';
 import { UserComponent } from './components/user/user.component';
 import { DetailsComponent } from './components/details/details.component';
+import {MatCardModule} from '@angular/material/card';
 import { RequestService } from './services/request-service.service';
 import { SessionService } from './services/session.service';
 import { SuggestedUsersComponent } from './suggested-users/suggested-users.component';
@@ -60,7 +61,8 @@ import { SuggestedUsersComponent } from './suggested-users/suggested-users.compo
     MatNativeDateModule,
     MatInputModule,
     MatDividerModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   providers: [RequestService, SessionService],
   bootstrap: [AppComponent]
