@@ -2,34 +2,23 @@
   <div class="left-bar">
     <div class="section-right">
       <div class="section img">
-        <img class="profile-pic"
-          src="https://mobirise.com/bootstrap-template/profile-template/assets/images/timothy-paul-smith-256424-1200x800.jpg"
+        <img class="profile-pic" [routerLink]="['/profile/me']"
+          src="../../../assets/userdefult.png"
           alt="Img">
-        <p>Name</p>
+        <p [routerLink]="['/profile/me']">Name</p>
       </div>
-      <button matbutton class="standartButton">LogOut</button>
+      <button matbutton type="button" class="standartButton" (click)='logout()' [routerLink]="['/login']" >LogOut</button>
     </div>
   </div>
-  <div class="center-posts  ">
+  <div class="center-posts">
     <app-add-post></app-add-post>
   </div>
   <div class="right-bar">
-    <div class="suggestions">
+    <div class="suggestions">      
       <div class="section">
+        <app-suggested-users class="user"></app-suggested-users>
         <img class="profile-pic"
-          src="https://mobirise.com/bootstrap-template/profile-template/assets/images/timothy-paul-smith-256424-1200x800.jpg"
-          alt="Img">
-        <p>Name</p>
-      </div>
-      <div class="section">
-        <img class="profile-pic"
-          src="https://mobirise.com/bootstrap-template/profile-template/assets/images/timothy-paul-smith-256424-1200x800.jpg"
-          alt="Img">
-        <p>Name</p>
-      </div>
-      <div class="section">
-        <img class="profile-pic"
-          src="https://mobirise.com/bootstrap-template/profile-template/assets/images/timothy-paul-smith-256424-1200x800.jpg"
+          src="src\assets\userdefult.png"
           alt="Img">
         <p>Name</p>
       </div>
