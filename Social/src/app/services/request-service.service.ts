@@ -51,7 +51,7 @@ export class RequestService {
         return throwError(error);
       }));
   }
-​
+
   get(urlAlias: string, urlParams?: UrlParams, queryParams?: UrlParams[], isAuthorized = true): Observable<Object> {
     let url = endPoints[urlAlias];
     let headers: HttpHeaders;
