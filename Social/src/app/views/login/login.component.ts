@@ -40,8 +40,9 @@ export class LoginComponent implements OnInit {
           if(response.data.user.fulfilled){
             this.router.navigate(['/feed']);
         }else{
+          this.router.navigate(['/wisard']);
           this.errorText = true;
-        } 
+        }} 
       });
     } else {
       if(this.login.controls.password.errors){

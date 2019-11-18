@@ -19,7 +19,6 @@ export class FeedComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    debugger
     this.name = this.sessionService.getUser().firstname + " " +  this.sessionService.getUser().lastname
     // this.name = this.sessionService.user.firstname + " " + this.sessionService.user.lastname
   }
