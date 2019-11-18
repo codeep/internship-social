@@ -9,20 +9,23 @@ import { Response } from '../../../interfaces/response.interface'
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-
   name;
   surname;
   email;
   birthdate;
   occupation;
   location;
+  openEdit=false;
+
+  allowToEdit=false;
+  openSave=false;
 
 
   constructor(private server: RequestService,
     private session: SessionService) { }
 
   ngOnInit() {
-    this.server.get('USERS_ID', { key: 'id', value: this.session.getUser()['_id'] })
+    this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID()})
       .subscribe((getDetails: Response) => {
         if (getDetails.status >= 200 && getDetails.status < 300 && getDetails.data) {
           this.name = getDetails.data.user.firstname,
@@ -33,6 +36,19 @@ export class DetailsComponent implements OnInit {
           this.location = getDetails.data.user.location
         }
       });
+      if(this.session.getUser()['_id'] == this.session.getGuestID()){
+        this.openEdit=true;
+      }
+      
+  }
+
+  allowToEditButton(){
+    this.allowToEdit=true;
+    this.openSave=true;
+  }
+  saveButton(){
+    this.allowToEdit=false;
+    
   }
 
 }

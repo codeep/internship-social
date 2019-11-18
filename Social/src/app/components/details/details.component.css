@@ -9,3 +9,10 @@
     border-bottom:0.5px solid silver ;
     padding: 7px 0;
 }
+.standartButton{
+    cursor: pointer;
+}
+
+.edit{
+    -webkit-user-modify: read-write;
+}

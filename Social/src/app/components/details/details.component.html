@@ -1,7 +1,10 @@
 <div class="details">
-    <p>{{ name }} {{ surname }}</p>
-    <p>{{ email }}</p>
-    <p>{{ birthdate }}</p>
-    <p>{{ occupation }}</p>
-    <p>{{ location }}</p>
+    <p [attr.contenteditable]='allowToEdit?true:false'>{{ name }} {{ surname }}</p>
+    <p [attr.contenteditable]='allowToEdit?true:false'>{{ email }}</p>
+    <p [attr.contenteditable]='allowToEdit?true:false'>{{ birthdate }}</p>
+    <p [attr.contenteditable]='allowToEdit?true:false'>{{ occupation }}</p>
+    <p [attr.contenteditable]='allowToEdit?true:false'>{{ location }}</p>
+
+    <button class="standartButton" *ngIf="openEdit" (click)="allowToEditButton()">Edit</button>
+    <button class="save" *ngIf="openSave" (click)="saveButton()">Save</button>
 </div>

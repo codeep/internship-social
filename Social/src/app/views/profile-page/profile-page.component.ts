@@ -24,7 +24,6 @@ export class ProfilePageComponent implements OnInit {
   details=false;
   following=false;
   followers=false;
-  openEdit=false;
   name;
   surname;
 
@@ -41,9 +40,6 @@ export class ProfilePageComponent implements OnInit {
             this.surname = getName.data.user.lastname
         }
       });
-      if(this.session.getUser()['_id'] == this.session.getGuestID()){
-        this.openEdit=true
-      }
   }
   
   
