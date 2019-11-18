@@ -1,3 +1,8 @@
 <div class="container">
-<input id="toggle-heart" type="checkbox" />
-<label for="toggle-heart">❤ Like</label>
+        <div class='like'>
+<input id="toggle-heart" type="checkbox" (change)="toggleEditable($event)" />
+
+<label for="toggle-heart">❤</label>
+<p>Likes {{this.votesCount}}</p>
+</div>
+</div>

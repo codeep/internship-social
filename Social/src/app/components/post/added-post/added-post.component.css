@@ -12,3 +12,21 @@ form{
   height: 50px;
   border-radius: 50%;
 }
+mat-icon{
+  color: #35bb7d;
+}
+.info{
+  display: flex;
+}
+/* .nameSurname{
+  position: absolute;
+  left: 370px;
+  top: 364px;
+} */
+.nameSurname p{
+  font-size: 18px;
+}
+.subtitle{
+  font-size: 18px;
+  color: black;  
+}

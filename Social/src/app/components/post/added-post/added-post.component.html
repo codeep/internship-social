@@ -1,17 +1,26 @@
 <form class="container-flex ">
-  <div>
+  <div class="info">
     <img src="/assets/download.png" class="avatar" />
-    <mat-card-subtitle>Name</mat-card-subtitle>
+    <mat-card-subtitle> 
+      <div class="subtitle">
+      <p>{{ name }} {{ surname }}</p>
+      </div>
+    </mat-card-subtitle>
+  <mat-icon >delete_outlined</mat-icon>
   </div>
+
   <hr />
-  <div class="llpost">
+  <div class="allpost">
     <div class="post-title">
       <mat-card-content>Title</mat-card-content>
     </div>
-    <div class="post-title">
+    <div class="post-content">
       <mat-card-content>Content</mat-card-content>
     </div>
+    <div class="post-img">
   </div>
-
+  </div>
+  <hr />
   <app-like></app-like>
 </form>
+    
