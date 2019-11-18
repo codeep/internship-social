@@ -14,6 +14,12 @@ export class SessionService {
     setUser(user) {
         localStorage.setItem('user', JSON.stringify(user));
     }
+    setGuestID(data){
+        localStorage.setItem('guest', data);
+    }
+    getGuestID(){
+        return localStorage.getItem('guest');
+    }
    logout() {
    }
 }
