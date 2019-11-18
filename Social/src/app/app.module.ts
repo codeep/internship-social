@@ -28,6 +28,7 @@ import { DetailsComponent } from './components/details/details.component';
 import {MatCardModule} from '@angular/material/card';
 import { SessionService } from './services/session.service';
 import { SuggestedUsersComponent } from './suggested-users/suggested-users.component';
+import { RequestService } from './services/request-service.service';
 
 @NgModule({
   declarations: [
