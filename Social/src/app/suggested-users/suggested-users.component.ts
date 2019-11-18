@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request-service.service';
 import { Response } from 'src/interfaces/response.interface';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-suggested-users',
@@ -9,7 +10,9 @@ import { Response } from 'src/interfaces/response.interface';
 })
 export class SuggestedUsersComponent implements OnInit {
   users =[]
-  constructor(private myService:RequestService) { 
+  constructor(
+    private myService:RequestService,
+    private session:SessionService) { 
    myService.post('NEARBY',null,null)
     .subscribe((response: Response)=>{
       if(response.status >= 200 && response.status < 300 && response.data){
@@ -22,4 +25,7 @@ export class SuggestedUsersComponent implements OnInit {
   ngOnInit() {
   }
 
+  sendId(data){
+    this.session.setGuestID(data);
+  }
 }
