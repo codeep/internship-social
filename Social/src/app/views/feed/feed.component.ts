@@ -12,7 +12,7 @@ import { SessionService } from 'src/app/services/session.service';
 })
 export class FeedComponent implements OnInit {
   name:string
-
+  id:number
   constructor(
     private router:Router,
     private sessionService:SessionService
@@ -20,7 +20,12 @@ export class FeedComponent implements OnInit {
 
   ngOnInit() {
     this.name = this.sessionService.getUser().firstname + " " +  this.sessionService.getUser().lastname
-    // this.name = this.sessionService.user.firstname + " " + this.sessionService.user.lastname
+    this.id=this.sessionService.getUser()._id;
+    console.log(this.id)
+  }
+
+  sendId(){
+    this.sessionService.setGuestID(this.id);
   }
 
   logout(){
