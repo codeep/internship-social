@@ -30,3 +30,13 @@ a {
   margin: 20px;
   flex-grow: 1;
 }
+.user{
+  box-shadow: none;
+  width: 70%;
+}
+.img > img:hover{
+  cursor: pointer;
+}
+.img > p:hover{
+  cursor: pointer;
+}

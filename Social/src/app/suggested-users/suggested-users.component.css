@@ -1,0 +1,12 @@
+.sug-user {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.sug-user>img:hover {
+  cursor: pointer;
+}
+
+.sug-user>p:hover {
+  cursor: pointer;
+}
