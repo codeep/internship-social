@@ -41,7 +41,6 @@ export class ProfilePageComponent implements OnInit {
             this.surname = getName.data.user.lastname
         }
       });
-      console.log(this.session.getGuestID(),"getUser");
       if(this.session.getUser()['_id'] == this.session.getGuestID()){
         this.openEdit=true
       }
