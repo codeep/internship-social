@@ -71,9 +71,6 @@ export class ProfilePageComponent implements OnInit {
     this.details=true;
     this.connect=false;
 
-
-  openFollowersButton() {
-    this.openFollowers = true;
   }
   openConnectionsButton(){
     this.connect=true;
