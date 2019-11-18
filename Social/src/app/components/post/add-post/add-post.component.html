@@ -1,5 +1,5 @@
 <form class="container-flex " onSubmit="onSubmit()">
-  <div class="title">Create Post</div>
+  <div class="title"><mat-icon>create</mat-icon>Create Post</div>
   <mat-form-field class="width-95">
     <mat-label>Title</mat-label>
     <input matInput placeholder="Enter title" />
@@ -12,14 +12,14 @@
       [(ngModel)]="textArea"
       [ngModelOptions]="{ standalone: true }"></textarea>
   </mat-form-field>
-  <div>
+  <div class='all'>
     <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
       <div class="uploads">
         <label for="profile"><button
             (click)="imgFileInput.click()"
             mat-stroked-button
             class="standartButton">
-            <mat-icon class="trans">attachment</mat-icon>
+            <mat-icon class="trans">attach_file</mat-icon>
           </button></label>
         {{ (imgFileInput?.files)[0]?.name }}
         <button
@@ -33,7 +33,7 @@
           id="profile"
           #imgFileInput
           (change)="onFileSelect($event)"/>
-       
+
       </div>
     </form>
   </div>

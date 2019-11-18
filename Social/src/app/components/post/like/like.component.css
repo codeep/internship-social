@@ -1,0 +1,36 @@
+.container{
+ height: 30px;
+}
+
+[id='toggle-heart'] {
+  position: absolute;
+  left: -100vw;
+}
+[for='toggle-heart'] {
+  color: #aab8c2;
+}
+
+[id='toggle-heart']:checked + label {
+  color: #35bb7d;
+}
+
+[for='toggle-heart'] {
+  font-size: 30px;
+  cursor: pointer;
+}
+body {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  height: 200vh;
+}
+
+[for='toggle-heart'] {
+  align-self: center;
+}
+@keyframes heart { 0%, 17.5% { font-size: 0; } }
+
+[id='toggle-heart']:checked + label {
+  will-change: font-size;
+  animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
+}

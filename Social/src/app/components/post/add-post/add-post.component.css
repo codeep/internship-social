@@ -9,14 +9,17 @@ form {
 .uploads {
   display: flex;
   justify-content: space-between;
+  width:100%;
 }
-
+.all{
+  width: 100%;
+}
 .standartButton {
   margin: 10px;
 }
 .trans {
   font-size: 25px;
-  transform: rotate(-90deg);
+  /* transform: rotate(-90deg); */
 }
 
 textarea.mat-input-element {
@@ -26,4 +29,7 @@ textarea.mat-input-element {
 
 input[type="file"] {
   display: none;
+}
+mat-icon{
+  font-size: 20px;
 }
