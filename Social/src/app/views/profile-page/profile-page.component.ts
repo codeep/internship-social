@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
-
+import { SessionService } from 'src/app/services/session.service';
+import { Response } from '../../../interfaces/response.interface'
 @Component({
   selector: 'profile-page',
   templateUrl: './profile-page.component.html',
@@ -18,16 +19,27 @@ export class ProfilePageComponent implements OnInit {
   openDetails=false;
   openConnections=false;
   openCreatePost=true;
-  
+  openFollowers=false;
   myPosts=true;
   connect=false;
   details=false;
 
-  constructor(private service:RequestService) {
+  name;
+  surname;
 
-  }
+  constructor(
+    private server: RequestService,
+    private session: SessionService) { }
+  
 
   ngOnInit() {
+    this.server.get('USERS_ID', { key: 'id', value: this.session.getUser()['_id'] })
+      .subscribe((getName: Response) => {
+        if (getName.status >= 200 && getName.status < 300 && getName.data) {
+          this.name = getName.data.user.firstname,
+            this.surname = getName.data.user.lastname
+        }
+      });
   }
   
   
@@ -70,7 +82,9 @@ export class ProfilePageComponent implements OnInit {
     this.openCreatePost=false;
     this.details=true;
     this.connect=false;
-
+  }
+  openFollowersButton() {
+    this.openFollowers = true;
   }
   openConnectionsButton(){
     this.connect=true;

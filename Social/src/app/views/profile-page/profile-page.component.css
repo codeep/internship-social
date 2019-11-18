@@ -35,6 +35,15 @@
     align-items: center;
 }
 
+.nameSurname{
+    position: absolute;
+    left: 370px;
+    top: 364px;
+}
+.nameSurname p{
+    font-size: 21px;
+}
+
 .pic{
     height: 100%;
     width: 100%;
