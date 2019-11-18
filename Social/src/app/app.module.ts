@@ -7,10 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilePageComponent } from './views/profile-page/profile-page.component';
-import {RequestService} from './services/request-service.service'
 
-import { AddPostComponent } from './components/add-post/add-post.component';
-import { AddedPostComponent } from './components/added-post/added-post.component';
+import { AddPostComponent } from './components/post/add-post/add-post.component';
+import { AddedPostComponent } from './components/post/added-post/added-post.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MatDividerModule} from '@angular/material/divider';
 
@@ -23,7 +22,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { WisardComponent } from './views/wisard/wisard.component';
-import { LikeComponent } from './components/like/like.component';
+import { LikeComponent } from './components/post/like/like.component';
 import { UserComponent } from './components/user/user.component';
 import { DetailsComponent } from './components/details/details.component';
 import {MatCardModule} from '@angular/material/card';
