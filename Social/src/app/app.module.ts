@@ -29,6 +29,7 @@ import {MatCardModule} from '@angular/material/card';
 import { SessionService } from './services/session.service';
 import { SuggestedUsersComponent } from './suggested-users/suggested-users.component';
 import { RequestService } from './services/request-service.service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { RequestService } from './services/request-service.service';
     MatInputModule,
     MatDividerModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule
   ],
   providers: [RequestService, SessionService],
   bootstrap: [AppComponent]

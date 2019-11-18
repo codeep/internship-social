@@ -15,9 +15,9 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent,canActivate:[GuestGuardGuard]},
   {path:'wisard',component:WisardComponent,canActivate:[CheckTokenGuard]},
   {path:'wisard/users',component:UserComponent,canActivate:[CheckTokenGuard]},
+  {path:'profile/me',component:ProfilePageComponent,canActivate:[CheckTokenGuard]},
   {path:'feed',component:FeedComponent,canActivate:[CheckTokenGuard]},
   {path:'profile/:id',component:ProfilePageComponent,canActivate:[CheckTokenGuard]},
-  {path:'profile/me',component:ProfilePageComponent,canActivate:[CheckTokenGuard]},
   {path:'',component:LoginComponent,canActivate:[GuestGuardGuard]}
 ];
 

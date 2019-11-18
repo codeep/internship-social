@@ -24,7 +24,7 @@ export class ProfilePageComponent implements OnInit {
   details=false;
   following=false;
   followers=false;
-
+  openEdit=false;
   name;
   surname;
 
@@ -34,13 +34,17 @@ export class ProfilePageComponent implements OnInit {
   
 
   ngOnInit() {
-    this.server.get('USERS_ID', { key: 'id', value: this.session.getUser()['_id'] })
+      this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID()})
       .subscribe((getName: Response) => {
         if (getName.status >= 200 && getName.status < 300 && getName.data) {
             this.name = getName.data.user.firstname,
             this.surname = getName.data.user.lastname
         }
       });
+      console.log(this.session.getGuestID(),"getUser");
+      if(this.session.getUser()['_id'] == this.session.getGuestID()){
+        this.openEdit=true
+      }
   }
   
   

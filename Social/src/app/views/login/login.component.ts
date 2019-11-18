@@ -39,10 +39,12 @@ export class LoginComponent implements OnInit {
           this.sessionService.setUser(response.data.user);
           if(response.data.user.fulfilled){
             this.router.navigate(['/feed']);
-        }else{
-          this.router.navigate(['/wisard']);
+          }else{
+            this.router.navigate(['/wisard']);
+          }
+        } else{
           this.errorText = true;
-        }} 
+        }
       });
     } else {
       if(this.login.controls.password.errors){
@@ -69,24 +71,22 @@ export class LoginComponent implements OnInit {
     switch(field){
       case 'email': 
       const emailErrors = this.login.controls.email.errors;
-          if(emailErrors.required){
-              return 'Email is required';
-          }else if(emailErrors.pattern){
-            return 'It is not Email!!!'
-          } else {
-            return "It's not email addres.";
-          }
-          break;
+        if(emailErrors.required){
+          return 'Email is required.';
+        } else {
+          return "It's not email addres.";
+        }
+        break;
       case 'password':
-          const passErrors = this.login.controls.password.errors;
-          if(passErrors.required){
-            return 'Password is required';
-          }else if(passErrors.minlength){
-            return 'Password is min!!!'
-          }else if(passErrors.maxlength){
-            return 'Password is max!!!'
-          }
-          break;    
+        const passErrors = this.login.controls.password.errors;
+        if(passErrors.required){
+          return 'Password is required';
+        }else if(passErrors.minlength){
+          return 'Password is min.'
+        }else if(passErrors.maxlength){
+          return 'Password is max.'
+        }
+        break;    
     }
   }
 }
