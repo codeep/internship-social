@@ -11,11 +11,14 @@ export class SearchComponent implements OnInit {
   searchForm= this.fb.group({   
     text:['']
   })
-  constructor(private fb: FormBuilder) { 
-    // myServer.get('POST_NEARBY')
+  constructor(
+    private fb: FormBuilder,
+    private myServer: RequestService
+    ) { 
   }
 
   ngOnInit() {
+    
   }
 
 }
