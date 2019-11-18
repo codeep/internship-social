@@ -11,6 +11,7 @@ export class SearchComponent implements OnInit {
   searchForm= this.fb.group({   
     text:['']
   })
+  user:any;
   constructor(
     private fb: FormBuilder,
     private myServer: RequestService
@@ -18,10 +19,17 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+        
   }
   onKey(event){
-
+    if(this.searchForm.value.text !== ""){
+      this.myServer.get('USERS',null,[{key:'search', value: this.searchForm.value.text}]).subscribe(data =>
+        this.user = data
+      )
+    }else{
+      this.user = null
+    }
+    
   }
 
 }

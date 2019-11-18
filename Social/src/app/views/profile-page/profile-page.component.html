@@ -39,7 +39,6 @@
 
     <div class="nameSurname">
         <p>{{ name }} {{ surname }}</p>
-        <!-- <p>Name</p> -->
     </div>
 
 
@@ -58,14 +57,7 @@
                 <p>Following</p>
                 <p>Followers</p>
             </div>
-            <!-- <app-user></app-user> -->
-            <div class="details" *ngIf="openDetails">
-                <p>Firstname Lastname</p>
-                <p>Email</p>
-                <p>Birthdate</p>
-                <p>Occupation</p>
-                <p>Location</p>
-            </div>
+            <app-details *ngIf="openDetails"></app-details>
         </div>
     </div>
 </div>
