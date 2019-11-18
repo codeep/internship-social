@@ -19,10 +19,11 @@ export class ProfilePageComponent implements OnInit {
   openDetails=false;
   openConnections=false;
   openCreatePost=true;
-  openFollowers=false;
   myPosts=true;
   connect=false;
   details=false;
+  following=false;
+  followers=false;
 
   name;
   surname;
@@ -36,7 +37,7 @@ export class ProfilePageComponent implements OnInit {
     this.server.get('USERS_ID', { key: 'id', value: this.session.getUser()['_id'] })
       .subscribe((getName: Response) => {
         if (getName.status >= 200 && getName.status < 300 && getName.data) {
-          this.name = getName.data.user.firstname,
+            this.name = getName.data.user.firstname,
             this.surname = getName.data.user.lastname
         }
       });
@@ -47,7 +48,6 @@ export class ProfilePageComponent implements OnInit {
     this.hideUploadCoverButton=false;
     this.showUploadCoverButton=true;
     this.hideCoverImage=true;
-
 
     if (event.target.files && event.target.files[0]) {
 
@@ -82,10 +82,10 @@ export class ProfilePageComponent implements OnInit {
     this.openCreatePost=false;
     this.details=true;
     this.connect=false;
+    this.following=false;
+    this.followers=false;
   }
-  openFollowersButton() {
-    this.openFollowers = true;
-  }
+
   openConnectionsButton(){
     this.connect=true;
     this.myPosts=false;
@@ -93,6 +93,8 @@ export class ProfilePageComponent implements OnInit {
     this.openConnections=true;
     this.openDetails=false;
     this.details=false;
+    this.following=false;
+    this.followers=false;
   }
 
   openMyPostsButton(){
@@ -102,5 +104,15 @@ export class ProfilePageComponent implements OnInit {
     this.openConnections=false;
     this.details=false;
     this.openDetails=false;
+    this.following=false;
+    this.followers=false;
+  }
+  openFollowingButton(){
+    this.following=true;
+    this.followers=false;
+  }
+  openFollowersButton() {
+    this.followers = true;
+    this.following=false;
   }
 }

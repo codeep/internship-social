@@ -55,17 +55,12 @@
         <div class="mainContent boxShadow">
             <app-add-post *ngIf="openCreatePost"></app-add-post>
             <div class="connections" *ngIf="openConnections">
-                <p>Following</p>
-                <p>Followers</p>
+                <p (click)="openFollowingButton()" [ngClass]="{'activeFollow': following }">Following</p>
+                <p (click)="openFollowersButton()" [ngClass]="{'activeFollow': followers }">Followers</p>
             </div>
             <!-- <app-user></app-user> -->
-            <div class="details" *ngIf="openDetails">
-                <p>Firstname Lastname</p>
-                <p>Email</p>
-                <p>Birthdate</p>
-                <p>Occupation</p>
-                <p>Location</p>
-            </div>
+
+            <app-details *ngIf="openDetails"></app-details>
         </div>
     </div>
 </div>

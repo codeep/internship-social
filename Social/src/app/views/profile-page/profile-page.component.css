@@ -37,7 +37,7 @@
 
 .nameSurname{
     position: absolute;
-    left: 370px;
+    left: 29%;
     top: 364px;
 }
 .nameSurname p{
@@ -167,41 +167,28 @@
     color:rgb(33, 95, 38);
 }
 
+.activeFollow{
+    transform: translateY(-6px);
+    color:rgb(33, 95, 38);
+}
+
 .mainContent{
     width: 50%;
+    background-color: white;
     /* height: 100%; */
-}
-.details{
-    display: flex;
-    flex-direction: column; 
-    margin: 17px;
-}
-.details p{
-    margin: 13px;
-    font-size: 17px;
-    border-bottom:0.5px solid silver ;
-    /* box-shadow: 0px 0px 8px -3px #156b4e; */
-    /* width: 20%; */
-    padding: 7px 0;
-    /* text-align: center; */
 }
 
 .connections{
     display: flex;
-    /* justify-content: space-around; */
-    /* margin: 11px 0;    */
     box-shadow: 0px 0px 8px -3px #156b4e;
     padding: 10px;
 }
 .connections>p{
-    padding: 11px; 
+    margin: 9px; 
     font-size: 17px;
 }
 .connections>p:hover{
     transform: translateY(-6px);
     color: rgb(33, 95, 38);
     cursor: pointer;
-}
-app-add-post{
-    width: 50% !important;
 }
