@@ -37,11 +37,8 @@ export class LoginComponent implements OnInit {
         if (response.status >= 200 && response.status < 300 && response.data && response.data.token) {
           this.sessionService.setToken(response.data.token);
           this.sessionService.setUser(response.data.user);
-          // if(response.data.user.fulfilled){
+          if(response.data.user.fulfilled){
             this.router.navigate(['/feed']);
-          // }else{
-            // this.router.navigate(['/wisard']);
-          // }
         }else{
           this.errorText = true;
         } 

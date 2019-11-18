@@ -29,7 +29,7 @@ export class RequestService {
     let url = endPoints[urlAlias];
     let headers: HttpHeaders =  new HttpHeaders();
     if (isAuthorized) {
-      headers = new HttpHeaders().set('Authorization', `${this.sessionService.getToken()}`);
+      headers = new HttpHeaders().set('token', `${this.sessionService.getToken()}`);
     }
 ​
     if (urlParams) {
@@ -57,7 +57,7 @@ export class RequestService {
     let headers: HttpHeaders;
 ​
     if (isAuthorized) {
-      headers = new HttpHeaders().set('Authorization', `${this.sessionService.getToken()}`);
+      headers = new HttpHeaders().set('token', `${this.sessionService.getToken()}`);
     }
 ​
     if (urlParams) {
