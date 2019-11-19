@@ -12,6 +12,8 @@ import { AddPostComponent } from './components/post/add-post/add-post.component'
 import { AddedPostComponent } from './components/post/added-post/added-post.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 import { FeedComponent } from './views/feed/feed.component';
 import {MatInputModule} from '@angular/material/input';
@@ -61,7 +63,8 @@ import { RequestService } from './services/request-service.service';
     MatInputModule,
     MatDividerModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatExpansionModule
   ],
   providers: [RequestService, SessionService],
   bootstrap: [AppComponent]

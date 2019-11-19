@@ -17,6 +17,7 @@ mat-icon{
 }
 .info{
   display: flex;
+  justify-content: space-between;
 }
 /* .nameSurname{
   position: absolute;
@@ -27,6 +28,11 @@ mat-icon{
   font-size: 18px;
 }
 .subtitle{
+  display: flex;
+  justify-content: left;
   font-size: 18px;
   color: black;  
+}
+p{
+  margin: 13px;
 }

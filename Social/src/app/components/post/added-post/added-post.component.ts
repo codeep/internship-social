@@ -10,6 +10,8 @@ import { Response } from '../../../../interfaces/response.interface';
 export class AddedPostComponent implements OnInit {
   name;
   surname;
+  title;
+  content;
   constructor(
     private server: RequestService,
     private session: SessionService) { }
@@ -18,8 +20,9 @@ export class AddedPostComponent implements OnInit {
       .subscribe((getName: Response) => {
         if (getName.status >= 200 && getName.status < 300 && getName.data) {
           this.name = getName.data.user.firstname,
-            this.surname = getName.data.user.lastname
+            this.surname = getName.data.user.lastname;
         }
       });
+      
   }
 }

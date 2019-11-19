@@ -33,3 +33,12 @@ input[type="file"] {
 mat-icon{
   font-size: 20px;
 }
+mat-accordion{
+  width: 100%;
+}
+.edit{
+  color:  #35bb7d;
+}
+p{
+  margin: 20px;
+}
