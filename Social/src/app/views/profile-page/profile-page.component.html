@@ -1,54 +1,71 @@
-<div class = "entireProfilePage">
+<div class="entireProfilePage container-flex  boxShadow">
 
     <div class="coverPhoto">
-        <div class="iconAndText">
-                <input type='file' id="files" class="hidden">
-                <div class = "uploadIconAndText">
-                    <mat-icon>add_photo_alternate</mat-icon>
-                    <label for="files">Upload Cover Photo</label>
-                </div>  
-                
-        </div>
-         
-    </div>
-    
+        <div class="imgIconAndText">
 
-    <div class="profilePic">        
-        <div class="pic">
-            <input type='photo' id="files" class="hidden">
-            <div>
-                <!-- <mat-icon>add_photo_alternate</mat-icon>
-                <label for="files">Upload Profile Photo</label> -->
-                <img src="data:image/jpeg;base64,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" alt="">
-            </div> 
-        </div> 
-        
-        
+            <img [src]="urlCover" *ngIf="hideCoverImage" class="uploadCover">
+
+            <input type='file' id="cover" class="hidden" (change)="onSelectCoverFile($event)">
+            <div class="uploadCoverIconAndText" *ngIf="hideUploadCoverButton">
+                <mat-icon>photo_camera</mat-icon>
+                <label for="cover">Upload Cover Photo</label>
+            </div>
+
+            <div class="updateCoverPhoto" *ngIf="showUploadCoverButton">
+                <mat-icon>photo_camera</mat-icon>
+                <label for="cover">Update Cover Photo</label>
+            </div>
+
+        </div>
+        <div class="profilePic">
+            <div class="pic">
+                <img [src]="urlProfile" *ngIf="hideProfileImage" class="uploadProfile" height="200px">
+                <input type='file' id="profile" class="hidden" (change)="onSelectProfileFile($event)">
+
+                <div class="uploadProfileIconAndText" *ngIf="hideUploadProfileButton">
+                    <div class="textInProfilePic">
+                        <mat-icon>photo_camera</mat-icon>
+                        <label for="profile">Upload Profile Photo</label>
+                    </div>
+                </div>
+                <div class="updateProfilePhoto" *ngIf="showUploadProfileButton">
+                    <mat-icon>photo_camera</mat-icon>
+                    <label for="profile">Update Profile Photo</label>
+                </div>
+               
+            </div>
+        </div>
     </div>
+
+    <div class="nameSurname">
+        <p>{{ name }} {{ surname }}</p>
+        <!-- <p>Name</p> -->
+    </div>
+
+
+
 
     <div class="sides">
-        <div class="leftSide">
-            <div class="follow">
-                <div class="followers">
-                    <a href="#">Followers</a>
-                </div>
-
-                <div class="following">
-                    <a href="#">Following</a>
-                </div>
-            </div>
-
-            <div class="details">
-                <a href="#">Details</a>
-            </div>
+        <div class="leftSide ">
+            <p class="menuItem" routerLink="/feed">Feed</p>
+            <p class="menuItem" (click)="openMyPostsButton()" [ngClass]="{'activeMenuItem': myPosts}"><span>My</span> Posts</p>
+            <p class="menuItem" (click)="openConnectionsButton()" [ngClass]="{'activeMenuItem': connect}">Connections</p>
+            <p class="menuItem" (click)="openDetailsButton()" [ngClass]="{'activeMenuItem': details}">Details</p>
         </div>
-
-        <div class="rightSide">
-
+        <div class="mainContent boxShadow">
+            <app-add-post *ngIf="openCreatePost"></app-add-post>
+            <div class="connections" *ngIf="openConnections">
+                <p>Following</p>
+                <p>Followers</p>
+            </div>
+            <!-- <app-user></app-user> -->
+            <div class="details" *ngIf="openDetails">
+                <p>Firstname Lastname</p>
+                <p>Email</p>
+                <p>Birthdate</p>
+                <p>Occupation</p>
+                <p>Location</p>
+            </div>
         </div>
     </div>
-
-
-
-
 </div>

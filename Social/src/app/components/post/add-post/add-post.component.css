@@ -1,0 +1,35 @@
+form {
+  align-items: center;
+  flex-direction: column;
+  width: 95%;
+  padding: 20px 10px;
+  background-color: #fff;
+}
+
+.uploads {
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+}
+.all{
+  width: 100%;
+}
+.standartButton {
+  margin: 10px;
+}
+.trans {
+  font-size: 25px;
+  /* transform: rotate(-90deg); */
+}
+
+textarea.mat-input-element {
+  min-height: 80px;
+  overflow: auto;
+}
+
+input[type="file"] {
+  display: none;
+}
+mat-icon{
+  font-size: 20px;
+}
