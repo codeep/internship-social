@@ -2,15 +2,13 @@
 
     <div class="coverPhoto">
         <div class="imgIconAndText">
-
+            <p class="feedButton" routerLink="/feed"><mat-icon>keyboard_arrow_left</mat-icon></p>           
             <img [src]="urlCover" *ngIf="hideCoverImage" class="uploadCover">
-
             <input type='file' id="cover" class="hidden" (change)="onSelectCoverFile($event)">
             <div class="uploadCoverIconAndText" *ngIf="hideUploadCoverButton">
                 <mat-icon>photo_camera</mat-icon>
                 <label for="cover">Upload Cover Photo</label>
             </div>
-
             <div class="updateCoverPhoto" *ngIf="showUploadCoverButton">
                 <mat-icon>photo_camera</mat-icon>
                 <label for="cover">Update Cover Photo</label>
@@ -39,7 +37,6 @@
 
     <div class="nameSurname">
         <p>{{ name }} {{ surname }}</p>
-        <!-- <p>Name</p> -->
     </div>
 
 
@@ -47,7 +44,6 @@
 
     <div class="sides">
         <div class="leftSide ">
-            <p class="menuItem" routerLink="/feed">Feed</p>
             <p class="menuItem" (click)="openMyPostsButton()" [ngClass]="{'activeMenuItem': myPosts}"><span *ngIf="openMy">My</span> Posts</p>
             <p class="menuItem" (click)="openConnectionsButton()" [ngClass]="{'activeMenuItem': connect}">Connections</p>
             <p class="menuItem" (click)="openDetailsButton()" [ngClass]="{'activeMenuItem': details}">Details</p>

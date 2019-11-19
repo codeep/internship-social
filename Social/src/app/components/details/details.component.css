@@ -14,12 +14,12 @@
 }
 .save{
     width: 80px;
-    color: white;
     font-size: 14px;
     border-radius: 5px;
     padding: 5px;
     border:none;
     background-color: rgb(253, 253, 59);
+    color:black;
     margin-top:14px!important;
     cursor: pointer;
 }
