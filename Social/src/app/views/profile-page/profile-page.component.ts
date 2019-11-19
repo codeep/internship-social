@@ -26,6 +26,7 @@ export class ProfilePageComponent implements OnInit {
   followers=false;
   name;
   surname;
+  openMy;
 
   constructor(
     private server: RequestService,
@@ -39,8 +40,17 @@ export class ProfilePageComponent implements OnInit {
             this.name = getName.data.user.firstname,
             this.surname = getName.data.user.lastname
         }
+        if(this.session.getUser()['_id'] != this.session.getGuestID()){
+          this.openMy=false;
+          this.openCreatePost=false;
+        }
+        else{
+          this.openMy=true;
+        }
       });
   }
+
+  
   
   
   onSelectCoverFile(event) {

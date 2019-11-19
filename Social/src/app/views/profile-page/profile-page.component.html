@@ -48,7 +48,7 @@
     <div class="sides">
         <div class="leftSide ">
             <p class="menuItem" routerLink="/feed">Feed</p>
-            <p class="menuItem" (click)="openMyPostsButton()" [ngClass]="{'activeMenuItem': myPosts}"><span>My</span> Posts</p>
+            <p class="menuItem" (click)="openMyPostsButton()" [ngClass]="{'activeMenuItem': myPosts}"><span *ngIf="openMy">My</span> Posts</p>
             <p class="menuItem" (click)="openConnectionsButton()" [ngClass]="{'activeMenuItem': connect}">Connections</p>
             <p class="menuItem" (click)="openDetailsButton()" [ngClass]="{'activeMenuItem': details}">Details</p>
         </div>

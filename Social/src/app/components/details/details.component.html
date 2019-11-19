@@ -1,10 +1,13 @@
 <div class="details">
-    <p [attr.contenteditable]='allowToEdit?true:false'>{{ name }} {{ surname }}</p>
-    <p [attr.contenteditable]='allowToEdit?true:false'>{{ email }}</p>
-    <p [attr.contenteditable]='allowToEdit?true:false'>{{ birthdate }}</p>
-    <p [attr.contenteditable]='allowToEdit?true:false'>{{ occupation }}</p>
-    <p [attr.contenteditable]='allowToEdit?true:false'>{{ location }}</p>
-
-    <button class="standartButton" *ngIf="openEdit" (click)="allowToEditButton()">Edit</button>
-    <button class="save" *ngIf="openSave" (click)="saveButton()">Save</button>
-</div>
+    <form [formGroup]='detail'>
+        <input value={{firstname}} class="inputFields" formControlName="firstname">
+        <input value={{lastname}} formControlName="lastname" class="inputFields" >
+        <input value={{email}} formControlName="email" class="inputFields">
+        <input value={{birthdate}} formControlName="birthdate" class="inputFields">
+        <input value={{occupation}} formControlName="occupation" class="inputFields">
+        <input value={{location}} formControlName="location" class="inputFields">
+        <input value={{bio}} formControlName="bio" class="inputFields">
+        <button class="save" *ngIf="openSave" (click)="saveButton()">Save</button>
+        <button class="standartButton" *ngIf="openEdit" (click)="allowToEditButton()">Edit</button>
+    </form>
+</div>      
