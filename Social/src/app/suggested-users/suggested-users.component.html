@@ -1,5 +1,6 @@
-<div class="sug-user boxShadow" *ngFor="let item of users">
-    <img [routerLink]="['/profile',item._id]" (click)="sendId(item._id)" src="../../assets/userdefult.png" alt="Img">
-    <p [routerLink]="['/profile',item._id]" (click)="sendId(item._id)">{{item.firstname}} {{item.lastname}}</p>
-    <button class="followButton">Follow</button>
+<div class="sug-user boxShadow" *ngFor="let item of users; let i=index">
+    <img [routerLink]="['/profile/:id']" src="../../assets/userdefult.png" alt="Img">
+    <p [routerLink]="['/profile/:id']">{{item.firstname}} {{item.lastname}}</p>
+    <button class="followButton" (click)='onClickFollow(item, i)' *ngIf="!trueOrFalse[i]">Follow</button>
+    <button  class="unFollowButton" (click)='onClickFollow(item,i)' *ngIf="trueOrFalse[i]">UnFollow</button>
 </div>

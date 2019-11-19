@@ -2,11 +2,16 @@
   <div class="left-bar">
     <div class="section-right">
       <div class="section img">
-        <img class="profile-pic" [routerLink]="['/profile/me']" (click)="sendId()" src="../../../assets/userdefult.png" alt="Img">
-        <p [routerLink]="['/profile/me']" (click)="sendId()">{{name}}</p>
+        <img class="profile-pic" [routerLink]="['/profile/me']" src="../../../assets/userdefult.png" alt="Img">
+        <p [routerLink]="['/profile/me']">{{name}}</p>
       </div>
       <button mat-raised-button type="button" class="standartButton" (click)='logout()'
         [routerLink]="['/login']">LogOut</button>
+    </div>
+    <div class="widthismin">
+      <div class="search">
+        <app-search></app-search>
+      </div>
     </div>
   </div>
   <div class="center-posts">
