@@ -21,7 +21,6 @@ export class FeedComponent implements OnInit {
   ngOnInit() {
     this.name = this.sessionService.getUser().firstname + " " +  this.sessionService.getUser().lastname
     this.id=this.sessionService.getUser()._id;
-    console.log(this.id)
   }
 
   sendId(){
