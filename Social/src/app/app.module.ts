@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilePageComponent } from './views/profile-page/profile-page.component';
-
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -57,11 +57,13 @@ import { DetailsComponent } from './components/details/details.component';
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
-    FormsModule, ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatNativeDateModule,
     MatInputModule,
     MatDividerModule,
-    MatInputModule
+    MatInputModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
