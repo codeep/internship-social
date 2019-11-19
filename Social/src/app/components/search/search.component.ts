@@ -21,10 +21,9 @@ export class SearchComponent implements OnInit {
     ) { 
   }
 
-  ngOnInit() {
-    this.id=this.sessionService.getUser()._id;
-        
+  ngOnInit() {        
   }
+  
   onKey(event){
     if(this.searchForm.value.text !== ""){
       this.myServer.get('USERS',null,[{key:'search', value: this.searchForm.value.text}]).subscribe(data =>
@@ -36,8 +35,8 @@ export class SearchComponent implements OnInit {
     
   }
 
-  sendId(){
-    this.sessionService.setGuestID(this.id);
+  sendId(data){
+    this.sessionService.setGuestID(data);
   }
 
 }
