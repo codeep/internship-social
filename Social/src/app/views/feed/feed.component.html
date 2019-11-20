@@ -11,6 +11,7 @@
   </div>
   <div class="center-posts">
     <app-add-post></app-add-post>
+    <app-added-post *ngFor="let post of posts" [post]='post'></app-added-post>
   </div>
   <div class="right-bar">
     <div class="suggestions">
@@ -18,8 +19,8 @@
         <app-suggested-users class="user"></app-suggested-users>
       </div>
     </div>
-    <div class="search">
-      <app-search></app-search>
+    <div class="users">
+      <app-search class="user"></app-search>
     </div>
   </div>
 </div>

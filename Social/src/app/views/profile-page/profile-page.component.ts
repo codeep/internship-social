@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
-import { Response } from '../../../interfaces/response.interface'
+import { Response } from '../../../interfaces/response.interface';
 @Component({
   selector: 'profile-page',
   templateUrl: './profile-page.component.html',
@@ -28,12 +28,20 @@ export class ProfilePageComponent implements OnInit {
   surname;
   openMy;
   followingArray:any;
+  posts = [];
+  offset=0;
   constructor(
     private server: RequestService,
     private session: SessionService) { }
   
 
   ngOnInit() {
+      this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:10},{key:'offset',value:0}])
+      .subscribe((posts: { data:[] }) => {
+        this.posts=posts.data
+        this.offset++
+      });
+      
       this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID()})
       .subscribe((getName: Response) => {
         if (getName.status >= 200 && getName.status < 300 && getName.data) {
@@ -50,9 +58,23 @@ export class ProfilePageComponent implements OnInit {
       });
       
   }
+  @HostListener("window:scroll", ["$event"])  
+  onScroll(){
+      let scrollHeight;
+      let totalHeight;
+      scrollHeight = document.body.scrollHeight;
+      totalHeight = window.scrollY + window.innerHeight;
+      // TODO refactor
+      if (totalHeight >= scrollHeight) {
 
-  
-  
+        this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:10},{key:'offset',value:this.offset}])
+        .subscribe((posts: { data:[] }) => {
+          this.posts.concat(posts.data)
+          this.offset++
+        });
+      }
+    
+  }
   
   onSelectCoverFile(event) {
     this.hideUploadCoverButton=false;
@@ -132,4 +154,5 @@ export class ProfilePageComponent implements OnInit {
     this.followers = true;
     this.following=false;
   }
+
 }

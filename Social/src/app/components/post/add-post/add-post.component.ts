@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
+import { RequestService } from 'src/app/services/request-service.service';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: "app-add-post",
@@ -8,6 +10,8 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./add-post.component.css"]
 })
 export class AddPostComponent implements OnInit {
+  postList = {title:'', content:'', file:[]};
+  title:string;
   textArea: string;
   linkText: string;
   uploadForm: FormGroup;
@@ -15,7 +19,9 @@ export class AddPostComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private  request: RequestService,
+    private  session: SessionService,
   ) {}
 
   ngOnInit() {
@@ -37,8 +43,8 @@ export class AddPostComponent implements OnInit {
     //   this.httpClient
     //     .post<any>(this.SERVER_URL, formData)
     //     .subscribe(res => console.log(res), err => console.log(err));
-    // }
-  }
+     }
+  
   linkify(plainText) {
     let replacedText;
     let replacePattern1;
@@ -64,5 +70,10 @@ export class AddPostComponent implements OnInit {
     );
 
     this.linkText = replacedText;
+
+    this.postList.title = this.title;
+    this.postList.content = this.textArea;
+    this.postList.file.push('this.uploadForm.value.profile.name');  
+    this.request.post('POST', this.postList).subscribe(post=>console.log(post));
   }
 }
