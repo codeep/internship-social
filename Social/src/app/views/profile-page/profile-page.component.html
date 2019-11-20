@@ -1,27 +1,21 @@
 <div class="entireProfilePage container-flex  boxShadow">
-
     <div class="coverPhoto">
         <div class="imgIconAndText">
-
             <img [src]="urlCover" *ngIf="hideCoverImage" class="uploadCover">
-
             <input type='file' id="cover" class="hidden" (change)="onSelectCoverFile($event)">
             <div class="uploadCoverIconAndText" *ngIf="hideUploadCoverButton">
                 <mat-icon>photo_camera</mat-icon>
                 <label for="cover">Upload Cover Photo</label>
             </div>
-
             <div class="updateCoverPhoto" *ngIf="showUploadCoverButton">
                 <mat-icon>photo_camera</mat-icon>
                 <label for="cover">Update Cover Photo</label>
             </div>
-
         </div>
         <div class="profilePic">
             <div class="pic">
                 <img [src]="urlProfile" *ngIf="hideProfileImage" class="uploadProfile" height="200px">
                 <input type='file' id="profile" class="hidden" (change)="onSelectProfileFile($event)">
-
                 <div class="uploadProfileIconAndText" *ngIf="hideUploadProfileButton">
                     <div class="textInProfilePic">
                         <mat-icon>photo_camera</mat-icon>
@@ -32,18 +26,12 @@
                     <mat-icon>photo_camera</mat-icon>
                     <label for="profile">Update Profile Photo</label>
                 </div>
-               
             </div>
         </div>
     </div>
-
     <div class="nameSurname">
         <p>{{ name }} {{ surname }}</p>
     </div>
-
-
-
-
     <div class="sides">
         <div class="leftSide ">
             <p class="menuItem" routerLink="/feed">Feed</p>
