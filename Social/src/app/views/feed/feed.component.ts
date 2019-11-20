@@ -24,12 +24,12 @@ export class FeedComponent implements OnInit {
   ngOnInit() {
     this.name = this.sessionService.getUser().firstname + " " +  this.sessionService.getUser().lastname
     this.id=this.sessionService.getUser()._id;
-    this.server.get('FEED',{key:'id',value:this.sessionService.getGuestID()},[{key:'limit',value:10},{key:'offset',value:this.offset}])
-      .subscribe((posts: { data:[] }) => 
-      {
-        this.posts.concat(posts.data)
-        this.offset++
-      });
+    // this.server.get('FEED',{key:'id',value:this.sessionService.getGuestID()},[{key:'limit',value:10},{key:'offset',value:this.offset}])
+    //   .subscribe((posts: { data:[] }) => 
+    //   {
+    //     this.posts.concat(posts.data)
+    //     this.offset++
+    //   });
   }
 
   sendId(){

@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
-import { Response } from '../../../interfaces/response.interface';
+import { Response } from '../../../interfaces/response.interface'
 @Component({
   selector: 'profile-page',
   templateUrl: './profile-page.component.html',
@@ -19,15 +19,13 @@ export class ProfilePageComponent implements OnInit {
   openDetails=false;
   openConnections=false;
   openCreatePost=true;
+  openFollowers=false;
   myPosts=true;
   connect=false;
   details=false;
-  following=false;
-  followers=false;
+  openEdit=false;
   name;
   surname;
-  openMy;
-  followingArray:any;
   posts = [];
   offset=0;
   constructor(
@@ -45,17 +43,22 @@ export class ProfilePageComponent implements OnInit {
       this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID()})
       .subscribe((getName: Response) => {
         if (getName.status >= 200 && getName.status < 300 && getName.data) {
-            this.name = getName.data.user.firstname,
-            this.surname = getName.data.user.lastname
-        }
-        if(this.session.getUser()['_id'] != this.session.getGuestID()){
-          this.openMy=false;
-          this.openCreatePost=false;
-        }
-        else{
-          this.openMy=true;
+          this.name = getName.data.user.firstname,
+          this.surname = getName.data.user.lastname          
         }
       });
+      console.log(this.session.getGuestID(),"getUser");
+      if(this.session.getUser()['_id'] == this.session.getGuestID()){
+        this.openEdit=true
+      }
+      this.server.get('USERS_ID', { key: 'id', value: this.session.getUser()['_id'] })
+      .subscribe((getName: Response) => {
+        if (getName.status >= 200 && getName.status < 300 && getName.data) {
+          this.name = getName.data.user.firstname,
+          this.surname = getName.data.user.lastname
+        }
+      });
+      
   }
   @HostListener("window:scroll", ["$event"])  
   onScroll(){
@@ -79,6 +82,7 @@ export class ProfilePageComponent implements OnInit {
     this.hideUploadCoverButton=false;
     this.showUploadCoverButton=true;
     this.hideCoverImage=true;
+
 
     if (event.target.files && event.target.files[0]) {
 
@@ -113,10 +117,10 @@ export class ProfilePageComponent implements OnInit {
     this.openCreatePost=false;
     this.details=true;
     this.connect=false;
-    this.following=false;
-    this.followers=false;
   }
-
+  openFollowersButton() {
+    this.openFollowers = true;
+  }
   openConnectionsButton(){
     this.connect=true;
     this.myPosts=false;
@@ -124,15 +128,6 @@ export class ProfilePageComponent implements OnInit {
     this.openConnections=true;
     this.openDetails=false;
     this.details=false;
-    this.following=false;
-    this.followers=false;
-    this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID()})
-      .subscribe((getFollows: Response) => {
-        if (getFollows.status >= 200 && getFollows.status < 300) {
-          this.followingArray = getFollows.data.user.following;
-          console.log(getFollows, 'sdf');
-        }
-      });
   }
 
   openMyPostsButton(){
@@ -142,16 +137,6 @@ export class ProfilePageComponent implements OnInit {
     this.openConnections=false;
     this.details=false;
     this.openDetails=false;
-    this.following=false;
-    this.followers=false;
-  }
-  openFollowingButton(){
-    this.following=true;
-    this.followers=false;
-  }
-  openFollowersButton() {
-    this.followers = true;
-    this.following=false;
   }
 
 }
