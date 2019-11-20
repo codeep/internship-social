@@ -25,18 +25,28 @@ a {
   flex-grow: 3;
   box-shadow: 0px 3px 5px -3px #156b4e;
 }
-
+.widthismin{
+  display: none;
+}
 .right-bar {
   margin: 20px;
   flex-grow: 1;
 }
 .user{
   box-shadow: none;
-  width: 70%;
+  width: 100%;
 }
 .img > img:hover{
   cursor: pointer;
 }
 .img > p:hover{
   cursor: pointer;
+}
+@media only screen and (max-width: 900px) {
+  .right-bar{
+    display: none;
+  }
+  .widthismin{
+    display: inline-block;
+  }
 }

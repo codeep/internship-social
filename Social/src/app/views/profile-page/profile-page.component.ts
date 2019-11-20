@@ -56,7 +56,6 @@ export class ProfilePageComponent implements OnInit {
           this.openMy=true;
         }
       });
-      
   }
   @HostListener("window:scroll", ["$event"])  
   onScroll(){

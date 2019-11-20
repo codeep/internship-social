@@ -4,7 +4,7 @@ export default {
     NEARBY:'/users/nearby',
     USERS:'/users/',
     USERS_ID:'/users/{id}/',
-    DETAILS:'/users/details/',
+    DETAILS:'/users/details',
     FOLLOW:'/users/follow/{id}',
     FOLLOWERS:'/users/followers/{id}',
     FOLLOWING:'/users/following/{id}',
