@@ -7,15 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilePageComponent } from './views/profile-page/profile-page.component';
-import { ToastrModule } from 'ngx-toastr';
-
-
+// import { ToastrModule } from 'ngx-toastr';
 
 import { AddPostComponent } from './components/post/add-post/add-post.component';
 import { AddedPostComponent } from './components/post/added-post/added-post.component';
 import { MatDividerModule } from '@angular/material/divider';
-import {HttpClientModule} from '@angular/common/http';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { HttpClientModule } from '@angular/common/http';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { FeedComponent } from './views/feed/feed.component';
 import { MatInputModule } from '@angular/material/input';
@@ -67,11 +65,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     MatDividerModule,
     MatInputModule,
-    ToastrModule.forRoot(),
     MatCardModule,
     MatExpansionModule,
     MatDatepickerModule,
-    ToastrModule.forRoot()
+    // ToastrModule.forRoot()
   ],
   providers: [RequestService, SessionService],
   bootstrap: [AppComponent]

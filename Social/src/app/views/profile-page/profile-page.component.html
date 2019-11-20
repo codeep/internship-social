@@ -1,6 +1,17 @@
 <div class="entireProfilePage container-flex  boxShadow">
     <div class="coverPhoto">
         <div class="imgIconAndText">
+
+                <span style="color:red;" *ngIf="message">{{message}}</span>
+                <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+                <img [src]="imgURL" height="200" *ngIf="imgURL">
+
+
+
+
+
+
+                
             <p class="feedButton" routerLink="/feed"><mat-icon>keyboard_arrow_left</mat-icon></p>           
             <img [src]="urlCover" *ngIf="hideCoverImage" class="uploadCover">
             <input type='file' id="cover" class="hidden" (change)="onSelectCoverFile($event)">
