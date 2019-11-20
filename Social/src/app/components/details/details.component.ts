@@ -83,25 +83,13 @@ export class DetailsComponent implements OnInit {
       this.openEdit = true;
     }
 
-    this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
-      .subscribe((getDetails: Response) => {
-        if (getDetails.status >= 200 && getDetails.status < 300 && getDetails.data) {
-          this.detail.setValue({
-            firstname: getDetails.data.user.firstname,
-            lastname: getDetails.data.user.lastname,
-            email: getDetails.data.user.email,
-            birthdate: getDetails.data.user.birthdate,
-            occupation: getDetails.data.user.occupation,
-            location: getDetails.data.user.location,
-            bio: getDetails.data.user.bio
-          });
-        }
-      });
+    
   }
   allowToEditButton() {
     this.allowToEdit = true;
     this.openSave = true;
     this.detail.enable();
+    this.detail.controls.email.disable()
   }
   saveButton() {
     this.allowToEdit = false;

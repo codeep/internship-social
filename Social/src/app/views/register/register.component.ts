@@ -4,6 +4,7 @@ import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
 import { Router } from '@angular/router';
 import { Response } from '../../../interfaces/response.interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnInit {
   constructor(private fb: FormBuilder, 
     private myServer: RequestService,
     private sessionService: SessionService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService)  { }
 
   ngOnInit() {
   }
@@ -35,6 +37,7 @@ export class RegisterComponent implements OnInit {
       this.myServer.post('REGISTER', this.register.value, null, null, false)
       .subscribe((response: Response) => {
         if (response.status >= 200 && response.status < 300 && response.data) {
+          this.toastr.success("Hello, You are registered. Welcome!")
           this.router.navigate(['/login']);
         } else{
           this.errorsOpen = true;

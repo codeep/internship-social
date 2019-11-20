@@ -3,10 +3,10 @@
         <input  class="inputFields" formControlName="firstname">
         <input  formControlName="lastname" class="inputFields" >
         <input  formControlName="email" class="inputFields">
-        <input value={{birthdate}} formControlName="birthdate" class="inputFields">
-        <input value={{occupation}} formControlName="occupation" class="inputFields">
-        <input value={{location}} formControlName="location" class="inputFields">
-        <input value={{bio}} formControlName="bio" class="inputFields">
+        <input  formControlName="birthdate" class="inputFields">
+        <input  formControlName="occupation" class="inputFields">
+        <input  formControlName="location" class="inputFields">
+        <input  formControlName="bio" class="inputFields">
         <button class="save" *ngIf="openSave" (click)="saveButton()">Save</button>
         <button class="standartButton" *ngIf="openEdit" (click)="allowToEditButton()">Edit</button>
     </form>

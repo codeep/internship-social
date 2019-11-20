@@ -13,7 +13,7 @@ import { AddedPostComponent } from './components/post/added-post/added-post.comp
 import {HttpClientModule} from '@angular/common/http';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import { ToastrModule } from 'ngx-toastr';
 
 import { FeedComponent } from './views/feed/feed.component';
 import {MatInputModule} from '@angular/material/input';
@@ -65,8 +65,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatDividerModule,
     MatInputModule,
     MatCardModule,
-    MatExpansionModule
-    MatDatepickerModule
+    MatExpansionModule,
+    MatDatepickerModule,
+    ToastrModule.forRoot()
   ],
   providers: [RequestService, SessionService],
   bootstrap: [AppComponent]

@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
 import { Response } from '../../../../interfaces/response.interface';
@@ -10,15 +9,16 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./added-post.component.css']
 })
 export class AddedPostComponent implements OnInit {
-  name;
+  @Input()  post;
+  name; 
   surname;
   title;
   content;
   constructor(
     private server: RequestService,
     private session: SessionService) { }
-  @Input()  post
-  constructor() { }
+
+
 
   ngOnInit() {
     this.server.get('USERS_ID', { key: 'id', value: this.session.getUser()['_id'] })
