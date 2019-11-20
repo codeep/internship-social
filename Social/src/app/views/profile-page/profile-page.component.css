@@ -97,16 +97,15 @@
     top: 186px;
     margin: 0 7px;
 }
+.imgIconAndText:hover .updateCoverPhoto{
+    display: block;
+    cursor: pointer;
+}
 .profilePic:hover .updateProfilePhoto{
     display: block;
     cursor: pointer;
 }
 ​
-.imgIconAndText:hover .updateCoverPhoto{
-    display: block;
-    cursor: pointer;
-    
-}
 .updateCoverPhoto label{
     font-size: 17px;
     padding: 4px 6px;

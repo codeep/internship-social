@@ -19,10 +19,6 @@ export class ProfilePageComponent implements OnInit {
   openDetails=false;
   openConnections=false;
   openCreatePost=true;
-  openFollowers=false;
-  myPosts=true;
-  connect=false;
-  details=false;
   openEdit=false;
   name;
   surname;
@@ -30,8 +26,11 @@ export class ProfilePageComponent implements OnInit {
   offset=0;
   openMy=false;
   followingArray;
+  followersArray;
   followingUser=[];
   following;
+  followers=false;
+  showPosts=true;
   public imagePath;
   constructor(
     private server: RequestService,
@@ -81,7 +80,7 @@ export class ProfilePageComponent implements OnInit {
       return;
 
     this.hideUploadCoverButton=false;
-    this.showUploadCoverButton=true;
+    // this.showUploadCoverButton=true;
     this.hideCoverImage=true;
  
     var reader = new FileReader();
@@ -96,7 +95,7 @@ export class ProfilePageComponent implements OnInit {
     if (files.length === 0)
       return;
 
-    this.showUploadProfileButton=true;
+    // this.showUploadProfileButton=true;
     this.hideUploadProfileButton=false;
     this.hideProfileImage=true;
  
@@ -110,22 +109,32 @@ export class ProfilePageComponent implements OnInit {
   openDetailsButton(){
     this.openConnections=false;
     this.openDetails=true;
-    this.myPosts=false;
     this.openCreatePost=false;
-    this.details=true;
-    this.connect=false;
-  }
-  openFollowersButton() {
-    this.openFollowers = true;
-  }
+    this.showPosts=false;
+    this.following=false;
+  }    
   openConnectionsButton(){
-    this.connect=true;
-    this.myPosts=false;
+    this.showPosts=false;
     this.openCreatePost=false;
     this.openConnections=true;
     this.openDetails=false;
-    this.details=false;
+  }
 
+  openMyPostsButton(){
+    if(this.session.getUser()['_id'] == this.session.getGuestID()){
+      this.openCreatePost=true;
+    } else{
+     this.openCreatePost=false;
+    }
+    this.following=false;
+    this.showPosts=true;
+    this.openConnections=false;
+    this.openDetails=false;
+  }
+
+  openFollowingButton(){
+    this.following=true; 
+    this.followers = false;   
     this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID()})
       .subscribe((getFollowings: Response) => {
         if (getFollowings.status >= 200 && getFollowings.status < 300) {
@@ -138,25 +147,24 @@ export class ProfilePageComponent implements OnInit {
           });
         }
       });
-
   }
 
-  openMyPostsButton(){
-    if(this.session.getUser()['_id'] == this.session.getGuestID()){
-      this.openCreatePost=true;
-    } else{
-     this.openCreatePost=false;
-    }
-    this.myPosts=true;
-    this.connect=false;
-    this.openConnections=false;
-    this.details=false;
-    this.openDetails=false;
-  }
+  openFollowersButton(){
+    this.following=false;
+    this.followers = true;
 
-  openFollowingButton(){
-    this.following=true;
-    console.log('daaaa');
+    this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID()})
+      .subscribe((getFollowers: Response) => {
+        if (getFollowers.status >= 200 && getFollowers.status < 300) {
+          this.followersArray = getFollowers.data.user.followers;
+          this.followersArray.forEach(id => {
+            this.server.get('USERS_ID', { key: 'id', value: id})
+            .subscribe((data: Response) => {
+              this.followingUser.push(data.data.user);
+              })
+          });
+        }
+      });
   }
 
 }
