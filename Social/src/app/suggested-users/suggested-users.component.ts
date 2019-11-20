@@ -26,6 +26,6 @@ export class SuggestedUsersComponent implements OnInit {
   }
 
   sendId(data){
-    this.session.setGuestID(data);
+    this.session.setGuestID(data);    
   }
 }
