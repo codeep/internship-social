@@ -39,9 +39,6 @@
         <p>{{ name }} {{ surname }}</p>
     </div>
 
-
-
-
     <div class="sides">
         <div class="leftSide ">
             <p class="menuItem" (click)="openMyPostsButton()" [ngClass]="{'activeMenuItem': myPosts}"><span *ngIf="openMy">My</span> Posts</p>
@@ -57,6 +54,12 @@
             <!-- <app-user></app-user> -->
 
             <app-details *ngIf="openDetails"></app-details>
+            <div *ngIf="openConnections">
+                <div  *ngFor="let following of followingArray">
+                    {{ following }}
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>

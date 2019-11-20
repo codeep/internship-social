@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
 import { Response } from '../../../interfaces/response.interface'
-
 @Component({
   selector: 'profile-page',
   templateUrl: './profile-page.component.html',
@@ -28,7 +27,7 @@ export class ProfilePageComponent implements OnInit {
   name;
   surname;
   openMy;
-
+  followingArray:any;
   constructor(
     private server: RequestService,
     private session: SessionService) { }
@@ -49,6 +48,7 @@ export class ProfilePageComponent implements OnInit {
           this.openMy=true;
         }
       });
+      
   }
 
   
@@ -105,6 +105,13 @@ export class ProfilePageComponent implements OnInit {
     this.details=false;
     this.following=false;
     this.followers=false;
+    this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID()})
+      .subscribe((getFollows: Response) => {
+        if (getFollows.status >= 200 && getFollows.status < 300) {
+          this.followingArray = getFollows.data.user.following;
+          console.log(getFollows, 'sdf');
+        }
+      });
   }
 
   openMyPostsButton(){

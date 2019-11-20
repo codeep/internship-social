@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
 import { Response } from '../../../interfaces/response.interface'
-import { FormBuilder, Validators,FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
@@ -17,14 +17,14 @@ export class DetailsComponent implements OnInit {
   occupation;
   location;
   bio;
-  openEdit=false;
-  allowToEdit=false;
-  openSave=false;
+  openEdit = false;
+  allowToEdit = false;
+  openSave = false;
   sendDetails;
 
   constructor(private server: RequestService,
-              private session: SessionService,
-              private fb: FormBuilder) { }
+    private session: SessionService,
+    private fb: FormBuilder) { }
 
   detail = this.fb.group({
     firstname: [{
@@ -65,13 +65,13 @@ export class DetailsComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID()})
+    this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
       .subscribe((getDetails: Response) => {
         if (getDetails.status >= 200 && getDetails.status < 300 && getDetails.data) {
           this.detail.setValue({
             firstname: getDetails.data.user.firstname,
-            lastname: getDetails.data.user.lastname, 
-            email: getDetails.data.user.email, 
+            lastname: getDetails.data.user.lastname,
+            email: getDetails.data.user.email,
             birthdate: getDetails.data.user.birthdate,
             occupation: getDetails.data.user.occupation,
             location: getDetails.data.user.location,
@@ -79,24 +79,39 @@ export class DetailsComponent implements OnInit {
           });
         }
       });
-      if(this.session.getUser()['_id'] == this.session.getGuestID()){
-        this.openEdit=true;
-      }
+    if (this.session.getUser()['_id'] == this.session.getGuestID()) {
+      this.openEdit = true;
+    }
+
+    this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
+      .subscribe((getDetails: Response) => {
+        if (getDetails.status >= 200 && getDetails.status < 300 && getDetails.data) {
+          this.detail.setValue({
+            firstname: getDetails.data.user.firstname,
+            lastname: getDetails.data.user.lastname,
+            email: getDetails.data.user.email,
+            birthdate: getDetails.data.user.birthdate,
+            occupation: getDetails.data.user.occupation,
+            location: getDetails.data.user.location,
+            bio: getDetails.data.user.bio
+          });
+        }
+      });
   }
-  allowToEditButton(){
-    this.allowToEdit=true;
-    this.openSave=true;
+  allowToEditButton() {
+    this.allowToEdit = true;
+    this.openSave = true;
     this.detail.enable();
   }
-  saveButton(){
-    this.allowToEdit=false;
+  saveButton() {
+    this.allowToEdit = false;
     this.detail.disable();
-    this.sendDetails=this.detail.value;
-    console.log(this.sendDetails); 
-    this.server.post('DETAILS',this.sendDetails).subscribe((response: Response) => {
+    this.sendDetails = this.detail.value;
+    console.log(this.sendDetails);
+    this.server.post('DETAILS', this.sendDetails).subscribe((response: Response) => {
       if (response.status >= 200 && response.status < 300) {
-          this.openSave = false;
-      } 
+        this.openSave = false;
+      }
     })
   }
 }
