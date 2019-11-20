@@ -28,6 +28,7 @@ export class ProfilePageComponent implements OnInit {
   surname;
   posts = [];
   offset=0;
+  openMy=false;
   constructor(
     private server: RequestService,
     private session: SessionService) { }
@@ -47,18 +48,13 @@ export class ProfilePageComponent implements OnInit {
           this.surname = getName.data.user.lastname          
         }
       });
-      console.log(this.session.getGuestID(),"getUser");
       if(this.session.getUser()['_id'] == this.session.getGuestID()){
-        this.openEdit=true
-      }
-      this.server.get('USERS_ID', { key: 'id', value: this.session.getUser()['_id'] })
-      .subscribe((getName: Response) => {
-        if (getName.status >= 200 && getName.status < 300 && getName.data) {
-          this.name = getName.data.user.firstname,
-          this.surname = getName.data.user.lastname
-        }
-      });
-      
+        this.openEdit=true;
+        this.openMy=true;
+      }   
+      else{
+        this.openCreatePost=false;
+      }   
   }
   @HostListener("window:scroll", ["$event"])  
   onScroll(){
@@ -66,9 +62,7 @@ export class ProfilePageComponent implements OnInit {
       let totalHeight;
       scrollHeight = document.body.scrollHeight;
       totalHeight = window.scrollY + window.innerHeight;
-      // TODO refactor
       if (totalHeight >= scrollHeight) {
-
         this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:10},{key:'offset',value:this.offset}])
         .subscribe((posts: { data:[] }) => {
           this.posts.concat(posts.data)
@@ -131,9 +125,13 @@ export class ProfilePageComponent implements OnInit {
   }
 
   openMyPostsButton(){
+    if(this.session.getUser()['_id'] == this.session.getGuestID()){
+      this.openCreatePost=true;
+    } else{
+     this.openCreatePost=false;
+    }
     this.myPosts=true;
     this.connect=false;
-    this.openCreatePost=true;
     this.openConnections=false;
     this.details=false;
     this.openDetails=false;
