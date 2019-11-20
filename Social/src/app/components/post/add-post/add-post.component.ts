@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ["./add-post.component.css"]
 })
 export class AddPostComponent implements OnInit {
-  postList = {title:'', content:'', file:[]};
+  postList = {title:'', content:'', file:''};
   title:string;
   textArea: string;
   linkText: string;
@@ -36,13 +36,12 @@ export class AddPostComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger
     const formData = new FormData();
     formData.append("file", this.uploadForm.get("profile").value);
     this.linkify(this.textArea);
     this.postList.title = this.title;
     this.postList.content = this.textArea;
-    this.postList.file.push(this.uploadForm.value.profile.name);  
+    this.postList.file = this.uploadForm.value.profile.name;  
     console.log(this.postList)
     this.request.post('POSTS', this.postList).subscribe(post=>console.log(post,"sub"))
     this.toastr.success("Your post is created")
