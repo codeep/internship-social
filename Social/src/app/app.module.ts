@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilePageComponent } from './views/profile-page/profile-page.component';
-// import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AddPostComponent } from './components/post/add-post/add-post.component';
 import { AddedPostComponent } from './components/post/added-post/added-post.component';
@@ -68,7 +68,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatCardModule,
     MatExpansionModule,
     MatDatepickerModule,
-    // ToastrModule.forRoot()
+    ToastrModule.forRoot()
   ],
   providers: [RequestService, SessionService],
   bootstrap: [AppComponent]

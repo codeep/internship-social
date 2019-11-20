@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Response } from '../../../interfaces/response.interface';
 import { SessionService } from 'src/app/services/session.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder, 
     private myServer: RequestService,
     private sessionService: SessionService,
-    private router: Router
+    private router: Router,
+    private toastr:ToastrService
   ){}
 
   ngOnInit() {
@@ -32,13 +34,12 @@ export class LoginComponent implements OnInit {
       this.errorEmail = false;
       this.errorPass = false;
     if(this.login.valid){
-      // this.toastr.success("Hello, You are logged in.")
       this.myServer.post('LOGIN', this.login.value, null, null, false)
       .subscribe((response: Response) => {
         if (response.status >= 200 && response.status < 300 && response.data && response.data.token) {
           this.sessionService.setToken(response.data.token);
           this.sessionService.setUser(response.data.user);
-          // this.toastr.success("Hello, You are logged in.")
+          this.toastr.success("Hello, You are logged in.")
           if(response.data.user.fulfilled){
             this.router.navigate(['/feed']);
           }else{

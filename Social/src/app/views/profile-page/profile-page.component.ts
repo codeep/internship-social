@@ -9,7 +9,7 @@ import { Response } from '../../../interfaces/response.interface'
 })
 export class ProfilePageComponent implements OnInit {
   hideCoverImage=false;
-  urlCover;
+  imgURL;
   urlProfile;
   hideUploadCoverButton=true;
   hideUploadProfileButton=true;
@@ -29,16 +29,10 @@ export class ProfilePageComponent implements OnInit {
   posts = [];
   offset=0;
   openMy=false;
-
-
-      
+  followingArray;
+  followingUser=[];
+  following;
   public imagePath;
-  imgURL: any;
-  public message: string;
-
-
-
-
   constructor(
     private server: RequestService,
     private session: SessionService) { }
@@ -47,7 +41,7 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit() {
       this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:10},{key:'offset',value:0}])
       .subscribe((posts: { data:[] }) => {
-        this.posts=posts.data
+        this.posts=posts.data,
         this.offset++
       });
       
@@ -81,35 +75,14 @@ export class ProfilePageComponent implements OnInit {
       }
     
   }
-  
-  onSelectCoverFile(event) {
+
+  coverPhoto(files) {
+    if (files.length === 0)
+      return;
+
     this.hideUploadCoverButton=false;
     this.showUploadCoverButton=true;
     this.hideCoverImage=true;
-
-    if(event.target.files && event.target.files[0]) {
-
-      var reader = new FileReader();
-
-      reader.readAsDataURL(event.target.files[0]);
-
-      reader.onload = (event) => { 
-        // this.urlCover = event.target.result;
-      }
-    }
-
-    
-  }
-
-  preview(files) {
-    if (files.length === 0)
-      return;
- 
-    var mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.message = "Only images are supported.";
-      return;
-    }
  
     var reader = new FileReader();
     this.imagePath = files;
@@ -118,21 +91,22 @@ export class ProfilePageComponent implements OnInit {
       this.imgURL = reader.result; 
     }
   }
+  
+  profilePhoto(files) {
+    if (files.length === 0)
+      return;
 
-  onSelectProfileFile(event) {
     this.showUploadProfileButton=true;
     this.hideUploadProfileButton=false;
     this.hideProfileImage=true;
-
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (event) => { 
-        // this.urlProfile = event.target.result;
-      }
+ 
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+      this.urlProfile = reader.result; 
     }
   }
-
   openDetailsButton(){
     this.openConnections=false;
     this.openDetails=true;
@@ -151,6 +125,20 @@ export class ProfilePageComponent implements OnInit {
     this.openConnections=true;
     this.openDetails=false;
     this.details=false;
+
+    this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID()})
+      .subscribe((getFollowings: Response) => {
+        if (getFollowings.status >= 200 && getFollowings.status < 300) {
+          this.followingArray = getFollowings.data.user.followings;
+          this.followingArray.forEach(id => {
+            this.server.get('USERS_ID', { key: 'id', value: id})
+            .subscribe((data: Response) => {
+              this.followingUser.push(data.data.user);
+              })
+          });
+        }
+      });
+
   }
 
   openMyPostsButton(){
@@ -164,6 +152,11 @@ export class ProfilePageComponent implements OnInit {
     this.openConnections=false;
     this.details=false;
     this.openDetails=false;
+  }
+
+  openFollowingButton(){
+    this.following=true;
+    console.log('daaaa');
   }
 
 }

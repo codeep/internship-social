@@ -1,6 +1,6 @@
-<div >
-    <img src="../../assets/userdefult.png" alt="">
-    <p>Name</p>
-    <button  class="followButton" (click)='onClickFollow()'>Follow</button>
-    <button  class="unFollowButton" (click)='onClickFollow()'>UnFollow</button>
+<div class="boxShadow">
+   <img [routerLink]="['/profile',item._id]" (click)="sendId(item._id)" src="../../assets/userdefult.png" alt="Img">
+   <p [routerLink]="['/profile',item._id]" (click)="sendId(item._id)">{{item.firstname}} {{item.lastname}}</p>
+   <button  class="followButton" (click)='onClickFollow()'>Follow</button>
+   <button  class="unFollowButton" (click)='onClickFollow()'>UnFollow</button>
 </div>

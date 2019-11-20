@@ -1,20 +1,9 @@
 <div class="entireProfilePage container-flex  boxShadow">
     <div class="coverPhoto">
         <div class="imgIconAndText">
-
-                <span style="color:red;" *ngIf="message">{{message}}</span>
-                <input #file type="file" accept='image/*' (change)="preview(file.files)" />
-                <img [src]="imgURL" height="200" *ngIf="imgURL">
-
-
-
-
-
-
-                
             <p class="feedButton" routerLink="/feed"><mat-icon>keyboard_arrow_left</mat-icon></p>           
-            <img [src]="urlCover" *ngIf="hideCoverImage" class="uploadCover">
-            <input type='file' id="cover" class="hidden" (change)="onSelectCoverFile($event)">
+            <img [src]="imgURL" *ngIf="imgURL" class="uploadCover">
+            <input #file accept='image/*' type='file' id="cover" class="hidden" (change)="coverPhoto(file.files)">
             <div class="uploadCoverIconAndText" *ngIf="hideUploadCoverButton">
                 <mat-icon>photo_camera</mat-icon>
                 <label for="cover">Upload Cover Photo</label>
@@ -27,7 +16,7 @@
         <div class="profilePic">
             <div class="pic">
                 <img [src]="urlProfile" *ngIf="hideProfileImage" class="uploadProfile" height="200px">
-                <input type='file' id="profile" class="hidden" (change)="onSelectProfileFile($event)">
+                <input #fileProf accept='image/*' type='file' id="profile" class="hidden" (change)="profilePhoto(fileProf.files)">
                 <div class="uploadProfileIconAndText" *ngIf="hideUploadProfileButton">
                     <div class="textInProfilePic">
                         <mat-icon>photo_camera</mat-icon>
@@ -58,9 +47,9 @@
                 <p (click)="openFollowersButton()" [ngClass]="{'activeFollow': followers }">Followers</p>
             </div>
             <app-details *ngIf="openDetails"></app-details>
-            <div *ngIf="openConnections">
-                <div  *ngFor="let following of followingArray">
-                    {{ following }}
+            <div *ngIf="following">
+                <div >
+                     <app-user *ngFor="let item of followingUser" [item]='item'></app-user>   
                 </div>
             </div>
         </div>
