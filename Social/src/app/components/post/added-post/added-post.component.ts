@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { RequestService } from 'src/app/services/request-service.service';
+import { SessionService } from 'src/app/services/session.service';
+import { Response } from '../../../../interfaces/response.interface';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-added-post',
@@ -6,10 +9,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./added-post.component.css']
 })
 export class AddedPostComponent implements OnInit {
+  @Input()  post;
+  name; 
+  surname;
+  title;
+  content;
+  constructor(
+    private server: RequestService,
+    private session: SessionService) { }
 
-  constructor() { }
+
 
   ngOnInit() {
+    this.server.get('USERS_ID', { key: 'id', value: this.session.getUser()['_id'] })
+      .subscribe((getName: Response) => {
+        if (getName.status >= 200 && getName.status < 300 && getName.data) {
+          this.name = getName.data.user.firstname,
+            this.surname = getName.data.user.lastname;
+        }
+      });
+      
   }
-
 }

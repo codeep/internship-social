@@ -13,9 +13,6 @@
 .imgIconAndText{
     height: 100%;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .uploadCover{
     width: 100%;
@@ -37,7 +34,7 @@
 
 .nameSurname{
     position: absolute;
-    left: 370px;
+    left: 29%;
     top: 364px;
 }
 .nameSurname p{
@@ -61,8 +58,9 @@
 .uploadCoverIconAndText{
     color: #35bb7d;
     display: flex;
-    cursor: pointer;
-    justify-content: center;   
+    justify-content: center;
+    align-items: center;   
+    margin-top: 103px;
 }
 .uploadProfileIconAndText{
     color: #35bb7d;
@@ -75,7 +73,7 @@
     cursor: pointer;
     font-size: 16px;
 }
-.uploadProfileIconAndText .mat-icon{
+.uploadProfileIconAndText mat-icon{
     font-size: 21px;
 }
 .uploadCoverIconAndText label{
@@ -84,7 +82,7 @@
 }
 
 
-.uploadIconAndText .mat-icon{
+.uploadIconAndText mat-icon{
     font-size: 31px;
   
 }
@@ -96,8 +94,8 @@
     color: white;
     cursor: pointer;
     position: absolute;
-    top: 301px;
-    left: 940px;    
+    top: 311px;
+    left: 983px;    
 }
 .updateProfilePhoto{
     display: none; 
@@ -127,11 +125,11 @@
     font-size: 16px;
     cursor: pointer;
 }
-.updateProfilePhoto .mat-icon{
+.updateProfilePhoto mat-icon{
     font-size: 17px;
 
 }
-.uploadImage .mat-icon{
+.uploadImage mat-icon{
     font-size: 26px;
   
 }
@@ -162,39 +160,50 @@
     color: rgb(33, 95, 38);
     cursor: pointer;
 }
+.feedButton{
+    width: 3%;
+    margin:7px;
+    box-shadow: 0px 0px 8px -3px rgb(80, 197, 90);
+    position: absolute;
+    top: 13px;
+    left: 7px;
+    padding: 7px;
+}
+.feedButton mat-icon{
+    font-size: 33px;
+    color: rgb(80, 197, 90);;
+}
+.feedButton:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 8px -3px #aff5ba;
+}
+.feedButton:hover mat-icon{
+    color: #aff5ba;
+    cursor: pointer;
+}
 .activeMenuItem {
     transform: translateX(10px);
     color:rgb(33, 95, 38);
 }
 
+.activeFollow{
+    transform: translateY(-6px);
+    color:rgb(33, 95, 38);
+}
+
 .mainContent{
     width: 50%;
-    /* height: 100%; */
-}
-.details{
-    display: flex;
-    flex-direction: column; 
-    margin: 17px;
-}
-.details p{
-    margin: 13px;
-    font-size: 17px;
-    border-bottom:0.5px solid silver ;
-    /* box-shadow: 0px 0px 8px -3px #156b4e; */
-    /* width: 20%; */
-    padding: 7px 0;
-    /* text-align: center; */
+    background-color: white;
+    margin-top: 30px;
 }
 
 .connections{
     display: flex;
-    /* justify-content: space-around; */
-    /* margin: 11px 0;    */
     box-shadow: 0px 0px 8px -3px #156b4e;
     padding: 10px;
 }
 .connections>p{
-    padding: 11px; 
+    margin: 9px; 
     font-size: 17px;
 }
 .connections>p:hover{
@@ -204,4 +213,7 @@
 }
 app-add-post{
     width: 50% !important;
+}
+@media only screen and (max-width: 900px) {
+    
 }

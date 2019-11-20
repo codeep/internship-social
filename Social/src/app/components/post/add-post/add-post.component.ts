@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
+import { RequestService } from 'src/app/services/request-service.service';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: "app-add-post",
@@ -8,14 +10,16 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./add-post.component.css"]
 })
 export class AddPostComponent implements OnInit {
+  postList = {title:'', content:'', file:[]};
+  title:string;
   textArea: string;
   linkText: string;
   uploadForm: FormGroup;
-  // SERVER_URL = "http://localhost:3000";
 
   constructor(
     private formBuilder: FormBuilder,
-    private httpClient: HttpClient
+    private  request: RequestService,
+    private  session: SessionService,
   ) {}
 
   ngOnInit() {
@@ -33,12 +37,14 @@ export class AddPostComponent implements OnInit {
   onSubmit() {
     const formData = new FormData();
     formData.append("file", this.uploadForm.get("profile").value);
-
-    //   this.httpClient
-    //     .post<any>(this.SERVER_URL, formData)
-    //     .subscribe(res => console.log(res), err => console.log(err));
-    // }
+    this.linkify(this.textArea);
+    this.postList.title = this.title;
+    this.postList.content = this.textArea;
+    this.postList.file.push(this.uploadForm.value.profile.name);  
+    console.log(this.postList)
+    this.request.post('POSTS', this.postList).subscribe(post=>console.log(post,"sub"));
   }
+  
   linkify(plainText) {
     let replacedText;
     let replacePattern1;
@@ -50,19 +56,16 @@ export class AddPostComponent implements OnInit {
       replacePattern1,
       '<a href="$1" target="_blank">$1</a>'
     );
-
     replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
     replacedText = replacedText.replace(
       replacePattern2,
       '$1<a href="http://$2" target="_blank">$2</a>'
     );
-
     replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
     replacedText = replacedText.replace(
       replacePattern3,
       '<a href="mailto:$1">$1</a>'
     );
-
     this.linkText = replacedText;
   }
 }

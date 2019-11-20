@@ -13,8 +13,9 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AddPostComponent } from './components/post/add-post/add-post.component';
 import { AddedPostComponent } from './components/post/added-post/added-post.component';
-import { HttpClientModule } from '@angular/common/http';
 import { MatDividerModule } from '@angular/material/divider';
+import {HttpClientModule} from '@angular/common/http';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { FeedComponent } from './views/feed/feed.component';
 import { MatInputModule } from '@angular/material/input';
@@ -68,7 +69,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     ToastrModule.forRoot(),
     MatCardModule,
-    MatDatepickerModule
+    MatExpansionModule,
+    MatDatepickerModule,
+    ToastrModule.forRoot()
   ],
   providers: [RequestService, SessionService],
   bootstrap: [AppComponent]

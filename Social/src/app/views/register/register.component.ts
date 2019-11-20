@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService) { }
 
+
   ngOnInit() {
   }
   onSubmit(){
@@ -38,6 +39,7 @@ export class RegisterComponent implements OnInit {
       this.myServer.post('REGISTER', this.register.value, null, null, false)
       .subscribe((response: Response) => {
         if (response.status >= 200 && response.status < 300 && response.data) {
+          this.toastr.success("Hello, You are registered. Welcome!")
           this.router.navigate(['/login']);
         } else{
           this.errorsOpen = true;

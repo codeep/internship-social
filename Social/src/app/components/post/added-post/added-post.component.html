@@ -1,17 +1,29 @@
 <form class="container-flex ">
-  <div>
+  <div class="info">
+      <div class="subtitle">
     <img src="/assets/download.png" class="avatar" />
-    <mat-card-subtitle>Name</mat-card-subtitle>
+      <p>{{ name }} {{ surname }}</p>
+      </div>
+   <div class="post-remove">
+  <mat-icon >delete_outlined</mat-icon>
+  </div>
+</div>
+  <hr />
+  <div class="allpost">
+    <div class="post-title">
+      <!-- <mat-card-content>{{title}}</mat-card-content> -->
+    </div>
+    <div class="post-content">
+      <!-- <mat-card-content>{{content}}</mat-card-content> -->
+      <mat-card-content>{{post.title}}</mat-card-content>
+    </div>
+    <div class="post-title">
+      <mat-card-content>{{post.content}}</mat-card-content>
+    </div>
+    <div class="post-img">
+  </div>
   </div>
   <hr />
-  <div class="llpost">
-    <div class="post-title">
-      <mat-card-content>Title</mat-card-content>
-    </div>
-    <div class="post-title">
-      <mat-card-content>Content</mat-card-content>
-    </div>
-  </div>
-
   <app-like></app-like>
 </form>
+    

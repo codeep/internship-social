@@ -2,7 +2,6 @@ form {
   align-items: center;
   flex-direction: column;
   width: 95%;
-  padding: 20px 10px;
   background-color: #fff;
 }
 
@@ -32,4 +31,13 @@ input[type="file"] {
 }
 mat-icon{
   font-size: 20px;
+}
+mat-accordion{
+  width: 100%;
+}
+.edit{
+  color:  #35bb7d;
+}
+p{
+  margin: 20px;
 }
