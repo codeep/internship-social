@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     this.errorsOpen = false;
     if(this.register.valid && this.register.value.confirmPassword === this.register.value.password){
-      this.toastr.success("Hello, You are registered.")
       this.myServer.post('REGISTER', this.register.value, null, null, false)
       .subscribe((response: Response) => {
         if (response.status >= 200 && response.status < 300 && response.data) {

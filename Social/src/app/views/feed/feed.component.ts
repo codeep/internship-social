@@ -45,9 +45,7 @@ export class FeedComponent implements OnInit {
       let totalHeight;
       scrollHeight = document.body.scrollHeight;
       totalHeight = window.scrollY + window.innerHeight;
-      // TODO refactor
       if (totalHeight >= scrollHeight) {
-
         this.server.get('FEED',{key:'id',value:this.sessionService.getGuestID()},[{key:'limit',value:10},{key:'offset',value:this.offset}])
         .subscribe((posts: { data:[] }) => 
         {
