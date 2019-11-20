@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { HttpClient } from "@angular/common/http";
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
 

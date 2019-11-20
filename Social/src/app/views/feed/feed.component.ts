@@ -1,6 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
-import  '../../endpoints'
 import { Router } from '@angular/router';
 import { SessionService } from 'src/app/services/session.service';
 
