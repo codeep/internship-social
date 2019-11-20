@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-add-post",
@@ -19,6 +20,7 @@ export class AddPostComponent implements OnInit {
     private formBuilder: FormBuilder,
     private  request: RequestService,
     private  session: SessionService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -34,6 +36,7 @@ export class AddPostComponent implements OnInit {
   }
 
   onSubmit() {
+    debugger
     const formData = new FormData();
     formData.append("file", this.uploadForm.get("profile").value);
     this.linkify(this.textArea);
@@ -41,7 +44,8 @@ export class AddPostComponent implements OnInit {
     this.postList.content = this.textArea;
     this.postList.file.push(this.uploadForm.value.profile.name);  
     console.log(this.postList)
-    this.request.post('POSTS', this.postList).subscribe(post=>console.log(post,"sub"));
+    this.request.post('POSTS', this.postList).subscribe(post=>console.log(post,"sub"))
+    this.toastr.success("Your post is created")
   }
   
   linkify(plainText) {
