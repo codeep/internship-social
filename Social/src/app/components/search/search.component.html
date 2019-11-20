@@ -1,5 +1,10 @@
 <form class="search-form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="search-width">
-    <input matInput formControlName="text" placeholder=" Search" >
+    <input matInput formControlName="text" (keyup)="onKey($event)" formControlName="text" placeholder=" Search" >
   </mat-form-field>
 </form>
+<div class="search boxShadow" *ngFor="let item of user">
+  <img [routerLink]="['/profile',item._id]" (click)="sendId(item._id)" src="../../assets/userdefult.png" alt="Img">
+  <p [routerLink]="['/profile',item._id]" (click)="sendId(item._id)">{{item.firstname}} {{item.lastname}}</p>
+  <button class="followButton">Follow</button>
+</div>

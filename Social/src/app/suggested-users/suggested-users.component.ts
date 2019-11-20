@@ -36,4 +36,7 @@ export class SuggestedUsersComponent implements OnInit {
       console.log(date); 
       this.trueOrFalse[i] = !this.trueOrFalse[i];});
   }
+  sendId(data){
+    this.session.setGuestID(data);    
+  }
 }
