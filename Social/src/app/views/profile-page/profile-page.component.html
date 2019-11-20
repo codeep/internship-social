@@ -1,27 +1,21 @@
 <div class="entireProfilePage container-flex  boxShadow">
-
     <div class="coverPhoto">
         <div class="imgIconAndText">
-
             <img [src]="urlCover" *ngIf="hideCoverImage" class="uploadCover">
-
             <input type='file' id="cover" class="hidden" (change)="onSelectCoverFile($event)">
             <div class="uploadCoverIconAndText" *ngIf="hideUploadCoverButton">
                 <mat-icon>photo_camera</mat-icon>
                 <label for="cover">Upload Cover Photo</label>
             </div>
-
             <div class="updateCoverPhoto" *ngIf="showUploadCoverButton">
                 <mat-icon>photo_camera</mat-icon>
                 <label for="cover">Update Cover Photo</label>
             </div>
-
         </div>
         <div class="profilePic">
             <div class="pic">
                 <img [src]="urlProfile" *ngIf="hideProfileImage" class="uploadProfile" height="200px">
                 <input type='file' id="profile" class="hidden" (change)="onSelectProfileFile($event)">
-
                 <div class="uploadProfileIconAndText" *ngIf="hideUploadProfileButton">
                     <div class="textInProfilePic">
                         <mat-icon>photo_camera</mat-icon>
@@ -32,19 +26,12 @@
                     <mat-icon>photo_camera</mat-icon>
                     <label for="profile">Update Profile Photo</label>
                 </div>
-               
             </div>
         </div>
     </div>
-
     <div class="nameSurname">
         <p>{{ name }} {{ surname }}</p>
-        <!-- <p>Name</p> -->
     </div>
-
-
-
-
     <div class="sides">
         <div class="leftSide ">
             <p class="menuItem" routerLink="/feed">Feed</p>
@@ -54,19 +41,12 @@
         </div>
         <div class="mainContent boxShadow">
             <app-add-post *ngIf="openCreatePost"></app-add-post>
-            <app-added-post></app-added-post>
+            <app-added-post *ngFor="let post of posts" [post]='post'></app-added-post>
             <div class="connections" *ngIf="openConnections">
                 <p>Following</p>
                 <p>Followers</p>
             </div>
-            <!-- <app-user></app-user> -->
-            <div class="details" *ngIf="openDetails">
-                <p>Firstname Lastname</p>
-                <p>Email</p>
-                <p>Birthdate</p>
-                <p>Occupation</p>
-                <p>Location</p>
-            </div>
+            <app-details *ngIf="openDetails"></app-details>
         </div>
     </div>
 </div>

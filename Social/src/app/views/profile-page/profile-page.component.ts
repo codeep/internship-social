@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
 import { Response } from '../../../interfaces/response.interface';
@@ -23,25 +23,60 @@ export class ProfilePageComponent implements OnInit {
   myPosts=true;
   connect=false;
   details=false;
-
+  openEdit=false;
   name;
   surname;
-
+  posts = [];
+  offset=0;
   constructor(
     private server: RequestService,
     private session: SessionService) { }
   
 
   ngOnInit() {
-    this.server.get('USERS_ID', { key: 'id', value: this.session.getUser()['_id'] })
+      this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:10},{key:'offset',value:0}])
+      .subscribe((posts: { data:[] }) => {
+        this.posts=posts.data
+        this.offset++
+      });
+      
+      this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID()})
       .subscribe((getName: Response) => {
         if (getName.status >= 200 && getName.status < 300 && getName.data) {
           this.name = getName.data.user.firstname,
-            this.surname = getName.data.user.lastname
+          this.surname = getName.data.user.lastname          
         }
       });
+      console.log(this.session.getGuestID(),"getUser");
+      if(this.session.getUser()['_id'] == this.session.getGuestID()){
+        this.openEdit=true
+      }
+      // this.server.get('USERS_ID', { key: 'id', value: this.session.getUser()['_id'] })
+      // .subscribe((getName: Response) => {
+      //   if (getName.status >= 200 && getName.status < 300 && getName.data) {
+      //     this.name = getName.data.user.firstname,
+      //     this.surname = getName.data.user.lastname
+      //   }
+      // });
+      
   }
-  
+  @HostListener("window:scroll", ["$event"])  
+  onScroll(){
+      let scrollHeight;
+      let totalHeight;
+      scrollHeight = document.body.scrollHeight;
+      totalHeight = window.scrollY + window.innerHeight;
+      // TODO refactor
+      if (totalHeight >= scrollHeight) {
+
+        this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:10},{key:'offset',value:this.offset}])
+        .subscribe((posts: { data:[] }) => {
+          this.posts.concat(posts.data)
+          this.offset++
+        });
+      }
+    
+  }
   
   onSelectCoverFile(event) {
     this.hideUploadCoverButton=false;
@@ -103,4 +138,5 @@ export class ProfilePageComponent implements OnInit {
     this.details=false;
     this.openDetails=false;
   }
+
 }

@@ -1,5 +1,6 @@
+<p class="title">People you might know</p>
 <div class="sug-user boxShadow" *ngFor="let item of users">
-    <img [routerLink]="['/profile/:id']" src="../../assets/userdefult.png" alt="Img">
-    <p [routerLink]="['/profile/:id']">{{item.firstname}} {{item.lastname}}</p>
+    <img [routerLink]="['/profile',item._id]" (click)="sendId(item._id)" src="../../assets/userdefult.png" alt="Img">
+    <p [routerLink]="['/profile',item._id]" (click)="sendId(item._id)">{{item.firstname}} {{item.lastname}}</p>
     <button class="followButton">Follow</button>
 </div>
