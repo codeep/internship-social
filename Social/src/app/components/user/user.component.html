@@ -1,4 +1,4 @@
-<div class="boxShadow">
+<div class="thisuser boxShadow">
     <img [routerLink]="['/profile',item._id]" (click)="sendId(item._id)" src="../../assets/userdefult.png" alt="Img">
     <p [routerLink]="['/profile',item._id]" (click)="sendId(item._id)">{{item.firstname}} {{item.lastname}}</p>
     <button  class="followButton" (click)='onClickFollow(item)' *ngIf="!trueOrFalse">Follow</button>

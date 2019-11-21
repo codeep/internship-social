@@ -69,10 +69,8 @@ export class ProfilePageComponent implements OnInit {
       if (totalHeight >= scrollHeight) {
         this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
         .subscribe((posts: { data:[] }) => {
-          this.posts.concat(posts.data)
-          this.offset+=10
-          console.log(this.posts)
-          console.log(posts)
+          this.posts.concat(posts.data);
+          this.offset+=10;
         });
     }
   }

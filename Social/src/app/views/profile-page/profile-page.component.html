@@ -48,13 +48,18 @@
             </div>
             <app-details *ngIf="openDetails"></app-details>
             <div *ngIf="following">
-                <div >
-                     <app-user class="boxShadow" *ngFor="let item of followingsUser" [item]='item' [followingArray]='followingArray'></app-user>   
+                <div class="users">
+                     <app-user class="user" *ngFor="let item of followingsUser" [item]='item' [followingArray]='followingArray'></app-user>   
+                     <app-user class="user" *ngFor="let item of followingsUser" [item]='item' [followingArray]='followingArray'></app-user>   
+                     <app-user class="user" *ngFor="let item of followingsUser" [item]='item' [followingArray]='followingArray'></app-user>   
+                     <app-user class="user" *ngFor="let item of followingsUser" [item]='item' [followingArray]='followingArray'></app-user>   
+                     <app-user class="user" *ngFor="let item of followingsUser" [item]='item' [followingArray]='followingArray'></app-user>   
+                     <app-user class="user" *ngFor="let item of followingsUser" [item]='item' [followingArray]='followingArray'></app-user>   
                 </div>
             </div>
             <div *ngIf="followers">
-                <div > 
-                     <app-user class="boxShadow" *ngFor="let item of followersUser" [item]='item' [followingArray]='followingArray' ></app-user>   
+                <div class="users"> 
+                     <app-user class="user" *ngFor="let item of followersUser" [item]='item' [followingArray]='followingArray' ></app-user>   
                 </div>
             </div>
         </div>
