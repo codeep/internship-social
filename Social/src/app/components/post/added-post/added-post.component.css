@@ -1,9 +1,11 @@
-form{
+form {
   display: flex;
   flex-direction: column;
-  width: 95%;
   padding: 20px 10px;
   background-color: #fff;
+}
+.postMargin{
+  margin-bottom: 10px;
 }
 
 .avatar {
@@ -12,27 +14,26 @@ form{
   height: 50px;
   border-radius: 50%;
 }
-mat-icon{
+mat-icon {
+  color: #050505;
+}
+mat-icon:hover {
   color: #35bb7d;
 }
-.info{
+.info {
   display: flex;
   justify-content: space-between;
 }
-/* .nameSurname{
-  position: absolute;
-  left: 370px;
-  top: 364px;
-} */
-.nameSurname p{
-  font-size: 18px;
-}
-.subtitle{
+.subtitle {
   display: flex;
   justify-content: left;
   font-size: 18px;
-  color: black;  
+  color: black;
 }
-p{
+p {
   margin: 13px;
+}
+.rem {
+  background: transparent;
+  border: none;
 }

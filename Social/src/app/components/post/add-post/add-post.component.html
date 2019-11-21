@@ -27,7 +27,7 @@
       <div class="uploads">
         <label for="profile"
           ><button
-            (click)="imgFileInput.click()"
+            (click)="file.click()"
             mat-stroked-button
             class="standartButton"
           >
@@ -41,24 +41,19 @@
           class="standartButton"
           [disabled]="!title || !textArea"
           (click)="onSubmit()"
-          color="basic"
-        >
-          Post
-        </button>
-        <input
+          color="basic" >Post</button>
+        <!-- <input
           type="file"
           id="profile"
           #imgFileInput
           (change)="onFileSelect($event)"
-        />
-      </div>
+        /> --></div>
+      <input #file type="file" accept='image/*'  id="profile" (change)="onFileSelect(file.files)" />
+      <img [src]="imgURL" height="100" width="100" *ngIf="imgURL">
     </form>
   </div>
-
   </mat-expansion-panel>
   </mat-accordion>
 </form>
-
-<!-- <div [innerHTML]="linkText"></div> -->
 <br />
 

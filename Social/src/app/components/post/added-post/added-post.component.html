@@ -1,29 +1,27 @@
-<form class="container-flex ">
+
+<form class="container-flex postMargin boxShadow">
   <div class="info">
       <div class="subtitle">
     <img src="/assets/download.png" class="avatar" />
       <p>{{ post.author?.firstname }} {{ post.author?.lastname }}</p>
       </div>
    <div class="post-remove">
-  <mat-icon >delete_outlined</mat-icon>
+  <button class='rem' (click)='removePost()'><mat-icon>delete_outlined</mat-icon></button>
   </div>
 </div>
   <hr />
   <div class="allpost">
     <div class="post-title">
-      <!-- <mat-card-content>{{title}}</mat-card-content> -->
-    </div>
-    <div class="post-content">
-      <!-- <mat-card-content>{{content}}</mat-card-content> -->
       <mat-card-content>{{post.title}}</mat-card-content>
     </div>
-    <div class="post-title">
-      <mat-card-content>{{post.content}}</mat-card-content>
+    <div class="post-content">
+      <mat-card-content [innerHTML]="post.content"></mat-card-content>
     </div>
-    <div class="post-img">
+   <div class="post-img">
   </div>
   </div>
   <hr />
   <app-like [post]='post'></app-like>
 </form>
+
     

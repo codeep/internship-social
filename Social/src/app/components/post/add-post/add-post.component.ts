@@ -15,6 +15,8 @@ export class AddPostComponent implements OnInit {
   textArea: string;
   linkText: string;
   uploadForm: FormGroup;
+  public imagePath;
+  imgURL: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,12 +30,19 @@ export class AddPostComponent implements OnInit {
       profile: [""]
     });
   }
-  onFileSelect(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.uploadForm.get("profile").setValue(file);
+  onFileSelect(files) {
+    if (files.length === 0)
+      return;
+ 
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
     }
-  }
+      this.uploadForm.get("profile").setValue(files);
+    }
+  
 
   onSubmit() {
     const formData = new FormData();
@@ -44,7 +53,9 @@ export class AddPostComponent implements OnInit {
     this.postList.file = this.uploadForm.value.profile.name;  
     console.log(this.postList)
     this.request.post('POSTS', this.postList).subscribe(post=>console.log(post,"sub"))
-    this.toastr.success("Your post is created")
+    this.toastr.success("Your post is created");
+    this.title="";
+    this.textArea='';
   }
   
   linkify(plainText) {
@@ -68,6 +79,6 @@ export class AddPostComponent implements OnInit {
       replacePattern3,
       '<a href="mailto:$1">$1</a>'
     );
-    this.linkText = replacedText;
+    this.textArea = replacedText;
   }
 }
