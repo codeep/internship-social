@@ -27,7 +27,8 @@ export class RegisterComponent implements OnInit {
     private myServer: RequestService,
     private sessionService: SessionService,
     private router: Router,
-    private toastr: ToastrService) { }
+    private toastr:ToastrService
+  ){ }
 
 
   ngOnInit() {
