@@ -15,7 +15,7 @@
 </div>
 <div class=" container-flex boxShadow wisard" *ngIf='openusers'>
     <div class="users" *ngFor="let i of arr">
-        <app-suggested-users class="user" ></app-suggested-users>
+        <app-suggested-users class="user" [sugLimit]='sugLimit'></app-suggested-users>
     </div>
     <button mat-raised-button class="standartButton" type="button" (click)='goToFeed()'>Next</button>
 </div>
