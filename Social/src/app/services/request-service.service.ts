@@ -79,4 +79,31 @@ export class RequestService {
         return throwError(error);
       }));
   }
+  delete(urlAlias: string, urlParams?: UrlParams, queryParams?: UrlParams[], isAuthorized = true): Observable<Object> {
+    let url = endPoints[urlAlias];
+    let headers: HttpHeaders;
+​
+    if (isAuthorized) {
+      headers = new HttpHeaders().set('token', `${this.sessionService.getToken()}`);
+    }
+​
+    if (urlParams) {
+      url = url.replace(`{${urlParams.key}}`, urlParams.value);
+    }
+​
+    if (queryParams) {
+      queryParams.forEach((param, index) => {
+        const sign = index ? '&' : '?';
+        url += `${sign}${param.key}=${param.value}`;
+      });
+    }
+​
+    return this.http.get(`${environment.BASE_URL}${url}`, { headers })
+      .pipe( catchError((error) => {
+        if (error.status === 401) {
+          this.sessionService.logout();
+        }
+        return throwError(error);
+      }));
+  }
 }

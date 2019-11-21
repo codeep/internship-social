@@ -19,7 +19,9 @@ export class AddedPostComponent implements OnInit {
     private session: SessionService) { }
 
 
-
   ngOnInit() {
+  }
+  removePost(){
+    this.server.delete('POSTS_ID',{key:'id',value:this.post['_id']}).subscribe(del => console.log(del,'deleted!'));
   }
 }
