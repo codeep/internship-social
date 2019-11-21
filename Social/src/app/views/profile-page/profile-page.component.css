@@ -160,7 +160,6 @@
     line-height: 10px;
 }
 .feedButton mat-icon{
-    font-size: 33px;
     color: rgb(80, 197, 90);;
 }
 .feedButton:hover{
