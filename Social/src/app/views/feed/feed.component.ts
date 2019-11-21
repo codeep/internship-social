@@ -14,7 +14,8 @@ export class FeedComponent implements OnInit {
   id:number
   posts = []
   offset = 0;
-  limit=10
+  limit=10;
+  sugLimit=3;
   constructor(
     private router:Router,
     private server: RequestService,

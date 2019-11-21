@@ -11,6 +11,7 @@ import { Response } from '../../../interfaces/response.interface';
   styleUrls: ['./wisard.component.css']
 })
 export class WisardComponent implements OnInit {
+  sugLimit = 6;
   openusers = false;
   arr=[1,2];
   wisard:any;
