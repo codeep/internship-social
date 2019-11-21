@@ -40,3 +40,13 @@ mat-accordion{
 p{
   margin: 20px;
 }
+@media only screen and (max-width: 900px){
+  mat-accordion{
+    width: 80%;
+    padding: 0;
+  }
+  container-flex{
+    width: 80%;
+    padding: 0;
+  }
+}
