@@ -13,9 +13,16 @@
                 <label for="cover">Update Cover Photo</label>
             </div>
         </div>
+
+
+        <!-- <img *ngIf="post.author?.avatar" src="data:image/png;base64,{{post.author?.avatar}}" class="avatar" /> -->
+        <!-- <img *ngIf="!post.author?.avatar" src="../../assets/userdefult.png" class="avatar" /> -->
+
+
+
         <div class="profilePic">
             <div class="pic">
-                <img [src]="urlProfile" *ngIf="hideProfileImage" class="uploadProfile" height="200px">
+                <img  [src]="urlProfile" *ngIf="hideProfileImage" class="uploadProfile" height="200px">
                 <input #fileProf accept='image/*' type='file' id="profile" class="hidden" (change)="profilePhoto(fileProf.files)">
                 <div class="uploadProfileIconAndText" *ngIf="hideUploadProfileButton">
                         <mat-icon>photo_camera</mat-icon>
