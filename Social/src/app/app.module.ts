@@ -67,7 +67,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     MatDividerModule,
     MatInputModule,
-    ToastrModule.forRoot(),
     MatCardModule,
     MatExpansionModule,
     MatDatepickerModule,

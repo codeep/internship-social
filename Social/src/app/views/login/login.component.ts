@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
       this.errorEmail = false;
       this.errorPass = false;
     if(this.login.valid){
-      this.toastr.success("Hello, You are logged in.")
       this.myServer.post('LOGIN', this.login.value, null, null, false)
       .subscribe((response: Response) => {
         if (response.status >= 200 && response.status < 300 && response.data && response.data.token) {

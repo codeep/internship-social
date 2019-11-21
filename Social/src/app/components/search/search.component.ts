@@ -10,6 +10,7 @@ import { SessionService } from 'src/app/services/session.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  followingArray;
   searchForm= this.fb.group({   
     text:['']
   })
@@ -22,7 +23,9 @@ export class SearchComponent implements OnInit {
     ) { 
   }
 
-  ngOnInit() {        
+  ngOnInit() { 
+    this.followingArray = this.sessionService.getUser().followings;
+    console.log(this.followingArray);       
   }
 
   onKey(event){
