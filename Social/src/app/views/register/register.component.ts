@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
 import { Router } from '@angular/router';
@@ -27,7 +27,8 @@ export class RegisterComponent implements OnInit {
     private myServer: RequestService,
     private sessionService: SessionService,
     private router: Router,
-    private toastr: ToastrService) { }
+    private toastr:ToastrService
+  ){ }
 
 
   ngOnInit() {

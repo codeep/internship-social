@@ -2,6 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
 import { Response } from '../../../interfaces/response.interface'
+import { of } from 'rxjs';
+import { post } from 'selenium-webdriver/http';
 @Component({
   selector: 'profile-page',
   templateUrl: './profile-page.component.html',
@@ -33,14 +35,17 @@ export class ProfilePageComponent implements OnInit {
   showPosts = true;
   follow = 'followings';
   public imagePath;
+  offset=1;
+  limit=10;
+  openMy=false;
   constructor(
     private server: RequestService,
     private session: SessionService) { }
   ngOnInit() {
-    this.server.get('WALL', { key: 'id', value: this.session.getGuestID() }, [{ key: 'limit', value: 10 }, { key: 'offset', value: 0 }])
-      .subscribe((posts: { data: [] }) => {
-        this.posts = posts.data,
-          this.offset++
+      this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
+      .subscribe((posts: { data:[] }) => {
+        this.posts=posts.data
+        this.offset+=10
       });
     this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
       .subscribe((getName: Response) => {
@@ -57,17 +62,19 @@ export class ProfilePageComponent implements OnInit {
       this.openCreatePost = false;
     }
   }
-  @HostListener("window:scroll", ["$event"])
-  onScroll() {
-    let scrollHeight;
-    let totalHeight;
-    scrollHeight = document.body.scrollHeight;
-    totalHeight = window.scrollY + window.innerHeight;
-    if (totalHeight >= scrollHeight) {
-      this.server.get('WALL', { key: 'id', value: this.session.getGuestID() }, [{ key: 'limit', value: 10 }, { key: 'offset', value: this.offset }])
-        .subscribe((posts: { data: [] }) => {
+  @HostListener("window:scroll", ["$event"])  
+  onScroll(){
+      let scrollHeight;
+      let totalHeight;
+      scrollHeight = document.body.scrollHeight;
+      totalHeight = window.scrollY + window.innerHeight;
+      if (totalHeight >= scrollHeight) {
+        this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
+        .subscribe((posts: { data:[] }) => {
           this.posts.concat(posts.data)
-          this.offset++
+          this.offset+=10
+          console.log(this.posts)
+          console.log(posts)
         });
     }
   }
@@ -92,13 +99,11 @@ export class ProfilePageComponent implements OnInit {
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.urlProfile = reader.result;
-​
-      this.server.post('DETAILS',this.urlProfile).subscribe((image:Response)=>{
+      this.server.post('DETAILS', this.urlProfile).subscribe((image: Response) => {
         if (image.status >= 200 && image.status < 300) {
           
         }
       })
-     
     }
   }
   openDetailsButton() {
@@ -107,6 +112,7 @@ export class ProfilePageComponent implements OnInit {
     this.openCreatePost = false;
     this.showPosts = false;
     this.following = false;
+    this.followers = false;
   }
   openConnectionsButton() {
     this.showPosts = false;
@@ -115,7 +121,7 @@ export class ProfilePageComponent implements OnInit {
     this.openDetails = false;
     this.following = true;
     this.followingsUser = [];
-​
+
     this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
       .subscribe((getFollowings: Response) => {
         if (getFollowings.status >= 200 && getFollowings.status < 300) {
@@ -136,6 +142,7 @@ export class ProfilePageComponent implements OnInit {
       this.openCreatePost = false;
     }
     this.following = false;
+    this.followers = false;
     this.showPosts = true;
     this.openConnections = false;
     this.openDetails = false;
@@ -158,12 +165,12 @@ export class ProfilePageComponent implements OnInit {
         }
       });
   }
+
   openFollowersButton() {
     this.follow = 'followers';
     this.followersUser = [];
     this.following = false;
     this.followers = true;
-​
     this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
       .subscribe((getFollowers: Response) => {
         if (getFollowers.status >= 200 && getFollowers.status < 300) {
@@ -178,3 +185,4 @@ export class ProfilePageComponent implements OnInit {
       });
   }
 }
+

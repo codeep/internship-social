@@ -1,23 +1,24 @@
-.container{
- height: 30px;
+.container {
+  height: 30px;
 }
 
-[id='toggle-heart'] {
-  position: absolute;
+#toggle-heart {
   left: -100vw;
 }
-[for='toggle-heart'] {
+
+#toggle-heart {
   color: #aab8c2;
 }
 
-[id='toggle-heart']:checked + label {
+#toggle-heart.checked {
   color: #35bb7d;
 }
 
-[for='toggle-heart'] {
+#toggle-heart {
   font-size: 35px;
   cursor: pointer;
 }
+
 body {
   display: flex;
   justify-content: center;
@@ -25,21 +26,30 @@ body {
   height: 100vh;
 }
 
-[for='toggle-heart'] {
+#toggle-heart {
   align-self: center;
 }
-@keyframes heart { 0%, 17.5% { font-size: 0; } }
 
-[id='toggle-heart']:checked + label  {
+@keyframes heart {
+
+  0%,
+  17.5% {
+    font-size: 0;
+  }
+}
+
+#toggle-heart.checked {
   will-change: font-size;
   animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
 }
-p{
-  margin:10px;
+
+p {
+  margin: 10px;
   font-size: 25px;
   color: #aab8c2;
 }
-.like{
+
+.like {
   display: flex;
   justify-items: right;
   width: 10;

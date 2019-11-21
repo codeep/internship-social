@@ -21,13 +21,5 @@ export class AddedPostComponent implements OnInit {
 
 
   ngOnInit() {
-    this.server.get('USERS_ID', { key: 'id', value: this.session.getUser()['_id'] })
-      .subscribe((getName: Response) => {
-        if (getName.status >= 200 && getName.status < 300 && getName.data) {
-          this.name = getName.data.user.firstname,
-            this.surname = getName.data.user.lastname;
-        }
-      });
-      
   }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { HttpClient } from "@angular/common/http";
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-add-post",
@@ -10,7 +10,7 @@ import { SessionService } from 'src/app/services/session.service';
   styleUrls: ["./add-post.component.css"]
 })
 export class AddPostComponent implements OnInit {
-  postList = {title:'', content:'', file:[]};
+  postList = {title:'', content:'', file:''};
   title:string;
   textArea: string;
   linkText: string;
@@ -20,6 +20,7 @@ export class AddPostComponent implements OnInit {
     private formBuilder: FormBuilder,
     private  request: RequestService,
     private  session: SessionService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -40,9 +41,10 @@ export class AddPostComponent implements OnInit {
     this.linkify(this.textArea);
     this.postList.title = this.title;
     this.postList.content = this.textArea;
-    this.postList.file.push(this.uploadForm.value.profile.name);  
+    this.postList.file = this.uploadForm.value.profile.name;  
     console.log(this.postList)
-    this.request.post('POSTS', this.postList).subscribe(post=>console.log(post,"sub"));
+    this.request.post('POSTS', this.postList).subscribe(post=>console.log(post,"sub"))
+    this.toastr.success("Your post is created")
   }
   
   linkify(plainText) {
