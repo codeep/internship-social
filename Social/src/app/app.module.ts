@@ -9,8 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilePageComponent } from './views/profile-page/profile-page.component';
 import { ToastrModule } from 'ngx-toastr';
 
-
-
 import { AddPostComponent } from './components/post/add-post/add-post.component';
 import { AddedPostComponent } from './components/post/added-post/added-post.component';
 import { MatDividerModule } from '@angular/material/divider';
@@ -67,7 +65,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     MatDividerModule,
     MatInputModule,
-    ToastrModule.forRoot(),
     MatCardModule,
     MatExpansionModule,
     MatDatepickerModule,

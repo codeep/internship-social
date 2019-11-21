@@ -1,15 +1,14 @@
 .entireProfilePage{
     flex-direction: column;
-    width: 90%;
+    width: 95%;
 }
-
 .coverPhoto{
     height: 350px;
     background-color: white;
+    width: 100%;
     display: flex;
     position: relative;
 }
-
 .imgIconAndText{
     height: 100%;
     width: 100%;
@@ -18,29 +17,26 @@
     width: 100%;
     height: 100%;
 }
-
 .profilePic{
     height: 220px;
     width: 200px;
     position: absolute;
-    bottom: -77px;
-    left: 90px;
+    bottom: -18%;
+    left: 8%;
     box-shadow: 0px 0px 8px -3px #156b4e;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .nameSurname{
     position: absolute;
-    left: 29%;
-    top: 364px;
+    left: 35%;
+    top: 360px;
 }
 .nameSurname p{
     font-size: 21px;
 }
-
 .pic{
     height: 100%;
     width: 100%;
@@ -50,17 +46,15 @@
     width: 100%;
     height: 100%;
 }
-
 .hidden{
     display: none;
 }
-
 .uploadCoverIconAndText{
+    height: 100%;
     color: #35bb7d;
     display: flex;
     justify-content: center;
     align-items: center;   
-    margin-top: 103px;
 }
 .uploadProfileIconAndText{
     color: #35bb7d;
@@ -80,8 +74,6 @@
     font-size: 19px;
     cursor: pointer;
 }
-
-
 .uploadIconAndText mat-icon{
     font-size: 31px;
   
@@ -94,8 +86,8 @@
     color: white;
     cursor: pointer;
     position: absolute;
-    top: 311px;
-    left: 983px;    
+    top: 300px;
+    right: 10%;    
 }
 .updateProfilePhoto{
     display: none; 
@@ -104,18 +96,16 @@
     position: absolute;
     top: 186px;
     margin: 0 7px;
-
+}
+.imgIconAndText:hover .updateCoverPhoto{
+    display: block;
+    cursor: pointer;
 }
 .profilePic:hover .updateProfilePhoto{
     display: block;
     cursor: pointer;
 }
-
-.imgIconAndText:hover .updateCoverPhoto{
-    display: block;
-    cursor: pointer;
-    
-}
+​
 .updateCoverPhoto label{
     font-size: 17px;
     padding: 4px 6px;
@@ -125,28 +115,27 @@
     font-size: 16px;
     cursor: pointer;
 }
-.updateProfilePhoto mat-icon{
+.updateProfilePhoto .mat-icon{
     font-size: 17px;
-
 }
-.uploadImage mat-icon{
+.uploadImage .mat-icon{
     font-size: 26px;
-  
 }
 .profImg{
     width: 100%;
     height: 200px;
-
 }
 .sides{
-    margin: 60px 0;
+    margin: 80px 0;
     display: flex;
+    flex-wrap: wrap;
     height: 100%;
     justify-content: space-evenly;
 }
 .leftSide{
     width: 30%;
-    padding: 50px 10px;
+    padding: 50px 0;
+    background-color: white;
     height: 100%;
 }
 .menuItem{
@@ -161,16 +150,16 @@
     cursor: pointer;
 }
 .feedButton{
-    width: 3%;
-    margin:7px;
     box-shadow: 0px 0px 8px -3px rgb(80, 197, 90);
     position: absolute;
     top: 13px;
     left: 7px;
-    padding: 7px;
+    padding: 15px;
+    color: rgb(80, 197, 90);
+    font-size: 2em;
+    line-height: 10px;
 }
 .feedButton mat-icon{
-    font-size: 33px;
     color: rgb(80, 197, 90);;
 }
 .feedButton:hover{
@@ -185,18 +174,15 @@
     transform: translateX(10px);
     color:rgb(33, 95, 38);
 }
-
 .activeFollow{
     transform: translateY(-6px);
     color:rgb(33, 95, 38);
 }
-
 .mainContent{
     width: 50%;
     background-color: white;
     margin-top: 30px;
 }
-
 .connections{
     display: flex;
     box-shadow: 0px 0px 8px -3px #156b4e;
@@ -215,5 +201,34 @@ app-add-post{
     width: 50% !important;
 }
 @media only screen and (max-width: 900px) {
-    
+    .coverPhoto{
+        height: 200px;
+    }
+    .uploadCover{
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .profilePic{
+        height: 150px;
+        width: 120px;
+    }
+    .uploadCoverIconAndText{
+        align-items: flex-start;
+        justify-content: flex-end;
+    }
+    .nameSurname{
+        position: absolute;
+        left: 30%;
+        top: 250px;
+    }
+    .leftSide{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .mainContent{
+        width: 100%;
+    }
 }
