@@ -2,6 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
 import { Response } from '../../../interfaces/response.interface'
+import { of } from 'rxjs';
+import { post } from 'selenium-webdriver/http';
 @Component({
   selector: 'profile-page',
   templateUrl: './profile-page.component.html',
@@ -27,7 +29,8 @@ export class ProfilePageComponent implements OnInit {
   name;
   surname;
   posts = [];
-  offset=0;
+  offset=1;
+  limit=10;
   openMy=false;
   constructor(
     private server: RequestService,
@@ -35,10 +38,10 @@ export class ProfilePageComponent implements OnInit {
   
 
   ngOnInit() {
-      this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:10},{key:'offset',value:0}])
+      this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
       .subscribe((posts: { data:[] }) => {
         this.posts=posts.data
-        this.offset++
+        this.offset+=10
       });
       
       this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID()})
@@ -63,10 +66,14 @@ export class ProfilePageComponent implements OnInit {
       scrollHeight = document.body.scrollHeight;
       totalHeight = window.scrollY + window.innerHeight;
       if (totalHeight >= scrollHeight) {
-        this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:10},{key:'offset',value:this.offset}])
+        this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
         .subscribe((posts: { data:[] }) => {
+
+          debugger
           this.posts.concat(posts.data)
-          this.offset++
+          this.offset+=10
+          console.log(this.posts)
+          console.log(posts)
         });
       }
     

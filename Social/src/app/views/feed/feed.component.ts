@@ -14,6 +14,7 @@ export class FeedComponent implements OnInit {
   id:number
   posts = []
   offset = 0;
+  limit=10
   constructor(
     private router:Router,
     private server: RequestService,
@@ -23,12 +24,12 @@ export class FeedComponent implements OnInit {
   ngOnInit() {
     this.name = this.sessionService.getUser().firstname + " " +  this.sessionService.getUser().lastname
     this.id=this.sessionService.getUser()._id;
-    // this.server.get('FEED',{key:'id',value:this.sessionService.getGuestID()},[{key:'limit',value:10},{key:'offset',value:this.offset}])
-    //   .subscribe((posts: { data:[] }) => 
-    //   {
-    //     this.posts.concat(posts.data)
-    //     this.offset++
-    //   });
+    this.server.get('FEED',{key:'id',value:this.sessionService.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
+      .subscribe((posts: { data:[] }) => 
+      {
+        this.posts=posts.data
+        this.offset+=10
+      });
   }
 
   sendId(){
@@ -46,11 +47,11 @@ export class FeedComponent implements OnInit {
       scrollHeight = document.body.scrollHeight;
       totalHeight = window.scrollY + window.innerHeight;
       if (totalHeight >= scrollHeight) {
-        this.server.get('FEED',{key:'id',value:this.sessionService.getGuestID()},[{key:'limit',value:10},{key:'offset',value:this.offset}])
+        this.server.get('FEED',{key:'id',value:this.sessionService.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
         .subscribe((posts: { data:[] }) => 
         {
           this.posts.concat(posts.data)
-          this.offset++
+          this.offset+=10
         });  
       }
     

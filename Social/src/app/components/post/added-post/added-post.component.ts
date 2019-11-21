@@ -21,6 +21,5 @@ export class AddedPostComponent implements OnInit {
 
 
   ngOnInit() {
-      
   }
 }
