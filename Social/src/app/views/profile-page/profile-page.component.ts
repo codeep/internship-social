@@ -4,6 +4,7 @@ import { SessionService } from 'src/app/services/session.service';
 import { Response } from '../../../interfaces/response.interface'
 import { of } from 'rxjs';
 import { post } from 'selenium-webdriver/http';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'profile-page',
   templateUrl: './profile-page.component.html',
@@ -36,29 +37,35 @@ export class ProfilePageComponent implements OnInit {
   follow = 'followings';
   public imagePath;
   limit=10;
+  getGuestID:any;
   constructor(
     private server: RequestService,
+    private router: ActivatedRoute,
     private session: SessionService) { }
   ngOnInit() {
-      this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
+
+    this.router.params.subscribe((params) => {
+      this.server.get('WALL',{key:'id',value:params.id},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
       .subscribe((posts: { data:[] }) => {
         this.posts=posts.data
         this.offset+=10
       });
-    this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
-      .subscribe((getName: Response) => {
-        if (getName.status >= 200 && getName.status < 300 && getName.data) {
-          this.name = getName.data.user.firstname,
-            this.surname = getName.data.user.lastname
-        }
-      });
-    if (this.session.getUser()['_id'] == this.session.getGuestID()) {
-      this.openEdit = true;
-      this.openMy = true;
-    }
-    else {
-      this.openCreatePost = false;
-    }
+      this.server.get('USERS_ID', { key: 'id', value: params.id  })
+        .subscribe((getName: Response) => {
+          if (getName.status >= 200 && getName.status < 300 && getName.data) {
+            this.name = getName.data.user.firstname,
+              this.surname = getName.data.user.lastname
+          }
+        });
+      if (this.session.getUser()['_id'] == params.id) {
+        this.openEdit = true;
+        this.openMy = true;
+      }
+      else {
+        this.openCreatePost = false;
+      }
+    });
+      
   }
   @HostListener("window:scroll", ["$event"])  
   onScroll(){

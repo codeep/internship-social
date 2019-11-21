@@ -8,7 +8,6 @@ import { SessionService } from 'src/app/services/session.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  followingArray;
   searchForm= this.fb.group({
     text:['']
   })
@@ -20,9 +19,7 @@ export class SearchComponent implements OnInit {
     private sessionService: SessionService
     ) {
   }
-  ngOnInit() { 
-    this.followingArray = this.sessionService.getUser().followings;
-    console.log(this.followingArray);       
+  ngOnInit() {        
   }
   onKey(event){
     if(this.searchForm.value.text !== ""){

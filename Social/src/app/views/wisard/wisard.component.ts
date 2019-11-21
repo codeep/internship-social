@@ -30,7 +30,6 @@ export class WisardComponent implements OnInit {
    
   }
   onSubmit(){
-    // debugger;
     if(this.ditails.valid){
       this.wisard = this.ditails.value;
       this.wisard.firstname = this.sessionService.getUser().firstname;

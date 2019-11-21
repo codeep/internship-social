@@ -49,12 +49,12 @@
             <app-details *ngIf="openDetails"></app-details>
             <div *ngIf="following">
                 <div class="users">
-                     <app-user class="user" *ngFor="let item of followingsUser" [item]='item' [followingArray]='followingArray'></app-user>   
+                     <app-user class="user" *ngFor="let item of followingsUser" [item]='item'></app-user>   
                 </div>
             </div>
             <div *ngIf="followers">
                 <div class="users"> 
-                     <app-user class="user" *ngFor="let item of followersUser" [item]='item' [followingArray]='followingArray' ></app-user>   
+                     <app-user class="user" *ngFor="let item of followersUser" [item]='item' ></app-user>   
                 </div>
             </div>
         </div>
