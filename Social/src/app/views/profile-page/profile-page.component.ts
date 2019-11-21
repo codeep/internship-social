@@ -31,6 +31,7 @@ export class ProfilePageComponent implements OnInit {
   following;
   followers = false;
   showPosts = true;
+  follow = 'followings';
   public imagePath;
   constructor(
     private server: RequestService,
@@ -41,6 +42,9 @@ export class ProfilePageComponent implements OnInit {
         this.posts = posts.data,
           this.offset++
       });
+      // ///////////////////////////////
+    this.server.get('USERS_ID',)
+// ////////////////////////////////////
     this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
       .subscribe((getName: Response) => {
         if (getName.status >= 200 && getName.status < 300 && getName.data) {
@@ -91,6 +95,13 @@ export class ProfilePageComponent implements OnInit {
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.urlProfile = reader.result;
+// ///////////////////////
+      this.server.post('DETAILS', this.urlProfile).subscribe((image: Response) => {
+        if (image.status >= 200 && image.status < 300) {
+          
+        }
+      })
+// ///////////////////////
     }
   }
   openDetailsButton() {
@@ -99,6 +110,7 @@ export class ProfilePageComponent implements OnInit {
     this.openCreatePost = false;
     this.showPosts = false;
     this.following = false;
+    this.followers = false;
   }
   openConnectionsButton() {
     this.showPosts = false;
@@ -128,11 +140,13 @@ export class ProfilePageComponent implements OnInit {
       this.openCreatePost = false;
     }
     this.following = false;
+    this.followers = false;
     this.showPosts = true;
     this.openConnections = false;
     this.openDetails = false;
   }
   openFollowingButton() {
+    this.follow = 'followings';
     this.followingsUser = [];
     this.following = true;
     this.followers = false;
@@ -150,6 +164,7 @@ export class ProfilePageComponent implements OnInit {
       });
   }
   openFollowersButton() {
+    this.follow = 'followers';
     this.followersUser = [];
     this.following = false;
     this.followers = true;
@@ -161,7 +176,7 @@ export class ProfilePageComponent implements OnInit {
           this.followersArray.forEach(id => {
             this.server.get('USERS_ID', { key: 'id', value: id })
               .subscribe((data: Response) => {
-                this.followingsUser.push(data.data.user);
+                this.followersUser.push(data.data.user);
               })
           });
         }

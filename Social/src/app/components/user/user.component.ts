@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
   @Input() item;
+  @Input() followingArray;
   trueOrFalse = false;
-  followings;
   loginUser;
   constructor(
     private myServer: RequestService,
@@ -18,8 +18,7 @@ export class UserComponent implements OnInit {
     private router: Router) { }
   ngOnInit() {
     this.loginUser =this.session.getUser();
-    this.followings = this.loginUser.followings;
-    this.trueOrFalse = this.followings.includes(this.item['_id']);
+    this.trueOrFalse = this.followingArray.includes(this.item['_id']);
   }
   sendId(data){
     this.session.setGuestID(data);
@@ -27,7 +26,6 @@ export class UserComponent implements OnInit {
   onClickFollow(item, i){
     this.myServer.post('FOLLOW', item['_id'], {key:'id',value:item['_id']})
     .subscribe(date=>{
-      console.log(date);
       this.trueOrFalse = !this.trueOrFalse;});
   }
 }

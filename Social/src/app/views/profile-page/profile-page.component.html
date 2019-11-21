@@ -37,10 +37,10 @@
             <p class="menuItem" (click)="openConnectionsButton()" [ngClass]="{'activeMenuItem': openConnections}">Connections</p>
             <p class="menuItem" (click)="openDetailsButton()" [ngClass]="{'activeMenuItem': openDetails}">Details</p>
         </div>
-        <div class="mainContent boxShadow">
-            <app-add-post *ngIf="openCreatePost"></app-add-post>
+        <div class="mainContent">
+            <app-add-post *ngIf="openCreatePost" class="boxShadow"></app-add-post>
             <div *ngIf="showPosts">
-                <app-added-post *ngFor="let post of posts" [post]='post'></app-added-post>
+                <app-added-post *ngFor="let post of posts" [post]='post' class="boxShadow"></app-added-post>
             </div>
             <div class="connections" *ngIf="openConnections">
                 <p (click)="openFollowingButton()" [ngClass]="{'activeFollow': following }">Following</p>
@@ -49,13 +49,13 @@
             <app-details *ngIf="openDetails"></app-details>
             <div *ngIf="following">
                 <div >
-                     <app-user *ngFor="let item of followingsUser" [item]='item'></app-user>   
+                     <app-user class="boxShadow" *ngFor="let item of followingsUser" [item]='item' [followingArray]='followingArray'></app-user>   
                 </div>
             </div>
 
             <div *ngIf="followers">
                 <div > 
-                     <app-user *ngFor="let item of followersUser" [item]='item'></app-user>   
+                     <app-user class="boxShadow" *ngFor="let item of followersUser" [item]='item' [followingArray]='followingArray' ></app-user>   
                 </div>
             </div>
         </div>
