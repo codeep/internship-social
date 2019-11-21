@@ -2,7 +2,7 @@
   <div class="info">
       <div class="subtitle">
     <img src="/assets/download.png" class="avatar" />
-      <p>{{ name }} {{ surname }}</p>
+      <p>{{ post.author?.firstname }} {{ post.author?.lastname }}</p>
       </div>
    <div class="post-remove">
   <mat-icon >delete_outlined</mat-icon>
@@ -24,6 +24,6 @@
   </div>
   </div>
   <hr />
-  <app-like></app-like>
+  <app-like [post]='post'></app-like>
 </form>
     
