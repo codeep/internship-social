@@ -20,9 +20,9 @@ export class SearchComponent implements OnInit {
     private sessionService: SessionService
     ) {
   }
-  ngOnInit() {
+  ngOnInit() { 
     this.followingArray = this.sessionService.getUser().followings;
-    console.log(this.followingArray);
+    console.log(this.followingArray);       
   }
   onKey(event){
     if(this.searchForm.value.text !== ""){

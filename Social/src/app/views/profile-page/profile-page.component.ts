@@ -47,7 +47,6 @@ export class ProfilePageComponent implements OnInit {
         this.posts=posts.data
         this.offset+=10
       });
-    this.server.get('USERS_ID',)
     this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
       .subscribe((getName: Response) => {
         if (getName.status >= 200 && getName.status < 300 && getName.data) {
@@ -166,12 +165,12 @@ export class ProfilePageComponent implements OnInit {
         }
       });
   }
+
   openFollowersButton() {
     this.follow = 'followers';
     this.followersUser = [];
     this.following = false;
     this.followers = true;
-
     this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
       .subscribe((getFollowers: Response) => {
         if (getFollowers.status >= 200 && getFollowers.status < 300) {
@@ -186,3 +185,4 @@ export class ProfilePageComponent implements OnInit {
       });
   }
 }
+
