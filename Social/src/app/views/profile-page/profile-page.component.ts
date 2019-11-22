@@ -14,6 +14,8 @@ export class ProfilePageComponent implements OnInit {
   showUploadCoverButton = false;
   showUploadProfileButton = false;
   hideProfileImage = false;
+  hideUploadCoverButton=true;
+  hideUploadProfileButton=true;
   openDetails = false;
   openConnections = false;
   openCreatePost = true;
@@ -64,11 +66,16 @@ export class ProfilePageComponent implements OnInit {
     if (this.session.getUser()['_id'] == this.session.getGuestID()) {
       this.openEdit = true;
       this.openMy = true;
+      
     }
     else {
       this.openCreatePost = false;
+      this.hideUploadCoverButton=false;
+      this.hideUploadProfileButton=false;
     }
-
+    // this.details.avatar=this.urlProfile;
+    // this.details.cover=this.imgURL;
+    // this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
   }
   @HostListener("window:scroll", ["$event"])  
   onScroll(){
@@ -96,6 +103,7 @@ export class ProfilePageComponent implements OnInit {
       this.details.avatar=this.urlProfile;
       this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
     }
+    // window.location.reload();
   }
   profilePhoto(files) {
     // if (files.length === 0)
@@ -110,6 +118,7 @@ export class ProfilePageComponent implements OnInit {
       this.details.cover=this.imgURL;
       this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
     } 
+    // window.location.reload();
   }
   openDetailsButton() {
     this.openConnections = false;

@@ -7,11 +7,7 @@
             <img *ngIf="!cover" src="../../../assets/coverStandardPhoto.jpg" class="uploadCover" /> 
             <input #file accept='image/*' type='file' id="cover" class="hidden" (change)="coverPhoto(file.files)">
             
-            <!-- <div class="uploadCoverIconAndText" *ngIf="hideUploadCoverButton">
-                <mat-icon>photo_camera</mat-icon>
-                <label for="cover">Upload Cover Photo</label>
-            </div> -->
-            <div class="updateCoverPhoto" *ngIf="!hideUploadCoverButton">
+            <div class="updateCoverPhoto" *ngIf="hideUploadCoverButton">
                 <mat-icon>photo_camera</mat-icon>
                 <label for="cover">Update Cover Photo</label>
             </div>
@@ -23,13 +19,9 @@
         <div class="profilePic">    
             <div class="pic">
                 <img *ngIf="avatar" src="{{avatar}}" class="uploadProfile" /> 
-                <img *ngIf="!avatar" src="../../../assets/userdefult.png" class="uploadProfile" /> 
+                <img *ngIf="!avatar" src="../../../assets/download.png" class="uploadProfile" /> 
                 <input #fileProf accept='image/*' type='file' id="profile" class="hidden" (change)="profilePhoto(fileProf.files)">
-                <div class="uploadProfileIconAndText" *ngIf="hideUploadProfileButton">
-                        <mat-icon>photo_camera</mat-icon>
-                        <label for="profile">Upload Profile Photo</label>
-                </div>
-                <div class="updateProfilePhoto" *ngIf="!hideUploadProfileButton">
+                <div class="updateProfilePhoto" *ngIf="hideUploadProfileButton">
                     <mat-icon>photo_camera</mat-icon>
                     <label for="profile">Update Profile Photo</label>
                 </div>
