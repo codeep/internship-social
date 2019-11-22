@@ -41,7 +41,6 @@ export class ProfilePageComponent implements OnInit {
     avatar:"",
     cover:""
   };
-
   public imagePath;
   limit = 10;
   constructor(
