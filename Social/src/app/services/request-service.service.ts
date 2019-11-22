@@ -98,7 +98,7 @@ export class RequestService {
       });
     }
 ​
-    return this.http.get(`${environment.BASE_URL}${url}`, { headers })
+    return this.http.delete(`${environment.BASE_URL}${url}`, { headers })
       .pipe( catchError((error) => {
         if (error.status === 401) {
           this.sessionService.logout();

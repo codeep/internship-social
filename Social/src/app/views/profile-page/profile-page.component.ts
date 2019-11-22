@@ -35,9 +35,7 @@ export class ProfilePageComponent implements OnInit {
   showPosts = true;
   follow = 'followings';
   public imagePath;
-  offset=1;
   limit=10;
-  openMy=false;
   constructor(
     private server: RequestService,
     private session: SessionService) { }

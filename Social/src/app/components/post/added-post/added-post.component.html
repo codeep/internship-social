@@ -6,7 +6,7 @@
       <p>{{ post.author?.firstname }} {{ post.author?.lastname }}</p>
       </div>
    <div class="post-remove">
-  <button class='rem' (click)='removePost()'><mat-icon>delete_outlined</mat-icon></button>
+  <button class='rem' *ngIf='postDeleteBtn'(click)='removePost()'><mat-icon>delete_outlined</mat-icon></button>
   </div>
 </div>
   <hr />
@@ -18,6 +18,8 @@
       <mat-card-content [innerHTML]="post.content"></mat-card-content>
     </div>
    <div class="post-img">
+      <img *ngIf="image" src="{{image}}" />
+      <!-- <input #file accept='image/*' type='file' id="cover" class="hidden" (change)="coverPhoto(file.files)"> -->
   </div>
   </div>
   <hr />

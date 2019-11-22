@@ -17,6 +17,7 @@ export class AddPostComponent implements OnInit {
   uploadForm: FormGroup;
   public imagePath;
   imgURL: any;
+  file:string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,30 +33,30 @@ export class AddPostComponent implements OnInit {
   }
   onFileSelect(files) {
     if (files.length === 0)
-      return;
- 
-    var reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]); 
-    reader.onload = (_event) => { 
-      this.imgURL = reader.result; 
-    }
-      this.uploadForm.get("profile").setValue(files);
-    }
-  
-
+      return;       
+        // this.hideUploadCoverButton = false;
+        var reader = new FileReader();
+        this.imagePath = files;
+        reader.readAsDataURL(files[0]);
+        reader.onload = (_event) => {
+          this.imgURL = reader.result;
+          this.file=this.imgURL;
+        }
+      }
   onSubmit() {
+    // this.imgURL=false;
     const formData = new FormData();
     formData.append("file", this.uploadForm.get("profile").value);
     this.linkify(this.textArea);
     this.postList.title = this.title;
     this.postList.content = this.textArea;
-    this.postList.file = this.uploadForm.value.profile.name;  
-    console.log(this.postList)
+    this.postList.file=this.file;
     this.request.post('POSTS', this.postList).subscribe(post=>console.log(post,"sub"))
     this.toastr.success("Your post is created");
     this.title="";
     this.textArea='';
+    this.file="";
+    
   }
   
   linkify(plainText) {
