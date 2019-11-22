@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     this.errorsOpen = false;
     if(this.register.valid && this.register.value.confirmPassword === this.register.value.password){
+      this.register.value.birthdate = this.register.value.birthdate.getDate() + '.'+ (this.register.value.birthdate.getMonth() + 1) + '.' + this.register.value.birthdate.getFullYear();
       this.myServer.post('REGISTER', this.register.value, null, null, false)
       .subscribe((response: Response) => {
         if (response.status >= 200 && response.status < 300 && response.data) {

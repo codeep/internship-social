@@ -2,8 +2,10 @@
 <form class="container-flex postMargin boxShadow">
   <div class="info">
       <div class="subtitle">
-    <img src="/assets/download.png" class="avatar" />
-      <p>{{ post.author?.firstname }} {{ post.author?.lastname }}</p>
+        <a [routerLink]="['/profile', post.author._id]" (click)="sendId()">
+          <img src="/assets/download.png" class="avatar" />
+          <p>{{ post.author?.firstname }} {{ post.author?.lastname }}</p>
+        </a>
       </div>
    <div class="post-remove">
   <button class='rem' (click)='removePost()'><mat-icon>delete_outlined</mat-icon></button>

@@ -43,28 +43,25 @@ export class ProfilePageComponent implements OnInit {
     private router: ActivatedRoute,
     private session: SessionService) { }
   ngOnInit() {
-
-    this.router.params.subscribe((params) => {
-      this.server.get('WALL',{key:'id',value:params.id},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
+      this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
       .subscribe((posts: { data:[] }) => {
         this.posts=posts.data
         this.offset+=10
       });
-      this.server.get('USERS_ID', { key: 'id', value: params.id  })
+      this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
         .subscribe((getName: Response) => {
           if (getName.status >= 200 && getName.status < 300 && getName.data) {
             this.name = getName.data.user.firstname,
               this.surname = getName.data.user.lastname
           }
         });
-      if (this.session.getUser()['_id'] == params.id) {
+      if (this.session.getUser()['_id'] == this.session.getGuestID()) {
         this.openEdit = true;
         this.openMy = true;
       }
       else {
         this.openCreatePost = false;
-      }
-    });
+      };
       
   }
   @HostListener("window:scroll", ["$event"])  
@@ -76,7 +73,7 @@ export class ProfilePageComponent implements OnInit {
       if (totalHeight >= scrollHeight) {
         this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
         .subscribe((posts: { data:[] }) => {
-          this.posts.concat(posts.data);
+          this.posts.push(...posts.data);
           this.offset+=10;
         });
     }
@@ -118,13 +115,12 @@ export class ProfilePageComponent implements OnInit {
     this.followers = false;
   }
   openConnectionsButton() {
+    this.followingsUser = [];
     this.showPosts = false;
     this.openCreatePost = false;
     this.openConnections = true;
     this.openDetails = false;
     this.following = true;
-    this.followingsUser = [];
-
     this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
       .subscribe((getFollowings: Response) => {
         if (getFollowings.status >= 200 && getFollowings.status < 300) {
@@ -139,6 +135,8 @@ export class ProfilePageComponent implements OnInit {
       });
   }
   openMyPostsButton() {
+    this.router.params.subscribe((params) => {
+      this.followingsUser = [];
     if (this.session.getUser()['_id'] == this.session.getGuestID()) {
       this.openCreatePost = true;
     } else {
@@ -148,25 +146,25 @@ export class ProfilePageComponent implements OnInit {
     this.followers = false;
     this.showPosts = true;
     this.openConnections = false;
-    this.openDetails = false;
+    this.openDetails = false;})
   }
   openFollowingButton() {
-    this.follow = 'followings';
     this.followingsUser = [];
+    this.follow = 'followings';
     this.following = true;
     this.followers = false;
     this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
       .subscribe((getFollowings: Response) => {
         if (getFollowings.status >= 200 && getFollowings.status < 300) {
-          this.followingArray = getFollowings.data.user.followings;
-          this.followingArray.forEach(id => {
-            this.server.get('USERS_ID', { key: 'id', value: id })
-              .subscribe((data: Response) => {
-                this.followingsUser.push(data.data.user);
-              })
-          });
-        }
-      });
+            this.followingArray = getFollowings.data.user.followings;
+            this.followingArray.forEach(id => {
+              this.server.get('USERS_ID', { key: 'id', value: id })
+                .subscribe((data: Response) => {
+                  this.followingsUser.push(data.data.user);
+                })
+            });
+          }
+       });
   }
 
   openFollowersButton() {
@@ -186,6 +184,16 @@ export class ProfilePageComponent implements OnInit {
           });
         }
       });
+  }
+  openPost(){
+    this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
+    .subscribe((posts: { data:[] }) => {
+      this.posts=posts.data
+      this.offset+=10
+    });
+  }
+  followUser(){
+    window.location.reload();
   }
 }
 
