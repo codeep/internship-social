@@ -82,8 +82,6 @@ export class DetailsComponent implements OnInit {
     if (this.session.getUser()['_id'] == this.session.getGuestID()) {
       this.openEdit = true;
     }
-
-    
   }
   allowToEditButton() {
     this.allowToEdit = true;
@@ -95,7 +93,6 @@ export class DetailsComponent implements OnInit {
     this.allowToEdit = false;
     this.detail.disable();
     this.sendDetails = this.detail.value;
-    console.log(this.sendDetails);
     this.server.post('DETAILS', this.sendDetails).subscribe((response: Response) => {
       if (response.status >= 200 && response.status < 300) {
         this.openSave = false;

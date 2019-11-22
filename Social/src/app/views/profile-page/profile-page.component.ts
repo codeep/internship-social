@@ -2,8 +2,6 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
 import { Response } from '../../../interfaces/response.interface'
-import { of } from 'rxjs';
-import { post } from 'selenium-webdriver/http';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'profile-page',
@@ -13,8 +11,6 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfilePageComponent implements OnInit {
   imgURL;
   urlProfile;
-  hideUploadCoverButton = true;
-  hideUploadProfileButton = true;
   showUploadCoverButton = false;
   showUploadProfileButton = false;
   hideProfileImage = false;
@@ -35,34 +31,44 @@ export class ProfilePageComponent implements OnInit {
   followers = false;
   showPosts = true;
   follow = 'followings';
+  cover;
+  avatar;
+  details={
+    avatar:"",
+    cover:""
+  };
   public imagePath;
-  limit=10;
-  getGuestID:any;
+  limit = 10;
   constructor(
     private server: RequestService,
     private router: ActivatedRoute,
     private session: SessionService) { }
   ngOnInit() {
-      this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
-      .subscribe((posts: { data:[] }) => {
-        this.posts=posts.data
-        this.offset+=10
+    this.server.get('WALL', { key: 'id', value: this.session.getGuestID() }, [{ key: 'limit', value: this.limit }, { key: 'offset', value: this.offset }])
+      .subscribe((posts: { data: [] }) => {
+        this.posts = posts.data
+        this.offset += 10
       });
       this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
-        .subscribe((getName: Response) => {
-          if (getName.status >= 200 && getName.status < 300 && getName.data) {
-            this.name = getName.data.user.firstname,
-              this.surname = getName.data.user.lastname
-          }
-        });
-      if (this.session.getUser()['_id'] == this.session.getGuestID()) {
-        this.openEdit = true;
-        this.openMy = true;
-      }
-      else {
-        this.openCreatePost = false;
-      };
-      
+      .subscribe((getName: Response) => {
+        if (getName.status >= 200 && getName.status < 300 && getName.data) {
+          this.name = getName.data.user.firstname;
+          this.surname = getName.data.user.lastname;
+          this.avatar=getName.data.user.avatar;
+          this.cover=getName.data.user.cover;
+          // this.hideUploadProfileButton=false;
+          // this.hideUploadCoverButton=false;
+
+        }
+      });
+    if (this.session.getUser()['_id'] == this.session.getGuestID()) {
+      this.openEdit = true;
+      this.openMy = true;
+    }
+    else {
+      this.openCreatePost = false;
+    }
+
   }
   @HostListener("window:scroll", ["$event"])  
   onScroll(){
@@ -79,32 +85,31 @@ export class ProfilePageComponent implements OnInit {
     }
   }
   coverPhoto(files) {
-    if (files.length === 0)
-      return;
-    this.hideUploadCoverButton = false;
+    // if (files.length === 0)
+    //   return;
     var reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.imgURL = reader.result;
+      this.details.cover=this.imgURL;
+      this.details.avatar=this.urlProfile;
+      this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
     }
   }
   profilePhoto(files) {
-    if (files.length === 0)
-      return;
-    this.hideUploadProfileButton = false;
+    // if (files.length === 0)
+    //   return;
     this.hideProfileImage = true;
     var reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.urlProfile = reader.result;
-      this.server.post('DETAILS', this.urlProfile).subscribe((image: Response) => {
-        if (image.status >= 200 && image.status < 300) {
-          
-        }
-      })
-    }
+      this.details.avatar=this.urlProfile;
+      this.details.cover=this.imgURL;
+      this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
+    } 
   }
   openDetailsButton() {
     this.openConnections = false;
@@ -135,8 +140,6 @@ export class ProfilePageComponent implements OnInit {
       });
   }
   openMyPostsButton() {
-    this.router.params.subscribe((params) => {
-      this.followingsUser = [];
     if (this.session.getUser()['_id'] == this.session.getGuestID()) {
       this.openCreatePost = true;
     } else {
@@ -146,7 +149,7 @@ export class ProfilePageComponent implements OnInit {
     this.followers = false;
     this.showPosts = true;
     this.openConnections = false;
-    this.openDetails = false;})
+    this.openDetails = false;
   }
   openFollowingButton() {
     this.followingsUser = [];
