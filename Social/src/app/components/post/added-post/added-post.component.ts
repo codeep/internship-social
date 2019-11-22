@@ -22,6 +22,6 @@ export class AddedPostComponent implements OnInit {
   ngOnInit() {
   }
   removePost(){
-    this.server.delete('POSTS_ID',{key:'id',value:this.post['_id']}).subscribe(del => console.log(del,'deleted!'));
+    this.server.delete('POSTS_ID',{key:'id',value:this.post['_id']}).subscribe();
   }
 }
