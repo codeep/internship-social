@@ -13,8 +13,8 @@ import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 export class ProfilePageComponent implements OnInit {
   imgURL;
   urlProfile;
-  hideUploadCoverButton = true;
-  hideUploadProfileButton = true;
+  // hideUploadCoverButton = true;
+  // hideUploadProfileButton = true;
   showUploadCoverButton = false;
   showUploadProfileButton = false;
   hideProfileImage = false;
@@ -38,7 +38,8 @@ export class ProfilePageComponent implements OnInit {
   cover;
   avatar;
   details={
-    avatar:""
+    avatar:"",
+    cover:""
   };
 
   public imagePath;
@@ -55,10 +56,12 @@ export class ProfilePageComponent implements OnInit {
     this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
       .subscribe((getName: Response) => {
         if (getName.status >= 200 && getName.status < 300 && getName.data) {
-          this.name = getName.data.user.firstname,
-          this.surname = getName.data.user.lastname,
-
-          this.details.avatar=getName.data.user.avatar
+          this.name = getName.data.user.firstname;
+          this.surname = getName.data.user.lastname;
+          this.avatar=getName.data.user.avatar;
+          this.cover=getName.data.user.cover;
+          // this.hideUploadProfileButton=false;
+          // this.hideUploadCoverButton=false;
 
         }
       });
@@ -86,20 +89,22 @@ export class ProfilePageComponent implements OnInit {
     }
   }
   coverPhoto(files) {
-    if (files.length === 0)
-      return;
-    this.hideUploadCoverButton = false;
+    // if (files.length === 0)
+    //   return;
     var reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.imgURL = reader.result;
+      this.details.cover=this.imgURL;
+      this.details.avatar=this.urlProfile;
+      this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
     }
   }
   profilePhoto(files) {
-    if (files.length === 0)
-      return;
-    this.hideUploadProfileButton = false;
+    // if (files.length === 0)
+    //   return;
+    // this.hideUploadProfileButton = false;
     this.hideProfileImage = true;
     var reader = new FileReader();
     this.imagePath = files;
@@ -107,6 +112,7 @@ export class ProfilePageComponent implements OnInit {
     reader.onload = (_event) => {
       this.urlProfile = reader.result;
       this.details.avatar=this.urlProfile;
+      this.details.cover=this.imgURL;
       this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
     } 
   }
