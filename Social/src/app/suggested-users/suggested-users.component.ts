@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RequestService } from '../services/request-service.service';
 import { Response } from 'src/interfaces/response.interface';
 import { SessionService } from '../services/session.service';
@@ -9,6 +9,7 @@ import { SessionService } from '../services/session.service';
   styleUrls: ['./suggested-users.component.css']
 })
 export class SuggestedUsersComponent implements OnInit {
+  @Input() sugLimit;
   users =[];
   loginUser:any;
   followings;
@@ -18,7 +19,7 @@ export class SuggestedUsersComponent implements OnInit {
     private session:SessionService) {  
   }
   ngOnInit() {
-    this.myService.post('NEARBY',null,null)
+    this.myService.post('NEARBY',[{key:'limit',value:this.sugLimit}])
     .subscribe((response: Response)=>{
       if(response.status >= 200 && response.status < 300 && response.data){
         this.users=response.data;

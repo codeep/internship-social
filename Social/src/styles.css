@@ -71,17 +71,14 @@ body{
   padding: 5px;
 }
 .users{
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    width: 100%;
-    flex-direction: row;
 }
 .user{
-    width: 30%;
+    width: 27%;
     margin:10px 0;
-    /* box-shadow: 1px 1px 7px 1px gray; */
-    padding: 10px 0;
     border-radius: 5px;
     text-align: center;
 }
@@ -107,6 +104,9 @@ body{
     display: none;
   }
   .register{
+    width: 95%;
+  }
+  input, mat-acardion{
     width: 95%;
   }
 }

@@ -2,20 +2,28 @@
     <div class="coverPhoto">
         <div class="imgIconAndText">
             <p class="feedButton" routerLink="/feed"><mat-icon>keyboard_arrow_left</mat-icon></p>           
-            <img [src]="imgURL" *ngIf="imgURL" class="uploadCover">
+            
+            <img *ngIf="cover" src="{{cover}}" class="uploadCover" /> 
+            <img *ngIf="!cover" src="../../../assets/coverStandardPhoto.jpg" class="uploadCover" /> 
             <input #file accept='image/*' type='file' id="cover" class="hidden" (change)="coverPhoto(file.files)">
-            <div class="uploadCoverIconAndText" *ngIf="hideUploadCoverButton">
+            
+            <!-- <div class="uploadCoverIconAndText" *ngIf="hideUploadCoverButton">
                 <mat-icon>photo_camera</mat-icon>
                 <label for="cover">Upload Cover Photo</label>
-            </div>
+            </div> -->
             <div class="updateCoverPhoto" *ngIf="!hideUploadCoverButton">
                 <mat-icon>photo_camera</mat-icon>
                 <label for="cover">Update Cover Photo</label>
             </div>
         </div>
-        <div class="profilePic">
+
+        <!-- <img *ngIf="post.author?.avatar" src="data:image/png;base64,{{post.author?.avatar}}" class="avatar" /> -->
+        <!-- <img *ngIf="!post.author?.avatar" src="../../assets/userdefult.png" class="avatar" /> -->
+
+        <div class="profilePic">    
             <div class="pic">
-                <img [src]="urlProfile" *ngIf="hideProfileImage" class="uploadProfile" height="200px">
+                <img *ngIf="avatar" src="{{avatar}}" class="uploadProfile" /> 
+                <img *ngIf="!avatar" src="../../../assets/userdefult.png" class="uploadProfile" /> 
                 <input #fileProf accept='image/*' type='file' id="profile" class="hidden" (change)="profilePhoto(fileProf.files)">
                 <div class="uploadProfileIconAndText" *ngIf="hideUploadProfileButton">
                         <mat-icon>photo_camera</mat-icon>
@@ -48,13 +56,13 @@
             </div>
             <app-details *ngIf="openDetails"></app-details>
             <div *ngIf="following">
-                <div >
-                     <app-user class="boxShadow" *ngFor="let item of followingsUser" [item]='item' [followingArray]='followingArray'></app-user>   
+                <div class="users">
+                     <app-user class="user" *ngFor="let item of followingsUser" [item]='item' [followingArray]='followingArray'></app-user>   
                 </div>
             </div>
             <div *ngIf="followers">
-                <div > 
-                     <app-user class="boxShadow" *ngFor="let item of followersUser" [item]='item' [followingArray]='followingArray' ></app-user>   
+                <div class="users"> 
+                     <app-user class="user" *ngFor="let item of followersUser" [item]='item' [followingArray]='followingArray' ></app-user>   
                 </div>
             </div>
         </div>
