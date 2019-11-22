@@ -1,6 +1,8 @@
 <div class="thisuser boxShadow">
-    <img [routerLink]="['/profile',item._id]" (click)="sendId(item._id)" src="../../assets/userdefult.png" alt="Img">
-    <p [routerLink]="['/profile',item._id]" (click)="sendId(item._id)">{{item.firstname}} {{item.lastname}}</p>
-    <button  class="followButton" (click)='onClickFollow(item)' *ngIf="!trueOrFalse">Follow</button>
-    <button  class="unFollowButton" (click)='onClickFollow(item)' *ngIf="trueOrFalse">UnFollow</button>
+    <a (click)="sendId(item._id)">
+        <img  src="../../assets/userdefult.png" alt="Img">
+        <p  >{{item.firstname}} {{item.lastname}}</p>
+    </a>
+    <button  class="followButton" (click)='onClickFollow(item)' *ngIf="!trueOrFalse && myPage">Follow</button>
+    <button  class="unFollowButton" (click)='onClickFollow(item)' *ngIf="trueOrFalse && myPage">UnFollow</button>
 </div>

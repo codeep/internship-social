@@ -19,7 +19,7 @@ export class SuggestedUsersComponent implements OnInit {
     private session:SessionService) {  
   }
   ngOnInit() {
-    this.myService.post('NEARBY',[{key:'limit',value:this.sugLimit}])
+    this.myService.post('NEARBY',null, null,[{key:'limit',value:this.sugLimit}])
     .subscribe((response: Response)=>{
       if(response.status >= 200 && response.status < 300 && response.data){
         this.users=response.data;

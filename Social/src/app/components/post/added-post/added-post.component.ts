@@ -39,4 +39,7 @@ export class AddedPostComponent implements OnInit {
   removePost(){
     this.server.delete('POSTS_ID',{key:'id',value:this.post['_id']}).subscribe();
   }
+  sendId(){
+    this.session.setGuestID(this.post.author._id);    
+  }
 }
