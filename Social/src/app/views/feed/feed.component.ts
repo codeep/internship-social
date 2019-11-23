@@ -10,12 +10,15 @@ import { SessionService } from 'src/app/services/session.service';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
+  posting = false;
   name:string
   id:number
   posts = []
   offset = 0;
   limit=10;
   sugLimit=3;
+  user
+  newpost:any
   constructor(
     private router:Router,
     private server: RequestService,
@@ -23,12 +26,16 @@ export class FeedComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.name = this.sessionService.getUser().firstname + " " +  this.sessionService.getUser().lastname
-    this.id=this.sessionService.getUser()._id;
+    
+    this.user = this.sessionService.getUser();
+    this.id=this.user._id;
+    this.name = this.user.firstname + " " +  this.user.lastname
     this.server.get('FEED',{key:'id',value:this.sessionService.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
       .subscribe((posts: { data:[] }) => 
       {
         this.posts=posts.data
+        console.log(this.posts,"my posts ngOnit")
+        console.log(posts.data,"sub post ngOnit")
         this.offset+=10
       });
   }
@@ -53,8 +60,25 @@ export class FeedComponent implements OnInit {
         {
           this.posts.push(...posts.data)
           this.offset+=10
+          console.log(this.posts,"my posts sub")
+          console.log(posts.data,"sub post sub")
         });  
       }
     
+  }
+  getNewPost(event){
+    this.newpost={
+      author:{
+        _id:this.user._id,
+        firstname:this.user.firstname,
+        lastname:this.user.lastname,
+        avatar:this.user.avatar
+      },
+      title:event.title,
+      content:event.content,
+      file:event.file,
+      likes:[]
+    }
+
   }
 }

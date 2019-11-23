@@ -22,17 +22,18 @@ export class AddedPostComponent implements OnInit {
 
 
   ngOnInit() {
-    if (this.session.getUser()['_id'] == this.session.getGuestID()) {
+    console.log(this.post,"mypost")
+    if (this.session.getUser()['_id'] == this.post.author._id) {
       this.postDeleteBtn= true;
     }
-    this.server.get('', { key: 'id', value: this.session.getGuestID() })
-      .subscribe((getName: Response) => {
-        if (getName.status >= 200 && getName.status < 300 && getName.data) {
-          this.image=getName.data.user.file;
-          // this.hideUploadProfileButton=false;
-          // this.hideUploadCoverButton=false;
-        }
-      });
+    // this.server.get('', { key: 'id', value: this.session.getGuestID() })
+    //   .subscribe((getName: Response) => {
+    //     if (getName.status >= 200 && getName.status < 300 && getName.data) {
+    //       this.image=getName.data.user.file;
+    //       // this.hideUploadProfileButton=false;
+    //       // this.hideUploadCoverButton=false;
+    //     }
+    //   });
 
 
   }

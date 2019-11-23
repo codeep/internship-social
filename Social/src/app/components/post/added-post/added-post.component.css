@@ -1,11 +1,12 @@
 form {
   display: flex;
   flex-direction: column;
-  padding: 20px 10px;
+  padding: 20px  2%;
   background-color: #fff;
 }
 .postMargin{
   margin-bottom: 10px;
+  width: 95%;
 }
 
 .avatar {
@@ -36,4 +37,11 @@ p {
 .rem {
   background: transparent;
   border: none;
+}
+.file{
+  max-width: 100%;
+}
+a{
+  display: flex;
+  margin-bottom: 5px;
 }
