@@ -13,7 +13,7 @@ import { Response } from '../../../interfaces/response.interface';
 export class WisardComponent implements OnInit {
   sugLimit = 6;
   openusers = false;
-  arr=[1,2];
+  arr=[1];
   wisard:any;
   ditails = this.fb.group({
     occupation: ['', Validators.required],
