@@ -55,11 +55,7 @@ export class FeedComponent implements OnInit {
       this.server.get('FEED', { key: 'id', value: this.sessionService.getGuestID() }, [{ key: 'limit', value: this.limit }, { key: 'offset', value: this.offset }])
         .subscribe((posts: { data: [] }) => {
           this.posts.push(...posts.data)
-<<<<<<< HEAD
           this.offset += 10;
-=======
-          this.offset += 10
->>>>>>> da38c19daa541ed9534b07890e90faada93469ab
         });
     }
 
