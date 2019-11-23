@@ -1,8 +1,6 @@
 <div class="container">
-        <div class='like'>
-<!-- <input id="toggle-heart" type="checkbox" (change)="toggleEditable($event)" /> -->
-
-<label id="toggle-heart" [ngClass]="{'checked': hasLiked}"(click)="toggleEditable()" for="toggle-heart">❤</label>
-<p>Likes {{this.post?.likes?.length}}</p>
-</div>
+  <div class='like'>
+    <label id="toggle-heart" [ngClass]="{'checked': hasLiked}" (click)="toggleEditable()" for="toggle-heart">❤</label>
+    <p>Likes {{this.post?.likes?.length}}</p>
+  </div>
 </div>

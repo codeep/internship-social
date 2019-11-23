@@ -96,7 +96,7 @@ export class DetailsComponent implements OnInit {
     this.server.post('DETAILS', this.sendDetails).subscribe((response: Response) => {
       if (response.status >= 200 && response.status < 300) {
         this.openSave = false;
-        console.log(response,"response d")
+        this.session.setUser(response.data)
       }
     })
   }

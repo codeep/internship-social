@@ -4,6 +4,7 @@
   width: 100%;
   margin-top: 20px;
 }
+
 .search {
   margin: 10px 0;
   padding: 10px 0;
@@ -16,8 +17,9 @@
 .search>p:hover {
   cursor: pointer;
 }
-.user{
+
+.user {
   width: 90%;
   padding: 2%;
-  margin:20px 0;
+  margin: 20px 0;
 }

@@ -1,46 +1,56 @@
 form {
   display: flex;
   flex-direction: column;
-  padding: 20px  2%;
+  padding: 20px 2%;
   background-color: #fff;
 }
-.postMargin{
+
+.postMargin {
   margin-bottom: 10px;
   width: 95%;
 }
+
 .avatar {
   vertical-align: middle;
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
+
 mat-icon {
   color: #050505;
 }
+
 mat-icon:hover {
   color: #35bb7d;
 }
+
 .info {
   display: flex;
   justify-content: space-between;
 }
+
 .subtitle {
   display: flex;
   justify-content: left;
   font-size: 18px;
   color: black;
 }
+
 p {
   margin: 13px;
 }
+
 .rem {
   background: transparent;
   border: none;
 }
-.file{
+
+.file {
   max-width: 100%;
 }
-a{
+
+a {
   display: flex;
   margin-bottom: 5px;
 }
