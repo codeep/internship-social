@@ -215,7 +215,7 @@ export class ProfilePageComponent implements OnInit {
       likes: []
     }
 
-  this.posts.push(newpost);
+  this.posts.unshift(newpost);
 
   }
 
