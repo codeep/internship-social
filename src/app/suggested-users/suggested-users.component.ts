@@ -34,6 +34,12 @@ export class SuggestedUsersComponent implements OnInit {
   onClickFollow(item, i) {
     this.myService.post('FOLLOW', item['_id'], { key: 'id', value: item['_id'] })
       .subscribe(date => {
+        this.myService.get('USERS_ID', { key: 'id', value: this.session.getUser()._id })
+          .subscribe((data: Response) => {
+            if (data.status >= 200 && data.status < 300 && data.data) {
+              this.session.setUser(data.data.user);
+            }
+          });
         this.trueOrFalse[i] = !this.trueOrFalse[i];
       });
   }
