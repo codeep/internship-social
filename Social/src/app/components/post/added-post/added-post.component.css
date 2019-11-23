@@ -60,4 +60,6 @@ a {
 }
 .post-title {
   margin-top: 10px;
+  font-weight: bold;
+  color: #215c40;
 }

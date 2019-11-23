@@ -5,7 +5,8 @@
   <input formControlName="birthdate" class="inputFields">
   <input formControlName="occupation" class="inputFields">
   <input formControlName="location" class="inputFields">
-  <input formControlName="bio" class="inputFields">
+  <input formControlName="bio" class="inputFields" *ngIf='!openbio'>
+  <p class="inputFieldsp" *ngIf='openbio'>{{detail.value.bio}}</p>
   <button class="save" *ngIf="openSave" (click)="saveButton()">Save</button>
   <button class="standartButton" *ngIf="openEdit" (click)="allowToEditButton()">Edit</button>
 </form>

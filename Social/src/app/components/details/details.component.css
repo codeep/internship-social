@@ -30,7 +30,14 @@ form {
   height: 30px;
   color: #2c5a4b;
 }
-
+.inputFieldsp{
+  width: 90%;
+  font-size: 18px;
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid silver;
+  padding: 5px;
+}
 input:disabled {
   color: black;
 }

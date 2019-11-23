@@ -10,6 +10,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
+  openbio=true;
   firstname;
   lastname;
   email;
@@ -86,11 +87,13 @@ export class DetailsComponent implements OnInit {
   allowToEditButton() {
     this.allowToEdit = true;
     this.openSave = true;
+    this.openbio = false;
     this.detail.enable();
     this.detail.controls.email.disable()
   }
   saveButton() {
     this.allowToEdit = false;
+    this.openbio = true;
     this.detail.disable();
     this.sendDetails = this.detail.value;
     this.server.post('DETAILS', this.sendDetails).subscribe((response: Response) => {

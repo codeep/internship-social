@@ -4,9 +4,8 @@
           <p class="feedButton" routerLink="/feed">
               <mat-icon>keyboard_arrow_left</mat-icon>
           </p>
-
-          <img *ngIf="cover" src="{{cover}}" class="uploadCover" />
-          <img *ngIf="!cover" src="../../../assets/coverStandardPhoto.jpg" class="uploadCover" />
+          <div *ngIf="cover" [ngStyle]="{'background-image': 'url(' +cover+')'}"  class="uploadCover" ></div>
+          <div *ngIf="!cover" style="background-image: url(../../../assets/coverStandardPhoto.jpg)" class="uploadCover"></div>
           <input #file accept='image/*' type='file' id="cover" class="hidden" (change)="coverPhoto(file.files)">
           <div class="updateCoverPhoto">
               <mat-icon>photo_camera</mat-icon>
@@ -15,10 +14,10 @@
       </div>
       <div class="profilePic">
           <div class="pic">
-              <img *ngIf="avatar" src="{{avatar}}" class="uploadProfile" />
-              <img *ngIf="!avatar" src="../../../assets/download.png" class="uploadProfile" />
+              <div *ngIf="avatar" [ngStyle]="{'background-image': 'url(' +avatar+')'}"  class="uploadProfile" ></div>
+              <div *ngIf="!avatar" style="background-image: url(../../../assets/download.png)" class="uploadProfile"></div>
               <div class="nameSurname">
-                  <p>{{ name }} {{ surname }}</p>
+                  {{ name }} {{ surname }}
               </div>
               <input #fileProf accept='image/*' type='file' id="profile" class="hidden"
                   (change)="profilePhoto(fileProf.files)">
