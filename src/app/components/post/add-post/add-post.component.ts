@@ -56,7 +56,7 @@ export class AddPostComponent implements OnInit {
       this.textArea = '';
       this.file = "";
       this.imgURL = ''
-      this.emitter.emit(this.postList)
+      window.location.reload();
     })
 
 

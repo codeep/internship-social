@@ -33,8 +33,6 @@ export class FeedComponent implements OnInit {
     this.server.get('FEED', { key: 'id', value: this.sessionService.getGuestID() }, [{ key: 'limit', value: this.limit }, { key: 'offset', value: this.offset }])
       .subscribe((posts: { data: [] }) => {
         this.posts = posts.data
-        console.log(this.posts, "my posts ngOnit")
-        console.log(posts.data, "sub post ngOnit")
         this.offset += 10
       });
   }
@@ -58,8 +56,6 @@ export class FeedComponent implements OnInit {
         .subscribe((posts: { data: [] }) => {
           this.posts.push(...posts.data)
           this.offset += 10
-          console.log(this.posts, "my posts sub")
-          console.log(posts.data, "sub post sub")
         });
     }
 
