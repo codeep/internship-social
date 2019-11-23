@@ -50,12 +50,14 @@ export class AddPostComponent implements OnInit {
     this.postList.title = this.title;
     this.postList.content = this.textArea;
     this.postList.file = this.file;
-    this.request.post('POSTS', this.postList).subscribe(data => {
+    this.request.post('POSTS', this.postList).subscribe(res => {
+    
       this.toastr.success("Your post is created");
       this.title = "";
       this.textArea = '';
       this.file = "";
       this.imgURL = ''
+      this.postList['_id'] = res['data']['_id']; 
       this.emitter.emit(this.postList)
     })
 

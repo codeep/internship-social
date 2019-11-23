@@ -199,5 +199,30 @@ export class ProfilePageComponent implements OnInit {
         }
       });
   }
+
+  getNewPost(event) {
+    const newpost = {
+      _id: event['_id'],
+      author: {
+        _id: this.session.getUser()['_id'],
+        firstname: this.name,
+        lastname: this.surname,
+        avatar: this.avatar
+      },
+      title: event.title,
+      content: event.content,
+      file: event.file,
+      likes: []
+    }
+
+  this.posts.push(newpost);
+
+  }
+
+  delete(post) {
+    const postIndex = this.posts.findIndex(p => p._id === post._id);
+    this.posts.splice(postIndex, 1);
+  }
+  
 }
 

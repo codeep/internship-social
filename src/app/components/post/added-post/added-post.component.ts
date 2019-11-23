@@ -1,7 +1,7 @@
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
 import { Response } from '../../../../interfaces/response.interface';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-added-post',
@@ -16,6 +16,8 @@ export class AddedPostComponent implements OnInit {
   content;
   postDeleteBtn = false;
   image;
+  @Output() deleteemitter: any = new EventEmitter ();
+
   constructor(
     private server: RequestService,
     private session: SessionService) { }
@@ -28,8 +30,7 @@ export class AddedPostComponent implements OnInit {
   }
   removePost() {
     this.server.delete('POSTS_ID', { key: 'id', value: this.post['_id'] }).subscribe((responce: Response) => {
-
-      window.location.reload();
+      this.deleteemitter.emit(this.post['_id']);
     });
   }
   sendId() {

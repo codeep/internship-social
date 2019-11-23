@@ -32,9 +32,7 @@ export class FeedComponent implements OnInit {
     this.name = this.user.firstname + " " + this.user.lastname
     this.server.get('FEED', { key: 'id', value: this.sessionService.getGuestID() }, [{ key: 'limit', value: this.limit }, { key: 'offset', value: this.offset }])
       .subscribe((posts: { data: [] }) => {
-        this.posts = posts.data
-        console.log(this.posts, "my posts ngOnit")
-        console.log(posts.data, "sub post ngOnit")
+        this.posts = posts.data;
         this.offset += 10
       });
   }
@@ -57,15 +55,14 @@ export class FeedComponent implements OnInit {
       this.server.get('FEED', { key: 'id', value: this.sessionService.getGuestID() }, [{ key: 'limit', value: this.limit }, { key: 'offset', value: this.offset }])
         .subscribe((posts: { data: [] }) => {
           this.posts.push(...posts.data)
-          this.offset += 10
-          console.log(this.posts, "my posts sub")
-          console.log(posts.data, "sub post sub")
+          this.offset += 10;
         });
     }
 
   }
   getNewPost(event) {
     this.newpost = {
+      _id: event['_id'],
       author: {
         _id: this.user._id,
         firstname: this.user.firstname,
@@ -78,5 +75,13 @@ export class FeedComponent implements OnInit {
       likes: []
     }
 
+    this.posts.unshift(this.newpost);
+
   }
+  
+  delete(post) {
+    const postIndex = this.posts.findIndex(p => p._id === (post._id || post));
+    this.posts.splice(postIndex, 1);
+  }
+  
 }

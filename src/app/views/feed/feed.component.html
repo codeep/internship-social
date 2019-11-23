@@ -19,8 +19,7 @@
   </div>
   <div class="center-posts">
     <app-add-post (emitter)="getNewPost($event)"></app-add-post>
-    <app-added-post *ngIf='newpost' [post]='newpost'></app-added-post>
-    <app-added-post *ngFor="let post of posts" [post]='post'></app-added-post>
+    <app-added-post (deleteemitter)="delete($event)" *ngFor="let post of posts" [post]='post'></app-added-post>
   </div>
   <div class="right-bar">
     <div class="suggestions">

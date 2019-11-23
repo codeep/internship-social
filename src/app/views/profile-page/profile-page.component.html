@@ -39,9 +39,9 @@
           <p class="menuItem" (click)="openDetailsButton()" [ngClass]="{'activeMenuItem': openDetails}">Details</p>
       </div>
       <div class="mainContent">
-          <app-add-post *ngIf="openCreatePost" class="boxShadow"></app-add-post>
+          <app-add-post  (emitter)="getNewPost($event)" *ngIf="openCreatePost" class="boxShadow"></app-add-post>
           <div *ngIf="showPosts">
-              <app-added-post *ngFor="let post of posts" [post]='post' class="boxShadow">
+              <app-added-post (deleteemitter)="delete($event)" *ngFor="let post of posts" [post]='post' class="boxShadow">
               </app-added-post>
           </div>
           <div class="connections" *ngIf="openConnections">
