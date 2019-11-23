@@ -13,8 +13,8 @@ import { Response } from '../../../interfaces/response.interface';
 export class WisardComponent implements OnInit {
   sugLimit = 6;
   openusers = false;
-  arr=[1];
-  wisard:any;
+  arr = [1];
+  wisard: any;
   ditails = this.fb.group({
     occupation: ['', Validators.required],
     location: ['', Validators.required],
@@ -27,21 +27,21 @@ export class WisardComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-   
+
   }
-  onSubmit(){
-    if(this.ditails.valid){
+  onSubmit() {
+    if (this.ditails.valid) {
       this.wisard = this.ditails.value;
       this.wisard.firstname = this.sessionService.getUser().firstname;
-      this.wisard.lastname = this.sessionService.getUser().lastname; 
-      this.myServer.post('DETAILS',this.wisard).subscribe((response: Response) => {
+      this.wisard.lastname = this.sessionService.getUser().lastname;
+      this.myServer.post('DETAILS', this.wisard).subscribe((response: Response) => {
         if (response.status >= 200 && response.status < 300) {
           this.openusers = true;
-        } 
+        }
       })
     }
   }
-  goToFeed(){
+  goToFeed() {
     this.router.navigate(['/feed']);
   }
 }

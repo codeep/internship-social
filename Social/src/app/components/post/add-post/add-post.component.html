@@ -1,59 +1,35 @@
 <form class="container-flex " onSubmit="onSubmit()">
-  <mat-accordion class="width-95" >
+  <mat-accordion class="width-95">
     <mat-expansion-panel>
-        <mat-expansion-panel-header >
-  <div class="title"><mat-icon class="edit">create</mat-icon>Create Post</div>
-</mat-expansion-panel-header>
-  <mat-form-field class="width-95" >
-    <mat-label>Title</mat-label>
-    <input
-      [(ngModel)]="title"
-      [ngModelOptions]="{ standalone: true }"
-      matInput
-      placeholder="Enter title"
-    />
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width width-95">
-    <textarea
-      matInput
-      placeholder="What's on your mind?"
-      [(ngModel)]="textArea"
-      [ngModelOptions]="{ standalone: true }"
-    ></textarea>
-  </mat-form-field>
-  <div class="all">
-    <form [formGroup]="uploadForm">
-      <div class="uploads">
-        <label for="profile"
-          ><button
-            (click)="file.click()"
-            mat-stroked-button
-            class="standartButton"
-          >
-            <mat-icon class="trans">attach_file</mat-icon>
-          </button></label
-        >
-        <p>{{ (imgFileInput?.files)[0]?.name }}</p>
-        <button
-          type="submit"
-          mat-stroked-button
-          class="standartButton"
-          [disabled]="!title || !textArea"
-          (click)="onSubmit()"
-          color="basic" >Post</button>
-        <input
-          type="file"
-          id="profile"
-          #imgFileInput
-          (change)="onFileSelect($event)"
-        /></div>
-      <input #file type="file" accept='image/*'  id="profile" (change)="onFileSelect(file.files)" />
-      <img [src]="imgURL" height="100" width="100" *ngIf="imgURL">
-    </form>
-  </div>
-  </mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <div class="title">
+          <mat-icon class="edit">create</mat-icon>Create Post
+        </div>
+      </mat-expansion-panel-header>
+      <mat-form-field class="width-95">
+        <mat-label>Title</mat-label>
+        <input [(ngModel)]="title" [ngModelOptions]="{ standalone: true }" matInput placeholder="Enter title" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width width-95">
+        <textarea matInput placeholder="What's on your mind?" [(ngModel)]="textArea"
+          [ngModelOptions]="{ standalone: true }"></textarea>
+      </mat-form-field>
+      <div class="all">
+        <form [formGroup]="uploadForm">
+          <div class="uploads">
+            <label for="profile"><button (click)="file.click()" mat-stroked-button class="standartButton">
+                <mat-icon class="trans">add_photo_alternate</mat-icon>
+              </button></label>
+            <p>{{ (imgFileInput?.files)[0]?.name }}</p>
+            <button type="submit" mat-stroked-button class="standartButton" [disabled]="!title || !textArea"
+              (click)="onSubmit()" color="basic">Post</button>
+            <input type="file" id="profile" #imgFileInput (change)="onFileSelect($event)" />
+          </div>
+          <input #file type="file" accept='image/*' id="profile" (change)="onFileSelect(file.files)" />
+          <img [src]="imgURL" height="100" width="100" *ngIf="imgURL">
+        </form>
+      </div>
+    </mat-expansion-panel>
   </mat-accordion>
 </form>
 <br />
-

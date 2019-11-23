@@ -10,34 +10,35 @@ import { SessionService } from '../services/session.service';
 })
 export class SuggestedUsersComponent implements OnInit {
   @Input() sugLimit;
-  users =[];
-  loginUser:any;
+  users = [];
+  loginUser: any;
   followings;
-  trueOrFalse=[];
+  trueOrFalse = [];
   constructor(
-    private myService:RequestService,
-    private session:SessionService) {  
+    private myService: RequestService,
+    private session: SessionService) {
   }
   ngOnInit() {
-    this.myService.post('NEARBY',null, null,[{key:'limit',value:this.sugLimit}])
-    .subscribe((response: Response)=>{
-      if(response.status >= 200 && response.status < 300 && response.data){
-        this.users=response.data;
-        this.loginUser =this.session.getUser();
-        this.followings = this.loginUser.followings;
-        for(let i = 0; i < this.users.length; i++){
-          this.trueOrFalse[i] = this.followings.includes(this.users[i]['_id']);
+    this.myService.post('NEARBY', null, null, [{ key: 'limit', value: this.sugLimit }])
+      .subscribe((response: Response) => {
+        if (response.status >= 200 && response.status < 300 && response.data) {
+          this.users = response.data;
+          this.loginUser = this.session.getUser();
+          this.followings = this.loginUser.followings;
+          for (let i = 0; i < this.users.length; i++) {
+            this.trueOrFalse[i] = this.followings.includes(this.users[i]['_id']);
+          }
         }
-      }
-    });
+      });
   }
-  onClickFollow(item, i){
-    this.myService.post('FOLLOW', item['_id'], {key:'id',value:item['_id']})
-    .subscribe(date=>{
-      console.log(date); 
-      this.trueOrFalse[i] = !this.trueOrFalse[i];});
+  onClickFollow(item, i) {
+    this.myService.post('FOLLOW', item['_id'], { key: 'id', value: item['_id'] })
+      .subscribe(date => {
+        console.log(date);
+        this.trueOrFalse[i] = !this.trueOrFalse[i];
+      });
   }
-  sendId(data){
-    this.session.setGuestID(data);    
+  sendId(data) {
+    this.session.setGuestID(data);
   }
 }

@@ -16,8 +16,8 @@ export class ProfilePageComponent implements OnInit {
   showUploadCoverButton = false;
   showUploadProfileButton = false;
   hideProfileImage = false;
-  hideUploadCoverButton=true;
-  hideUploadProfileButton=true;
+  hideUploadCoverButton = true;
+  hideUploadProfileButton = true;
   openDetails = false;
   openConnections = false;
   openCreatePost = true;
@@ -37,9 +37,9 @@ export class ProfilePageComponent implements OnInit {
   follow = 'followings';
   cover;
   avatar;
-  details={
-    avatar:"",
-    cover:""
+  details = {
+    avatar: "",
+    cover: ""
   };
   public imagePath;
   limit = 10;
@@ -54,71 +54,68 @@ export class ProfilePageComponent implements OnInit {
         this.posts = posts.data
         this.offset += 10
       });
-      this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
+    this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
       .subscribe((getName: Response) => {
         if (getName.status >= 200 && getName.status < 300 && getName.data) {
           this.name = getName.data.user.firstname;
           this.surname = getName.data.user.lastname;
-          this.avatar=getName.data.user.avatar;
-          this.cover=getName.data.user.cover;
+          this.avatar = getName.data.user.avatar;
+          this.cover = getName.data.user.cover;
         }
       });
     if (this.session.getUser()['_id'] == this.session.getGuestID()) {
       this.openEdit = true;
       this.openMy = true;
-      
+
     }
     else {
       this.openCreatePost = false;
-      this.hideUploadCoverButton=false;
-      this.hideUploadProfileButton=false;
+      this.hideUploadCoverButton = false;
+      this.hideUploadProfileButton = false;
     }
-    // this.details.avatar=this.urlProfile;
-    // this.details.cover=this.imgURL;
-    // this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
   }
-  @HostListener("window:scroll", ["$event"])  
-  onScroll(){
-      let scrollHeight;
-      let totalHeight;
-      scrollHeight = document.body.scrollHeight;
-      totalHeight = window.scrollY + window.innerHeight;
-      if (totalHeight >= scrollHeight) {
-        this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
-        .subscribe((posts: { data:[] }) => {
+  @HostListener("window:scroll", ["$event"])
+  onScroll() {
+    let scrollHeight;
+    let totalHeight;
+    scrollHeight = document.body.scrollHeight;
+    totalHeight = window.scrollY + window.innerHeight;
+    if (totalHeight >= scrollHeight) {
+      this.server.get('WALL', { key: 'id', value: this.session.getGuestID() }, [{ key: 'limit', value: this.limit }, { key: 'offset', value: this.offset }])
+        .subscribe((posts: { data: [] }) => {
           this.posts.push(...posts.data);
-          this.offset+=10;
+          this.offset += 10;
         });
     }
   }
   coverPhoto(files) {
-    // if (files.length === 0)
-    //   return;
     var reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.imgURL = reader.result;
-      this.details.cover=this.imgURL;
-      this.details.avatar=this.urlProfile;
-      this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
+      this.details.cover = this.imgURL;
+      this.details.avatar = this.urlProfile;
+      this.server.post('DETAILS', this.details).subscribe((response: Response) => {
+        this.session.setUser(response.data);
+        window.location.reload();
+      });
     }
-    // window.location.reload();
   }
   profilePhoto(files) {
-    // if (files.length === 0)
-    //   return;
     this.hideProfileImage = true;
     var reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.urlProfile = reader.result;
-      this.details.avatar=this.urlProfile;
-      this.details.cover=this.imgURL;
-      this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
+      this.details.avatar = this.urlProfile;
+      this.details.cover = this.imgURL;
+      this.server.post('DETAILS', this.details).subscribe((response: Response) => {
+        this.session.setUser(response.data);
+        window.location.reload();
+      });
     }
-    // window.location.reload();
   }
   openDetailsButton() {
     this.openConnections = false;
@@ -171,16 +168,16 @@ export class ProfilePageComponent implements OnInit {
     this.server.get('USERS_ID', { key: 'id', value: this.session.getGuestID() })
       .subscribe((getFollowings: Response) => {
         if (getFollowings.status >= 200 && getFollowings.status < 300) {
-            this.followingArray = getFollowings.data.user.followings;
-            this.followingCount = this.followingArray.length;
-            this.followingArray.forEach(id => {
-              this.server.get('USERS_ID', { key: 'id', value: id })
-                .subscribe((data: Response) => {
-                  this.followingsUser.push(data.data.user);
-                })
-            });
-          }
-       });
+          this.followingArray = getFollowings.data.user.followings;
+          this.followingCount = this.followingArray.length;
+          this.followingArray.forEach(id => {
+            this.server.get('USERS_ID', { key: 'id', value: id })
+              .subscribe((data: Response) => {
+                this.followingsUser.push(data.data.user);
+              })
+          });
+        }
+      });
   }
 
   openFollowersButton() {
@@ -201,13 +198,6 @@ export class ProfilePageComponent implements OnInit {
           });
         }
       });
-  }
-  openPost(){
-    this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
-    .subscribe((posts: { data:[] }) => {
-      this.posts=posts.data
-      this.offset+=10
-    });
   }
 }
 

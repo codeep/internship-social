@@ -25,21 +25,23 @@ export class UserComponent implements OnInit {
         if (getUser.status >= 200 && getUser.status < 300 && getUser.data) {
           this.loginUser = getUser.data.user;
           this.trueOrFalse = this.loginUser.followings.includes(this.item['_id']);
-          if(this.item._id == this.session.getUser()._id){
+          if (this.item._id == this.session.getUser()._id) {
             this.myPage = false;
           }
         }
       });
   }
-  sendId(data){
+  sendId(data) {
     this.session.setGuestID(data);
     this.router.navigateByUrl(`profile/${data}`);
     this.activeRoute.params.subscribe((params) => {
-    window.location.reload();})
+      window.location.reload();
+    })
   }
-  onClickFollow(item, i){
-    this.myServer.post('FOLLOW', item['_id'], {key:'id',value:item['_id']})
-    .subscribe(date=>{
-      this.trueOrFalse = !this.trueOrFalse;});
+  onClickFollow(item, i) {
+    this.myServer.post('FOLLOW', item['_id'], { key: 'id', value: item['_id'] })
+      .subscribe(date => {
+        this.trueOrFalse = !this.trueOrFalse;
+      });
   }
 }

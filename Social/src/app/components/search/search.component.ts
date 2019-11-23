@@ -8,29 +8,29 @@ import { SessionService } from 'src/app/services/session.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  searchForm= this.fb.group({
-    text:['']
+  searchForm = this.fb.group({
+    text: ['']
   })
-  user:any;
-  id:number
+  user: any;
+  id: number
   constructor(
     private fb: FormBuilder,
     private myServer: RequestService,
     private sessionService: SessionService
-    ) {
+  ) {
   }
-  ngOnInit() {        
+  ngOnInit() {
   }
-  onKey(event){
-    if(this.searchForm.value.text !== ""){
-      this.myServer.get('USERS',null,[{key:'search', value: this.searchForm.value.text}]).subscribe(data =>
+  onKey(event) {
+    if (this.searchForm.value.text !== "") {
+      this.myServer.get('USERS', null, [{ key: 'search', value: this.searchForm.value.text }]).subscribe(data =>
         this.user = data["data"]
       )
-    }else{
+    } else {
       this.user = null
     }
   }
-  sendId(data){
+  sendId(data) {
     this.sessionService.setGuestID(data);
   }
 }

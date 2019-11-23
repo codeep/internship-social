@@ -1,4 +1,4 @@
-import { Component, OnInit,Output,EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
@@ -10,22 +10,22 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ["./add-post.component.css"]
 })
 export class AddPostComponent implements OnInit {
-  postList = {title:'', content:'', file:''};
-  title:string;
+  postList = { title: '', content: '', file: '' };
+  title: string;
   textArea: string;
   linkText: string;
   uploadForm: FormGroup;
   public imagePath;
   imgURL: any;
-  file:string;
-  @Output() emitter:any = new EventEmitter();
-  
+  file: string;
+  @Output() emitter: any = new EventEmitter();
+
   constructor(
     private formBuilder: FormBuilder,
-    private  request: RequestService,
-    private  session: SessionService,
+    private request: RequestService,
+    private session: SessionService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.uploadForm = this.formBuilder.group({
@@ -34,35 +34,34 @@ export class AddPostComponent implements OnInit {
   }
   onFileSelect(files) {
     if (files.length === 0)
-      return;       
-        // this.hideUploadCoverButton = false;
-        var reader = new FileReader();
-        this.imagePath = files;
-        reader.readAsDataURL(files[0]);
-        reader.onload = (_event) => {
-          this.imgURL = reader.result;
-          this.file=this.imgURL;
-        }
-      }
+      return;
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+      this.file = this.imgURL;
+    }
+  }
   onSubmit() {
-    // this.imgURL=false;
     const formData = new FormData();
     formData.append("file", this.uploadForm.get("profile").value);
     this.linkify(this.textArea);
     this.postList.title = this.title;
     this.postList.content = this.textArea;
-    this.postList.file=this.file;
-    this.request.post('POSTS', this.postList).subscribe(data =>{
+    this.postList.file = this.file;
+    this.request.post('POSTS', this.postList).subscribe(data => {
       this.toastr.success("Your post is created");
-      this.title="";
-      this.textArea='';
-      this.file="";
+      this.title = "";
+      this.textArea = '';
+      this.file = "";
+      this.imgURL = ''
       this.emitter.emit(this.postList)
     })
-    
-    
+
+
   }
-  
+
   linkify(plainText) {
     let replacedText;
     let replacePattern1;

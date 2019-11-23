@@ -1,17 +1,18 @@
-
 <form class="container-flex postMargin boxShadow">
   <div class="info">
-      <div class="subtitle">
-        <a [routerLink]="['/profile', post.author._id]" (click)="sendId()">
-          <img *ngIf="post.author.avatar" src="{{post.author.avatar}}" class="avatar" />
-          <img *ngIf="!post.author.avatar" src="/assets/download.png" class="avatar" />
-          <p>{{ post.author?.firstname }} {{ post.author?.lastname }}</p>
-        </a>
-      </div>
-   <div class="post-remove">
-  <button class='rem' *ngIf='postDeleteBtn'(click)='removePost()'><mat-icon>delete_outlined</mat-icon></button>
+    <div class="subtitle">
+      <a [routerLink]="['/profile', post.author._id]" (click)="sendId()">
+        <img *ngIf="post.author.avatar" src="{{post.author.avatar}}" class="avatar" />
+        <img *ngIf="!post.author.avatar" src="/assets/download.png" class="avatar" />
+        <p>{{ post.author?.firstname }} {{ post.author?.lastname }}</p>
+      </a>
+    </div>
+    <div class="post-remove">
+      <button class='rem' *ngIf='postDeleteBtn' (click)='removePost()'>
+        <mat-icon>delete_outlined</mat-icon>
+      </button>
+    </div>
   </div>
-</div>
   <hr />
   <div class="allpost">
     <div class="post-title">
@@ -20,13 +21,10 @@
     <div class="post-content">
       <mat-card-content [innerHTML]="post.content"></mat-card-content>
     </div>
-   <div class="post-img">
+    <div class="post-img">
       <img src="{{post.file}}" class="file" />
-      <!-- <input #file accept='image/*' type='file' id="cover" class="hidden" (change)="coverPhoto(file.files)"> -->
-  </div>
+    </div>
   </div>
   <hr />
   <app-like [post]='post'></app-like>
 </form>
-
-    

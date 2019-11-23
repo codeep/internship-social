@@ -7,15 +7,15 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class GuestGuardGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (localStorage.getItem('token')) {
-        return this.router.navigateByUrl('/feed');
-      } else {
-        return true;
-      }
+    if (localStorage.getItem('token')) {
+      return this.router.navigateByUrl('/feed');
+    } else {
+      return true;
+    }
   }
-  
+
 }
