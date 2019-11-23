@@ -22,7 +22,7 @@ export class AddedPostComponent implements OnInit {
 
 
   ngOnInit() {
-    if (this.session.getUser()['_id'] == this.session.getGuestID()) {
+    if (this.session.getUser()['_id'] == this.post.author._id) {
       this.postDeleteBtn= true;
     }
     // this.server.get('', { key: 'id', value: this.session.getGuestID() })
@@ -33,8 +33,6 @@ export class AddedPostComponent implements OnInit {
     //       // this.hideUploadCoverButton=false;
     //     }
     //   });
-
-
   }
   removePost(){
     this.server.delete('POSTS_ID',{key:'id',value:this.post['_id']}).subscribe();

@@ -16,6 +16,8 @@ export class ProfilePageComponent implements OnInit {
   showUploadCoverButton = false;
   showUploadProfileButton = false;
   hideProfileImage = false;
+  hideUploadCoverButton=true;
+  hideUploadProfileButton=true;
   openDetails = false;
   openConnections = false;
   openCreatePost = true;
@@ -46,6 +48,7 @@ export class ProfilePageComponent implements OnInit {
     private router: ActivatedRoute,
     private session: SessionService) { }
   ngOnInit() {
+
     this.server.get('WALL', { key: 'id', value: this.session.getGuestID() }, [{ key: 'limit', value: this.limit }, { key: 'offset', value: this.offset }])
       .subscribe((posts: { data: [] }) => {
         this.posts = posts.data
@@ -63,12 +66,15 @@ export class ProfilePageComponent implements OnInit {
     if (this.session.getUser()['_id'] == this.session.getGuestID()) {
       this.openEdit = true;
       this.openMy = true;
+      
     }
     else {
       this.openCreatePost = false;
+      this.hideUploadCoverButton=false;
+      this.hideUploadProfileButton=false;
     }
-    // this.details.cover=this.imgURL;
     // this.details.avatar=this.urlProfile;
+    // this.details.cover=this.imgURL;
     // this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
   }
   @HostListener("window:scroll", ["$event"])  

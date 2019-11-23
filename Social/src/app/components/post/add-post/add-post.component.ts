@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit,Output,EventEmitter } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
@@ -18,7 +18,8 @@ export class AddPostComponent implements OnInit {
   public imagePath;
   imgURL: any;
   file:string;
-
+  @Output() emitter:any = new EventEmitter();
+  
   constructor(
     private formBuilder: FormBuilder,
     private  request: RequestService,
@@ -51,11 +52,14 @@ export class AddPostComponent implements OnInit {
     this.postList.title = this.title;
     this.postList.content = this.textArea;
     this.postList.file=this.file;
-    this.request.post('POSTS', this.postList).subscribe(post=>console.log(post,"sub"))
-    this.toastr.success("Your post is created");
-    this.title="";
-    this.textArea='';
-    this.file="";
+    this.request.post('POSTS', this.postList).subscribe(data =>{
+      this.toastr.success("Your post is created");
+      this.title="";
+      this.textArea='';
+      this.file="";
+      this.emitter.emit(this.postList)
+    })
+    
     
   }
   
