@@ -1,0 +1,60 @@
+form {
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.uploads {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.all {
+  width: 100%;
+}
+
+.standartButton {
+  margin: 10px;
+}
+
+.trans {
+  font-size: 25px;
+}
+
+textarea.mat-input-element {
+  min-height: 80px;
+  overflow: auto;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+mat-icon {
+  font-size: 20px;
+}
+
+mat-accordion {
+  width: 100%;
+}
+
+.edit {
+  color: #35bb7d;
+}
+
+p {
+  margin: 20px;
+}
+
+@media only screen and (max-width: 900px) {
+  mat-accordion {
+    width: 98%;
+    padding: 0;
+  }
+
+  container-flex {
+    width: 80%;
+    padding: 0;
+  }
+}
