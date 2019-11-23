@@ -1,7 +1,7 @@
 .wisard{
     margin-top: 5%;
     padding: 10px;
-    width: 30%;
+    width: 50%;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -23,8 +23,14 @@
     width: 100%;
     justify-content: space-between;
 }
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 1200px){
     .wisard{
         width: 90%;
+    }
+    .user{
+        width: 70%;
+        align-self: center;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }

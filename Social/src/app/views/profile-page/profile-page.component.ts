@@ -73,9 +73,6 @@ export class ProfilePageComponent implements OnInit {
       this.hideUploadCoverButton=false;
       this.hideUploadProfileButton=false;
     }
-    // this.details.avatar=this.urlProfile;
-    // this.details.cover=this.imgURL;
-    // this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
   }
   @HostListener("window:scroll", ["$event"])  
   onScroll(){
@@ -92,8 +89,6 @@ export class ProfilePageComponent implements OnInit {
     }
   }
   coverPhoto(files) {
-    // if (files.length === 0)
-    //   return;
     var reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
@@ -101,13 +96,13 @@ export class ProfilePageComponent implements OnInit {
       this.imgURL = reader.result;
       this.details.cover=this.imgURL;
       this.details.avatar=this.urlProfile;
-      this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
+      this.server.post('DETAILS', this.details).subscribe((response: Response) =>{
+        this.session.setUser(response.data);
+        window.location.reload();
+      });
     }
-    // window.location.reload();
   }
   profilePhoto(files) {
-    // if (files.length === 0)
-    //   return;
     this.hideProfileImage = true;
     var reader = new FileReader();
     this.imagePath = files;
@@ -116,9 +111,12 @@ export class ProfilePageComponent implements OnInit {
       this.urlProfile = reader.result;
       this.details.avatar=this.urlProfile;
       this.details.cover=this.imgURL;
-      this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
+      this.server.post('DETAILS', this.details).subscribe((response: Response) =>{
+        this.session.setUser(response.data);
+         window.location.reload();
+      });
     }
-    // window.location.reload();
+    
   }
   openDetailsButton() {
     this.openConnections = false;
@@ -201,13 +199,6 @@ export class ProfilePageComponent implements OnInit {
           });
         }
       });
-  }
-  openPost(){
-    this.server.get('WALL',{key:'id',value:this.session.getGuestID()},[{key:'limit',value:this.limit},{key:'offset',value:this.offset}])
-    .subscribe((posts: { data:[] }) => {
-      this.posts=posts.data
-      this.offset+=10
-    });
   }
 }
 

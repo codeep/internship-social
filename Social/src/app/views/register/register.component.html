@@ -1,6 +1,7 @@
 <div class="container-flex   boxShadow register">
-    <p class="title">Register</p>
+    
     <form class="width-95" [formGroup]='register' (ngSubmit)='onSubmit()'>
+        <p class="title">Register</p>
         <mat-form-field class="width-95">
           <input matInput placeholder="First Name" formControlName='firstname'>
         </mat-form-field>
@@ -29,6 +30,7 @@
         <p *ngIf='errorsOpen && this.register.value.confirmPassword !== this.register.value.password' class="errors">{{errorsValidation('confirmPassword')}}</p>
         <button mat-raised-button class="standartButton">Register</button>
         <p *ngIf='errorsOpen && userexists' class="errors">{{userexists}}</p>
+        <p class="textColor log"  [routerLink]="['/login']">LogIn</p>
       </form>
-    <p class="textColor"  [routerLink]="['/login']">LogIn</p>
+    
 </div>

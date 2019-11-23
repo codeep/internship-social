@@ -2,6 +2,7 @@
     flex-direction: column;
     background-color: white;
     width: 95%;
+    /* padding-bottom: 20px; */
 }
 .coverPhoto{
     height: 350px;
@@ -235,8 +236,9 @@ app-add-post{
     }
     .leftSide{
         display: flex;
-        width: 100%;
+        width: 96%;
         justify-content: space-between;
+        padding: 2%;
     }
     .mainContent{
         width: 100%;

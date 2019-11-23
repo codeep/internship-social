@@ -1,5 +1,5 @@
 <div class="container-flex boxShadow wisard" *ngIf='!openusers'>
-    <p class="title">Details</p>
+    <p class="title">Fill in your details.</p>
     <form action="" (ngSubmit)="onSubmit()" [formGroup]='ditails'>
         <mat-form-field class="width-95">
             <input matInput placeholder="Occupation" formControlName='occupation'>
@@ -14,6 +14,7 @@
     </form>
 </div>
 <div class=" container-flex boxShadow wisard" *ngIf='openusers'>
+    <p class="title">People you might know.</p>
     <div class="users" *ngFor="let i of arr">
         <app-suggested-users class="user" [sugLimit]='sugLimit'></app-suggested-users>
     </div>
