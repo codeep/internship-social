@@ -7,7 +7,7 @@
           <div *ngIf="cover" [ngStyle]="{'background-image': 'url(' +cover+')'}"  class="uploadCover" ></div>
           <div *ngIf="!cover" style="background-image: url(../../../assets/coverStandardPhoto.jpg)" class="uploadCover"></div>
           <input #file accept='image/*' type='file' id="cover" class="hidden" (change)="coverPhoto(file.files)">
-          <div class="updateCoverPhoto">
+          <div class="updateCoverPhoto" *ngIf="hideUploadCoverButton">
               <mat-icon>photo_camera</mat-icon>
               <label for="cover">Update Cover Photo</label>
           </div>
@@ -21,7 +21,7 @@
               </div>
               <input #fileProf accept='image/*' type='file' id="profile" class="hidden"
                   (change)="profilePhoto(fileProf.files)">
-              <div class="updateProfilePhoto">
+              <div class="updateProfilePhoto" *ngIf="hideUploadProfileButton">
                   <mat-icon>photo_camera</mat-icon>
                   <label for="profile">Update Profile Photo</label>
               </div>
