@@ -4,12 +4,9 @@
   width: 100%;
   margin-top: 20px;
 }
-/* .search-width{
-    width: 65%;
-} */
 .search {
   margin: 10px 0;
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .search>img:hover {
@@ -18,4 +15,9 @@
 
 .search>p:hover {
   cursor: pointer;
+}
+.user{
+  width: 90%;
+  padding: 2%;
+  margin:20px 0;
 }

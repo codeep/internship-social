@@ -30,6 +30,7 @@ body{
     background-color: #35bb7d;
     margin-top: 20px!important;
     margin-top: 20px;
+    cursor: pointer;
 }
 .standartButton:hover{
     background-color: #27704e;

@@ -1,68 +1,71 @@
 <div class="entireProfilePage container-flex  boxShadow">
     <div class="coverPhoto">
         <div class="imgIconAndText">
-            <p class="feedButton" routerLink="/feed"><mat-icon>keyboard_arrow_left</mat-icon></p>           
-            
-            <img *ngIf="cover" src="{{cover}}" class="uploadCover" /> 
-            <img *ngIf="!cover" src="../../../assets/coverStandardPhoto.jpg" class="uploadCover" /> 
+            <p class="feedButton" routerLink="/feed">
+                <mat-icon>keyboard_arrow_left</mat-icon>
+            </p>
+
+            <img *ngIf="cover" src="{{cover}}" class="uploadCover" />
+            <img *ngIf="!cover" src="../../../assets/coverStandardPhoto.jpg" class="uploadCover" />
             <input #file accept='image/*' type='file' id="cover" class="hidden" (change)="coverPhoto(file.files)">
-            
-            <!-- <div class="uploadCoverIconAndText" *ngIf="hideUploadCoverButton">
-                <mat-icon>photo_camera</mat-icon>
-                <label for="cover">Upload Cover Photo</label>
-            </div> -->
-            <div class="updateCoverPhoto" *ngIf="!hideUploadCoverButton">
+            <div class="updateCoverPhoto">
                 <mat-icon>photo_camera</mat-icon>
                 <label for="cover">Update Cover Photo</label>
             </div>
         </div>
-
-        <!-- <img *ngIf="post.author?.avatar" src="data:image/png;base64,{{post.author?.avatar}}" class="avatar" /> -->
-        <!-- <img *ngIf="!post.author?.avatar" src="../../assets/userdefult.png" class="avatar" /> -->
-
-        <div class="profilePic">    
+        <div class="profilePic">
             <div class="pic">
-                <img *ngIf="avatar" src="{{avatar}}" class="uploadProfile" /> 
-                <img *ngIf="!avatar" src="../../../assets/userdefult.png" class="uploadProfile" /> 
-                <input #fileProf accept='image/*' type='file' id="profile" class="hidden" (change)="profilePhoto(fileProf.files)">
-                <div class="uploadProfileIconAndText" *ngIf="hideUploadProfileButton">
-                        <mat-icon>photo_camera</mat-icon>
-                        <label for="profile">Upload Profile Photo</label>
+                <img *ngIf="avatar" src="{{avatar}}" class="uploadProfile" />
+                <img *ngIf="!avatar" src="../../../assets/userdefult.png" class="uploadProfile" />
+                <div class="nameSurname">
+                    <p>{{ name }} {{ surname }}</p>
                 </div>
-                <div class="updateProfilePhoto" *ngIf="!hideUploadProfileButton">
+                <input #fileProf accept='image/*' type='file' id="profile" class="hidden"
+                    (change)="profilePhoto(fileProf.files)">
+                <div class="uploadProfileIconAndText" *ngIf="hideUploadProfileButton">
+                    <mat-icon>photo_camera</mat-icon>
+                    <label for="profile">Upload Profile Photo</label>
+                </div>
+                <div class="updateProfilePhoto">
                     <mat-icon>photo_camera</mat-icon>
                     <label for="profile">Update Profile Photo</label>
                 </div>
             </div>
         </div>
+
     </div>
-    <div class="nameSurname">
-        <p>{{ name }} {{ surname }}</p>
-    </div>
+
     <div class="sides">
         <div class="leftSide ">
-            <p class="menuItem" (click)="openMyPostsButton()" [ngClass]="{'activeMenuItem': showPosts}"><span *ngIf="openMy">My</span> Posts</p>
-            <p class="menuItem" (click)="openConnectionsButton()" [ngClass]="{'activeMenuItem': openConnections}">Connections</p>
+            <p class="menuItem" (click)="openMyPostsButton()" [ngClass]="{'activeMenuItem': showPosts}"><span
+                    *ngIf="openMy">My</span> Posts</p>
+            <p class="menuItem" (click)="openConnectionsButton()" [ngClass]="{'activeMenuItem': openConnections}">
+                Connections</p>
             <p class="menuItem" (click)="openDetailsButton()" [ngClass]="{'activeMenuItem': openDetails}">Details</p>
         </div>
         <div class="mainContent">
             <app-add-post *ngIf="openCreatePost" class="boxShadow"></app-add-post>
             <div *ngIf="showPosts">
-                <app-added-post *ngFor="let post of posts" [post]='post' class="boxShadow" (click)='openPost()'></app-added-post>
+                <app-added-post *ngFor="let post of posts" [post]='post' class="boxShadow" (click)='openPost()'>
+                </app-added-post>
             </div>
             <div class="connections" *ngIf="openConnections">
-                <p (click)="openFollowingButton()" [ngClass]="{'activeFollow': following }">Following</p>
-                <p (click)="openFollowersButton()" [ngClass]="{'activeFollow': followers }">Followers</p>
+                <p (click)="openFollowingButton()" [ngClass]="{'activeFollow': following }">Following ({{followingCount}})</p>
+                <p (click)="openFollowersButton()" [ngClass]="{'activeFollow': followers }">Followers ({{followersCount}})</p>
             </div>
             <app-details *ngIf="openDetails"></app-details>
             <div *ngIf="following">
                 <div class="users">
-                     <app-user class="user" *ngFor="let item of followingsUser" [item]='item' (click)='followUser()'></app-user>   
+                    <p *ngIf='!followingCount' class="followError">Followings list is empty.</p>
+                    <app-user class="user" *ngFor="let item of followingsUser" [item]='item'>
+                    </app-user>
                 </div>
             </div>
             <div *ngIf="followers">
-                <div class="users"> 
-                     <app-user class="user" *ngFor="let item of followersUser" [item]='item' (click)='followUser()'></app-user>   
+                <div class="users">
+                    <p *ngIf='!followersCount' class="followError">Followers list is empty.</p>
+                    <app-user class="user" *ngFor="let item of followersUser" [item]='item'>
+                    </app-user>
                 </div>
             </div>
         </div>
