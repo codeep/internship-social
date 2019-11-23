@@ -15,7 +15,7 @@
 }
 
 #toggle-heart {
-  font-size: 35px;
+  font-size: 28px;
   cursor: pointer;
 }
 
@@ -45,7 +45,7 @@ body {
 
 p {
   margin: 10px;
-  font-size: 25px;
+  font-size: 16px;
   color: #aab8c2;
 }
 
@@ -54,3 +54,4 @@ p {
   justify-items: right;
   width: 10;
 }
+
