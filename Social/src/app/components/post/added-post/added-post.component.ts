@@ -22,7 +22,6 @@ export class AddedPostComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.post,"mypost")
     if (this.session.getUser()['_id'] == this.post.author._id) {
       this.postDeleteBtn= true;
     }
@@ -34,8 +33,6 @@ export class AddedPostComponent implements OnInit {
     //       // this.hideUploadCoverButton=false;
     //     }
     //   });
-
-
   }
   removePost(){
     this.server.delete('POSTS_ID',{key:'id',value:this.post['_id']}).subscribe();
