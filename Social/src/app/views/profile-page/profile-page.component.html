@@ -4,7 +4,6 @@
           <p class="feedButton" routerLink="/feed">
               <mat-icon>keyboard_arrow_left</mat-icon>
           </p>
-
           <img *ngIf="cover" src="{{cover}}" class="uploadCover" />
           <img *ngIf="!cover" src="../../../assets/coverStandardPhoto.jpg" class="uploadCover" />
           <input #file accept='image/*' type='file' id="cover" class="hidden" (change)="coverPhoto(file.files)">
