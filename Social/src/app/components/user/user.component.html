@@ -1,9 +1,9 @@
 <div class="thisuser boxShadow">
-    <a (click)="sendId(item._id)">
-        <img *ngIf="item.avatar" src="{{item.avatar}}" alt="Img">
-        <img *ngIf="!item.avatar" src="../../../assets/download.png" alt="Img">
-        <p  >{{item.firstname}} {{item.lastname}}</p>
-    </a>
-    <button  class="followButton" (click)='onClickFollow(item)' *ngIf="!trueOrFalse && myPage">Follow</button>
-    <button  class="unFollowButton" (click)='onClickFollow(item)' *ngIf="trueOrFalse && myPage">UnFollow</button>
+  <a (click)="sendId(item._id)">
+    <img *ngIf="item.avatar" src="{{item.avatar}}" alt="Img">
+    <img *ngIf="!item.avatar" src="../../../assets/download.png" alt="Img">
+    <p>{{item.firstname}} {{item.lastname}}</p>
+  </a>
+  <button class="followButton" (click)='onClickFollow(item)' *ngIf="!trueOrFalse && myPage">Follow</button>
+  <button class="unFollowButton" (click)='onClickFollow(item)' *ngIf="trueOrFalse && myPage">UnFollow</button>
 </div>

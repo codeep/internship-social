@@ -1,14 +1,15 @@
-.register{
-    margin-top: 5%;
-    padding: 10px;
-    width: 30%;
-    text-align: center;
+.register {
+  margin-top: 5%;
+  padding: 10px;
+  width: 30%;
+  text-align: center;
 }
 .log, .title{
   margin: 10px 0;
 }
+
 @media only screen and (max-width: 900px) {
-    .register{
-      width: 90%;
-    }
+  .register {
+    width: 90%;
   }
+}

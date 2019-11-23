@@ -1,7 +1,9 @@
 <div class="sug-user boxShadow" *ngFor="let item of users; let i=index">
-    <img *ngIf="item.avatar" [routerLink]="['/profile',item._id]" (click)="sendId(item._id)" src="{{item.avatar}}" alt="Img">
-    <img *ngIf="!item.avatar" [routerLink]="['/profile',item._id]" (click)="sendId(item._id)" src="../../assets/download.png" alt="Img">
-    <p [routerLink]="['/profile',item._id]" (click)="sendId(item._id)">{{item.firstname}} {{item.lastname}}</p>
-    <button class="followButton" (click)='onClickFollow(item, i)' *ngIf="!trueOrFalse[i]">Follow</button>
-    <button  class="unFollowButton" (click)='onClickFollow(item,i)' *ngIf="trueOrFalse[i]">UnFollow</button>
+  <img *ngIf="item.avatar" [routerLink]="['/profile',item._id]" (click)="sendId(item._id)" src="{{item.avatar}}"
+    alt="Img">
+  <img *ngIf="!item.avatar" [routerLink]="['/profile',item._id]" (click)="sendId(item._id)"
+    src="../../assets/download.png" alt="Img">
+  <p [routerLink]="['/profile',item._id]" (click)="sendId(item._id)">{{item.firstname}} {{item.lastname}}</p>
+  <button class="followButton" (click)='onClickFollow(item, i)' *ngIf="!trueOrFalse[i]">Follow</button>
+  <button class="unFollowButton" (click)='onClickFollow(item,i)' *ngIf="trueOrFalse[i]">UnFollow</button>
 </div>

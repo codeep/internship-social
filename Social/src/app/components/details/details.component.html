@@ -1,11 +1,11 @@
 <form [formGroup]='detail'>
-    <input class="inputFields" formControlName="firstname">
-    <input formControlName="lastname" class="inputFields">
-    <input formControlName="email" class="inputFields">
-    <input formControlName="birthdate" class="inputFields">
-    <input formControlName="occupation" class="inputFields">
-    <input formControlName="location" class="inputFields">
-    <input formControlName="bio" class="inputFields">
-    <button class="save" *ngIf="openSave" (click)="saveButton()">Save</button>
-    <button class="standartButton" *ngIf="openEdit" (click)="allowToEditButton()">Edit</button>
+  <input class="inputFields" formControlName="firstname">
+  <input formControlName="lastname" class="inputFields">
+  <input formControlName="email" class="inputFields">
+  <input formControlName="birthdate" class="inputFields">
+  <input formControlName="occupation" class="inputFields">
+  <input formControlName="location" class="inputFields">
+  <input formControlName="bio" class="inputFields">
+  <button class="save" *ngIf="openSave" (click)="saveButton()">Save</button>
+  <button class="standartButton" *ngIf="openEdit" (click)="allowToEditButton()">Edit</button>
 </form>

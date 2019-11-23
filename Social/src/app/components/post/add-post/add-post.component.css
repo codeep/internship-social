@@ -7,17 +7,19 @@ form {
 .uploads {
   display: flex;
   justify-content: space-between;
-  width:100%;
-}
-.all{
   width: 100%;
 }
+
+.all {
+  width: 100%;
+}
+
 .standartButton {
   margin: 10px;
 }
+
 .trans {
   font-size: 25px;
-  /* transform: rotate(-90deg); */
 }
 
 textarea.mat-input-element {
@@ -28,24 +30,30 @@ textarea.mat-input-element {
 input[type="file"] {
   display: none;
 }
-mat-icon{
+
+mat-icon {
   font-size: 20px;
 }
-mat-accordion{
+
+mat-accordion {
   width: 100%;
 }
-.edit{
-  color:  #35bb7d;
+
+.edit {
+  color: #35bb7d;
 }
-p{
+
+p {
   margin: 20px;
 }
-@media only screen and (max-width: 900px){
-  mat-accordion{
+
+@media only screen and (max-width: 900px) {
+  mat-accordion {
     width: 80%;
     padding: 0;
   }
-  container-flex{
+
+  container-flex {
     width: 80%;
     padding: 0;
   }

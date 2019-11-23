@@ -12,10 +12,10 @@ export class CheckTokenGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (localStorage.getItem('token')) {
-        return true;
-      } else {
-        return this.router.navigate(['/login']);
-      }
+    if (localStorage.getItem('token')) {
+      return true;
+    } else {
+      return this.router.navigate(['/login']);
+    }
   }
 }
