@@ -37,7 +37,6 @@ export class UserComponent implements OnInit {
   onClickFollow(item, i){
     this.myServer.post('FOLLOW', item['_id'], {key:'id',value:item['_id']})
     .subscribe(date=>{
-     
       this.trueOrFalse = !this.trueOrFalse;});
   }
 }

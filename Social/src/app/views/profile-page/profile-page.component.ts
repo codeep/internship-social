@@ -46,6 +46,7 @@ export class ProfilePageComponent implements OnInit {
     private router: ActivatedRoute,
     private session: SessionService) { }
   ngOnInit() {
+
     this.server.get('WALL', { key: 'id', value: this.session.getGuestID() }, [{ key: 'limit', value: this.limit }, { key: 'offset', value: this.offset }])
       .subscribe((posts: { data: [] }) => {
         this.posts = posts.data

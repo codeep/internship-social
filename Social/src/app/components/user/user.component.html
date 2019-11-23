@@ -1,6 +1,7 @@
 <div class="thisuser boxShadow">
     <a (click)="sendId(item._id)">
-        <img  src="../../assets/userdefult.png" alt="Img">
+        <img *ngIf="item.avatar" src="{{item.avatar}}" alt="Img">
+        <img *ngIf="!item.avatar" src="../../../assets/download.png" alt="Img">
         <p  >{{item.firstname}} {{item.lastname}}</p>
     </a>
     <button  class="followButton" (click)='onClickFollow(item)' *ngIf="!trueOrFalse && myPage">Follow</button>

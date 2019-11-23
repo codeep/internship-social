@@ -3,7 +3,8 @@
   <div class="info">
       <div class="subtitle">
         <a [routerLink]="['/profile', post.author._id]" (click)="sendId()">
-          <img src="/assets/download.png" class="avatar" />
+          <img *ngIf="post.author.avatar" src="{{post.author.avatar}}" class="avatar" />
+          <img *ngIf="!post.author.avatar" src="/assets/download.png" class="avatar" />
           <p>{{ post.author?.firstname }} {{ post.author?.lastname }}</p>
         </a>
       </div>
@@ -20,7 +21,8 @@
       <mat-card-content [innerHTML]="post.content"></mat-card-content>
     </div>
    <div class="post-img">
-      <img src="{{post.file}}" />
+      <img src="{{post.file}}" class="file" />
+      <!-- <input #file accept='image/*' type='file' id="cover" class="hidden" (change)="coverPhoto(file.files)"> -->
   </div>
   </div>
   <hr />
