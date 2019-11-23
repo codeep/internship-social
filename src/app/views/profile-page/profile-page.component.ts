@@ -220,7 +220,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   delete(post) {
-    const postIndex = this.posts.findIndex(p => p._id === post._id);
+    const postIndex = this.posts.findIndex(p => p._id === (post._id || post));
     this.posts.splice(postIndex, 1);
   }
   

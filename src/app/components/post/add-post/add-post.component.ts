@@ -59,6 +59,7 @@ export class AddPostComponent implements OnInit {
       this.imgURL = '';
       this.postList['_id'] = res['data']['_id']; 
       this.emitter.emit(this.postList);
+      delete this.postList['_id'];
     })
 
 
