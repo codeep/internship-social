@@ -9,6 +9,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
+  followersCount = 0;
+  followingCount = 0;
   imgURL;
   urlProfile;
   showUploadCoverButton = false;
@@ -59,9 +61,6 @@ export class ProfilePageComponent implements OnInit {
           this.surname = getName.data.user.lastname;
           this.avatar=getName.data.user.avatar;
           this.cover=getName.data.user.cover;
-          // this.hideUploadProfileButton=false;
-          // this.hideUploadCoverButton=false;
-
         }
       });
     if (this.session.getUser()['_id'] == this.session.getGuestID()) {
@@ -118,7 +117,7 @@ export class ProfilePageComponent implements OnInit {
       this.details.avatar=this.urlProfile;
       this.details.cover=this.imgURL;
       this.server.post('DETAILS', this.details).subscribe(da=>console.log('da'));
-    } 
+    }
     // window.location.reload();
   }
   openDetailsButton() {
@@ -140,6 +139,9 @@ export class ProfilePageComponent implements OnInit {
       .subscribe((getFollowings: Response) => {
         if (getFollowings.status >= 200 && getFollowings.status < 300) {
           this.followingArray = getFollowings.data.user.followings;
+          this.followingCount = this.followingArray.length;
+          this.followersArray = getFollowings.data.user.followers;
+          this.followersCount = this.followersArray.length;
           this.followingArray.forEach(id => {
             this.server.get('USERS_ID', { key: 'id', value: id })
               .subscribe((data: Response) => {
@@ -170,6 +172,7 @@ export class ProfilePageComponent implements OnInit {
       .subscribe((getFollowings: Response) => {
         if (getFollowings.status >= 200 && getFollowings.status < 300) {
             this.followingArray = getFollowings.data.user.followings;
+            this.followingCount = this.followingArray.length;
             this.followingArray.forEach(id => {
               this.server.get('USERS_ID', { key: 'id', value: id })
                 .subscribe((data: Response) => {
@@ -189,6 +192,7 @@ export class ProfilePageComponent implements OnInit {
       .subscribe((getFollowers: Response) => {
         if (getFollowers.status >= 200 && getFollowers.status < 300) {
           this.followersArray = getFollowers.data.user.followers;
+          this.followersCount = this.followersArray.length;
           this.followersArray.forEach(id => {
             this.server.get('USERS_ID', { key: 'id', value: id })
               .subscribe((data: Response) => {
@@ -204,9 +208,6 @@ export class ProfilePageComponent implements OnInit {
       this.posts=posts.data
       this.offset+=10
     });
-  }
-  followUser(){
-    window.location.reload();
   }
 }
 

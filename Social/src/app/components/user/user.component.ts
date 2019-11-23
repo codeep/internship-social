@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RequestService } from 'src/app/services/request-service.service';
 import { SessionService } from 'src/app/services/session.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Response } from 'src/interfaces/response.interface';
 
 @Component({
@@ -16,6 +16,7 @@ export class UserComponent implements OnInit {
   loginUser;
   constructor(
     private myServer: RequestService,
+    private activeRoute: ActivatedRoute,
     private session: SessionService,
     private router: Router) { }
   ngOnInit() {
@@ -33,6 +34,8 @@ export class UserComponent implements OnInit {
   sendId(data){
     this.session.setGuestID(data);
     this.router.navigateByUrl(`profile/${data}`);
+    this.activeRoute.params.subscribe((params) => {
+    window.location.reload();})
   }
   onClickFollow(item, i){
     this.myServer.post('FOLLOW', item['_id'], {key:'id',value:item['_id']})

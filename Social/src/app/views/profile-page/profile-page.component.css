@@ -1,5 +1,6 @@
 .entireProfilePage{
     flex-direction: column;
+    background-color: white;
     width: 95%;
 }
 .coverPhoto{
@@ -11,6 +12,7 @@
 }
 .imgIconAndText{
     height: 100%;
+    position: relative;
     width: 100%;
 }
 .uploadCover{
@@ -30,12 +32,9 @@
     align-items: center;
 }
 .nameSurname{
-    position: absolute;
-    left: 35%;
-    top: 360px;
-}
-.nameSurname p{
+    align-self: flex-end;
     font-size: 21px;
+    margin-left: 5px;
 }
 .pic{
     height: 100%;
@@ -82,27 +81,35 @@
     display: flex;
 }
 .updateCoverPhoto{
+    /* width: 200px; */
     display: none; 
     color: white;
     cursor: pointer;
     position: absolute;
     top: 300px;
-    right: 3%;    
+    right: 3%;
+    background-color: #00000080;    
+    box-shadow: 1px 1px 10px 1px #156b4e;
+    padding: 3px;
+    align-items: center;
 }
 .updateProfilePhoto{
     display: none; 
+    width: 192px;
     color: white;
     cursor: pointer;
     position: absolute;
-    top: 186px;
-    margin: 0 7px;
+    top: 190px;
+    background-color: rgba(0, 0, 0, 0.5);    
+    box-shadow: 1px 1px 10px 1px #156b4e;
+    padding: 4px;
 }
 .imgIconAndText:hover .updateCoverPhoto{
-    display: block;
+    display: flex;
     cursor: pointer;
 }
 .profilePic:hover .updateProfilePhoto{
-    display: block;
+    display: flex;
     cursor: pointer;
 }
 ​
@@ -177,8 +184,9 @@
     color:rgb(33, 95, 38);
 }
 .activeFollow{
-    transform: translateY(-6px);
-    color:rgb(33, 95, 38);
+    color:black;
+    border-bottom: 3px solid rgb(43, 156, 53);
+    padding-bottom: 5px ;
 }
 .mainContent{
     width: 50%;
@@ -195,12 +203,16 @@
     font-size: 17px;
 }
 .connections>p:hover{
-    transform: translateY(-6px);
     color: rgb(33, 95, 38);
     cursor: pointer;
 }
 app-add-post{
     width: 50% !important;
+}
+.followError{
+    margin:20px auto;
+    color: rgb(43, 156, 53);
+    font-size: 18px;
 }
 @media only screen and (max-width: 900px) {
     .coverPhoto{
@@ -213,17 +225,13 @@ app-add-post{
         margin: 0;
     }
     .profilePic{
+        bottom: -30%;
         height: 150px;
         width: 120px;
     }
     .uploadCoverIconAndText{
         align-items: flex-start;
         justify-content: flex-end;
-    }
-    .nameSurname{
-        position: absolute;
-        left: 30%;
-        top: 250px;
     }
     .leftSide{
         display: flex;
@@ -232,5 +240,13 @@ app-add-post{
     }
     .mainContent{
         width: 100%;
+    }
+    .updateCoverPhoto{
+        top: 160px;
+    }
+    .updateProfilePhoto{
+        width: 112px;
+        font-size: 13px;
+        top: 105px;
     }
 }
