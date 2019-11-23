@@ -21,6 +21,7 @@
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 .profilePic {
   height: 220px;
