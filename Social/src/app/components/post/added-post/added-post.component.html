@@ -20,8 +20,7 @@
       <mat-card-content [innerHTML]="post.content"></mat-card-content>
     </div>
    <div class="post-img">
-      <img *ngIf="image" src="{{image}}" />
-      <!-- <input #file accept='image/*' type='file' id="cover" class="hidden" (change)="coverPhoto(file.files)"> -->
+      <img src="{{post.file}}" />
   </div>
   </div>
   <hr />
