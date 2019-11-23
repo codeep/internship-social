@@ -3,7 +3,6 @@ import { Subject } from 'rxjs';
 @Injectable()
 export class SessionService {
     private token;
-    guestID = new Subject();
    getToken() {
        return localStorage.getItem('token');
    }
@@ -17,14 +16,10 @@ export class SessionService {
         localStorage.setItem('user', JSON.stringify(user));
     }
     setGuestID(data){
-        this.guestID.next(data);
         localStorage.setItem('guest', data);
     }
     getGuestID(){
         return localStorage.getItem('guest');
-    }
-    test(){
-        return this.guestID;
     }
    logout() {
    }
