@@ -33,10 +33,12 @@ export class UserComponent implements OnInit {
   }
   sendId(data) {
     this.session.setGuestID(data);
-    this.router.navigateByUrl(`profile/${data}`);
-    this.activeRoute.params.subscribe((params) => {
-      window.location.reload();
-    })
+    this.router.navigateByUrl(`profile/${data}`).then(()=>{
+      this.activeRoute.params.subscribe((params) => {
+        window.location.reload();
+      })
+    });
+    
   }
   onClickFollow(item, i) {
     this.myServer.post('FOLLOW', item['_id'], { key: 'id', value: item['_id'] })
