@@ -1,7 +1,7 @@
 form {
   display: flex;
   flex-direction: column;
-  padding: 20px 2%;
+  padding: 20px 2% 10px;
   background-color: #fff;
 }
 
@@ -53,4 +53,11 @@ p {
 a {
   display: flex;
   margin-bottom: 5px;
+}
+.posttitleandcontent{
+  font-size: 18px;
+  line-height: 30px;
+}
+.post-title {
+  margin-top: 10px;
 }

@@ -16,10 +16,10 @@
   <hr />
   <div class="allpost">
     <div class="post-title">
-      <mat-card-content>{{post.title}}</mat-card-content>
+      <mat-card-content class="posttitleandcontent">{{post.title}}</mat-card-content>
     </div>
     <div class="post-content">
-      <mat-card-content [innerHTML]="post.content"></mat-card-content>
+      <mat-card-content class="posttitleandcontent" [innerHTML]="post.content"></mat-card-content>
     </div>
     <div class="post-img">
       <img src="{{post.file}}" class="file" />
