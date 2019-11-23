@@ -1,3 +1,22 @@
+.entireProfilePage{
+    flex-direction: column;
+    background-color: white;
+    width: 95%;
+    /* padding-bottom: 20px; */
+}
+.coverPhoto{
+    height: 350px;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+.imgIconAndText{
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+.uploadCover{
 .entireProfilePage {
   flex-direction: column;
   background-color: white;
@@ -286,6 +305,213 @@ app-add-post {
 
   .mainContent {
     width: 100%;
+    height: 100%;
+}
+.hidden{
+    display: none;
+}
+.uploadCoverIconAndText{
+    height: 100%;
+    color: #35bb7d;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+.uploadProfileIconAndText{
+    color: #35bb7d;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    margin: 0 7px;
+}
+.uploadProfileIconAndText label{
+    cursor: pointer;
+    font-size: 16px;
+}
+.uploadProfileIconAndText mat-icon{
+    font-size: 21px;
+}
+.uploadCoverIconAndText label{
+    font-size: 19px;
+    cursor: pointer;
+}
+.uploadIconAndText mat-icon{
+    font-size: 31px;
+  
+}
+.textInProfilePic{
+    display: flex;
+}
+.updateCoverPhoto{
+    /* width: 200px; */
+    display: none; 
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 300px;
+    right: 3%;
+    background-color: #00000080;    
+    box-shadow: 1px 1px 10px 1px #156b4e;
+    padding: 3px;
+    align-items: center;
+}
+.updateProfilePhoto{
+    display: none; 
+    width: 192px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 190px;
+    background-color: rgba(0, 0, 0, 0.5);    
+    box-shadow: 1px 1px 10px 1px #156b4e;
+    padding: 4px;
+}
+.imgIconAndText:hover .updateCoverPhoto{
+    display: flex;
+    cursor: pointer;
+}
+.profilePic:hover .updateProfilePhoto{
+    display: flex;
+    cursor: pointer;
+}
+​
+.updateCoverPhoto label{
+    font-size: 17px;
+    padding: 4px 6px;
+    cursor: pointer;
+}
+.updateProfilePhoto label{
+    font-size: 16px;
+    cursor: pointer;
+}
+.updateProfilePhoto .mat-icon{
+    font-size: 17px;
+}
+.uploadImage .mat-icon{
+    font-size: 26px;
+}
+.profImg{
+    width: 100%;
+    height: 200px;
+}
+.sides{
+    margin: 80px 0;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: space-evenly;
+}
+.leftSide{
+    width: 30%;
+    padding: 50px 0;
+    background-color: white;
+    height: 100%;
+}
+.menuItem{
+    background-color: #f4f7f2;
+    font-size: 20px;
+    margin:10px;
+    box-shadow: 0px 0px 8px -3px #156b4e;
+    padding: 10px;
+}
+.menuItem:hover{
+    transform: translateX(10px);
+    color: rgb(33, 95, 38);
+    cursor: pointer;
+}
+.feedButton{
+    box-shadow: 0px 0px 8px -3px rgb(80, 197, 90);
+    position: absolute;
+    top: 13px;
+    left: 7px;
+    padding: 15px;
+    color: rgb(80, 197, 90);
+    font-size: 2em;
+    line-height: 10px;
+}
+.feedButton mat-icon{
+    color: rgb(80, 197, 90);;
+}
+.feedButton:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 8px -3px #aff5ba;
+}
+.feedButton:hover mat-icon{
+    color: #aff5ba;
+    cursor: pointer;
+}
+.activeMenuItem {
+    transform: translateX(10px);
+    color:rgb(33, 95, 38);
+}
+.activeFollow{
+    color:black;
+    border-bottom: 3px solid rgb(43, 156, 53);
+    padding-bottom: 5px ;
+}
+.mainContent{
+    width: 50%;
+    margin-top: 30px;
+}
+.connections{
+    background-color: #f4f7f2;
+    display: flex;
+    box-shadow: 0px 0px 8px -3px #156b4e;
+    padding: 10px;
+}
+.connections>p{
+    margin: 9px; 
+    font-size: 17px;
+}
+.connections>p:hover{
+    color: rgb(33, 95, 38);
+    cursor: pointer;
+}
+app-add-post{
+    width: 50% !important;
+}
+.followError{
+    margin:20px auto;
+    color: rgb(43, 156, 53);
+    font-size: 18px;
+}
+@media only screen and (max-width: 900px) {
+    .coverPhoto{
+        height: 200px;
+    }
+    .uploadCover{
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .profilePic{
+        bottom: -30%;
+        height: 150px;
+        width: 120px;
+    }
+    .uploadCoverIconAndText{
+        align-items: flex-start;
+        justify-content: flex-end;
+    }
+    .leftSide{
+        display: flex;
+        width: 96%;
+        justify-content: space-between;
+        padding: 2%;
+    }
+    .mainContent{
+        width: 100%;
+    }
+    .updateCoverPhoto{
+        top: 160px;
+    }
+    .updateProfilePhoto{
+        width: 112px;
+        font-size: 13px;
+        top: 105px;
+    }
   }
 
   .updateCoverPhoto {

@@ -1,12 +1,12 @@
-.wisard {
-  margin-top: 5%;
-  padding: 10px;
-  width: 30%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+.wisard{
+    margin-top: 5%;
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .wisard>p {
@@ -31,4 +31,15 @@
   .wisard {
     width: 90%;
   }
+}
+@media only screen and (max-width: 1200px){
+    .wisard{
+        width: 90%;
+    }
+    .user{
+        width: 70%;
+        align-self: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }

@@ -19,11 +19,20 @@
         <div class="nameSurname">
           <p>{{ name }} {{ surname }}</p>
         </div>
-        <input #fileProf accept='image/*' type='file' id="profile" class="hidden"
-          (change)="profilePhoto(fileProf.files)">
-        <div class="updateProfilePhoto">
-          <mat-icon>photo_camera</mat-icon>
-          <label for="profile">Update Profile Photo</label>
+        <div class="profilePic">
+            <div class="pic">
+                <img *ngIf="avatar" src="{{avatar}}" class="uploadProfile" />
+                <img *ngIf="!avatar" src="../../../assets/userdefult.png" class="uploadProfile" />
+                <div class="nameSurname">
+                    <p>{{ name }} {{ surname }}</p>
+                </div>
+                <input #fileProf accept='image/*' type='file' id="profile" class="hidden"
+                    (change)="profilePhoto(fileProf.files)">
+                <div class="updateProfilePhoto">
+                    <mat-icon>photo_camera</mat-icon>
+                    <label for="profile">Update Profile Photo</label>
+                </div>
+            </div>
         </div>
       </div>
     </div>
@@ -53,12 +62,31 @@
           <app-user class="user" *ngFor="let item of followingsUser" [item]='item'>
           </app-user>
         </div>
-      </div>
-      <div *ngIf="followers">
-        <div class="users">
-          <p *ngIf='!followersCount' class="followError">Followers list is empty.</p>
-          <app-user class="user" *ngFor="let item of followersUser" [item]='item'>
-          </app-user>
+        <div class="mainContent">
+            <app-add-post *ngIf="openCreatePost" class="boxShadow"></app-add-post>
+            <div *ngIf="showPosts">
+                <app-added-post *ngFor="let post of posts" [post]='post' class="boxShadow">
+                </app-added-post>
+            </div>
+            <div class="connections" *ngIf="openConnections">
+                <p (click)="openFollowingButton()" [ngClass]="{'activeFollow': following }">Following ({{followingCount}})</p>
+                <p (click)="openFollowersButton()" [ngClass]="{'activeFollow': followers }">Followers ({{followersCount}})</p>
+            </div>
+            <app-details *ngIf="openDetails"></app-details>
+            <div *ngIf="following">
+                <div class="users">
+                    <p *ngIf='!followingCount' class="followError">Followings list is empty.</p>
+                    <app-user class="user" *ngFor="let item of followingsUser" [item]='item'>
+                    </app-user>
+                </div>
+            </div>
+            <div *ngIf="followers">
+                <div class="users">
+                    <p *ngIf='!followersCount' class="followError">Followers list is empty.</p>
+                    <app-user class="user" *ngFor="let item of followersUser" [item]='item'>
+                    </app-user>
+                </div>
+            </div>
         </div>
       </div>
     </div>
